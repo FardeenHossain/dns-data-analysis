@@ -4,7 +4,6 @@ import h5py
 
 import os
 
-import input
 import myh5
 import mystat
 import myeig

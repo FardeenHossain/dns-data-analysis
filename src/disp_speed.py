@@ -2,18 +2,18 @@ import numpy as np
 import os
 
 import input
+import plots
 import myh5
 
 
 def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
                                  iy_end, iz_end, nx, ny, nz, nx_c, ny_c, nz_c):
     # Print title
-    print('\nDNS_premix_compute_disp_speed_PROG')
-    print('\r----\n')
+    print('\nCalculating displacement speed...\n')
 
     # Oxygen values
-    o2_u = 2.237710e-01  # Unburned
-    o2_b = 6.677090e-02  # Burned
+    o2_u = 2.237710e-01     # Unburned
+    o2_b = 6.677090e-02     # Burned
 
     # Data files
     data_file1 = os.path.join(in_path, 'data_1.300E-03.h5')
@@ -71,13 +71,13 @@ def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
 
     print('Finished O2!')
 
-    # Calculate PROG
+    # Calculate C
     c_new = 1 - ((o2_new - o2_b) / (o2_u - o2_b))
     c_old = 1 - ((o2_old - o2_b) / (o2_u - o2_b))
 
     c_half = (c_old + c_new) / 2
     dc = (c_new - c_old) / dt
-    print('Finished PROG!\n')
+    print('Finished C!\n')
 
     # x derivative
     dx = 20e-6
@@ -118,7 +118,11 @@ def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
     disp_speed_c[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
                              conv_w[:, :, :]) / mag_g_c[:, :, :]
 
+    # Plot graph
+    plots.plot_displacement_speed(disp_speed_c[:, :, 1])
 
+
+# Driver function
 calculate_displacement_speed(input.in_path,
                              input.ix_start,
                              input.iy_start,
