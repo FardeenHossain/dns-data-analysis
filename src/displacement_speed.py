@@ -9,11 +9,11 @@ import myh5
 def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
                                  iy_end, iz_end, nx, ny, nz, nx_c, ny_c, nz_c):
     # Print title
-    print('\nCalculating Displacement Speed...\n')
+    print('\nCalculating displacement speed...\n')
 
     # Oxygen values
-    o2_u = 2.237710e-01     # Unburned
-    o2_b = 6.677090e-02     # Burned
+    o2_u = 2.237710e-01  # Unburned
+    o2_b = 6.677090e-02  # Burned
 
     # Data files
     data_file1 = os.path.join(in_path, 'data_1.300E-03.h5')
@@ -92,10 +92,7 @@ def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
     conv_u = np.zeros([nx_c, ny_c, nz_c])
     conv_v = np.zeros([nx_c, ny_c, nz_c])
     conv_w = np.zeros([nx_c, ny_c, nz_c])
-
-    disp_speed_c = np.zeros([nx_c, ny_c, nz_c])
-
-    print(f"g_c: {g_cx.shape}, {g_cy.shape}, {g_cz.shape}\n")
+    sd_c = np.zeros([nx_c, ny_c, nz_c])
 
     # Calculate convective coefficients
     for i in range(0, nx_c):
@@ -110,19 +107,17 @@ def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
 
     mag_g_c = (g_cx ** 2.0 + g_cy ** 2.0 + g_cz ** 2.0) ** 0.5
 
-    print(f"mag_g_c: {mag_g_c.shape}")
-    print(f"dc: {dc.shape}")
-    print(f"conv_u: {conv_u.shape}")
-
     # Calculate displacement speed
-    disp_speed_c[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
-                             conv_w[:, :, :]) / mag_g_c[:, :, :]
+    sd_c[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
+                     conv_w[:, :, :]) / mag_g_c[:, :, :]
 
-    # Plot graph
-    plot.plot_displacement_speed(disp_speed_c)
+    plot.plot_displacement_speed(sd_c)
+
+    # Print finish
+    print("\nFinished!\n")
+    print("\n----\n")
 
 
-# Driver function
 calculate_displacement_speed(input.in_path,
                              input.ix_start,
                              input.iy_start,
