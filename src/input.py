@@ -1,5 +1,5 @@
 # Print title
-print('\nDNS Premixed - Compute disp_speed & c')
+print('\nDNS Premixed - Compute Displacement Speed and Progress Variable')
 print('\r----\n')
 
 # File path

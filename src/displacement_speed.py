@@ -2,14 +2,14 @@ import numpy as np
 import os
 
 import input
-import plots
+import plot
 import myh5
 
 
 def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
                                  iy_end, iz_end, nx, ny, nz, nx_c, ny_c, nz_c):
     # Print title
-    print('\nCalculating displacement speed...\n')
+    print('\nCalculating Displacement Speed...\n')
 
     # Oxygen values
     o2_u = 2.237710e-01     # Unburned
@@ -119,7 +119,7 @@ def calculate_displacement_speed(in_path, ix_start, iy_start, iz_start, ix_end,
                              conv_w[:, :, :]) / mag_g_c[:, :, :]
 
     # Plot graph
-    plots.plot_displacement_speed(disp_speed_c[:, :, 1])
+    plot.plot_displacement_speed(disp_speed_c)
 
 
 # Driver function
