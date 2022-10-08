@@ -5,9 +5,9 @@ import mystat
 import myeig
 
 
-def calc_strain_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
-                           w_half, c_half, disp_speed):
-    """Calculate strain tensor eigenvalues."""
+def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
+                                w_half, c_half, disp_speed):
+    """Calculate strain rate tensor eigenvalues."""
 
     cond = np.absolute(c_half - 0.73) < (0.2 / 2.0)
     disp_speed_cond = np.extract(cond, disp_speed)

@@ -35,6 +35,7 @@ def calc_v(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
 
     v_half = (v_old + v_new) / 2
     print('Finished V!')
+
     return v_half
 
 
@@ -53,6 +54,7 @@ def calc_w(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
 
     w_half = (w_old + w_new) / 2
     print('Finished W!')
+
     return w_half
 
 
