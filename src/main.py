@@ -2,6 +2,7 @@ import input
 import plot
 import prog_var
 import disp_speed
+import strain_rate_tensor
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')
@@ -10,9 +11,9 @@ print('\r----\n')
 # Calculate U
 u_half = prog_var.calc_u(input.data_file1,
                          input.data_file2,
-                         input.Nx,
-                         input.Ny,
-                         input.Nz,
+                         input.nx,
+                         input.ny,
+                         input.nz,
                          input.ix_start,
                          input.iy_start,
                          input.iz_start,
@@ -23,9 +24,9 @@ u_half = prog_var.calc_u(input.data_file1,
 # Calculate V
 v_half = prog_var.calc_v(input.data_file1,
                          input.data_file2,
-                         input.Nx,
-                         input.Ny,
-                         input.Nz,
+                         input.nx,
+                         input.ny,
+                         input.nz,
                          input.ix_start,
                          input.iy_start,
                          input.iz_start,
@@ -36,9 +37,9 @@ v_half = prog_var.calc_v(input.data_file1,
 # Calculate W
 w_half = prog_var.calc_w(input.data_file1,
                          input.data_file2,
-                         input.Nx,
-                         input.Ny,
-                         input.Nz,
+                         input.nx,
+                         input.ny,
+                         input.nz,
                          input.ix_start,
                          input.iy_start,
                          input.iz_start,
@@ -49,9 +50,9 @@ w_half = prog_var.calc_w(input.data_file1,
 # Calculate progress variable
 prog_var = prog_var.calc_prog_var(input.data_file1,
                                   input.data_file2,
-                                  input.Nx,
-                                  input.Ny,
-                                  input.Nz,
+                                  input.nx,
+                                  input.ny,
+                                  input.nz,
                                   input.ix_start,
                                   input.iy_start,
                                   input.iz_start,
@@ -66,10 +67,10 @@ c_half = prog_var[0]
 dc = prog_var[1]
 
 # Calculate displacement speed
-print('\nCalculating displacement speed...')
-disp_speed = disp_speed.calc_disp_speed(input.Nx_c,
-                                        input.Ny_c,
-                                        input.Nz_c,
+print('Calculating displacement speed...')
+disp_speed = disp_speed.calc_disp_speed(input.nx_c,
+                                        input.ny_c,
+                                        input.nz_c,
                                         u_half,
                                         v_half,
                                         w_half,
@@ -77,8 +78,21 @@ disp_speed = disp_speed.calc_disp_speed(input.Nx_c,
                                         input.dx,
                                         dc)
 
+# Calculate strain rate tensor eigenvalues
+print('Calculating strain rate tensor eigenvalues...')
+strain_rate_tensor.calc_strain_tensor_eig(input.if_save,
+                                          input.nx_c,
+                                          input.ny_c,
+                                          input.nz_c,
+                                          input.dx,
+                                          u_half,
+                                          v_half,
+                                          w_half,
+                                          c_half,
+                                          disp_speed)
+
 # Plot displacement speed
-print('\nPlotting displacement speed...')
+print('Plotting displacement speed...')
 plot.plot_disp_speed(disp_speed)
 
 # Print finish

@@ -2,17 +2,17 @@ import os
 
 # File path
 in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/R3K1/'
-IF_save = 0
+if_save = 0
 
 # Data range
-Nx = 2880
-Ny = 1922
-Nz = 512
+nx = 2880
+ny = 1922
+nz = 512
 
 # Chunk range
-Nx_c = 30
-Ny_c = 10
-Nz_c = 50
+nx_c = 30
+ny_c = 10
+nz_c = 50
 
 # Start point
 ix_start = 800
@@ -20,9 +20,9 @@ iy_start = 850
 iz_start = 1
 
 # End point
-ix_end = ix_start + Nx_c
-iy_end = iy_start + Ny_c
-iz_end = iz_start + Nz_c
+ix_end = ix_start + nx_c
+iy_end = iy_start + ny_c
+iz_end = iz_start + nz_c
 
 # Oxygen values
 o2_u = 2.237710e-01  # Unburned

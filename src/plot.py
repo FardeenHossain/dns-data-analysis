@@ -17,7 +17,7 @@ def plot_disp_speed(disp_speed):
     plt.show()
 
 
-def plot_figure_2(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
+def plot_figure2(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
     """Unknown plot."""
 
     plt.figure(2)
