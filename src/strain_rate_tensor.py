@@ -37,7 +37,7 @@ def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
         rr1[:, :, :, :], rr2[:, :, :, :], rr3[:, :, :, :] = myeig.vec_val(
             center_u[:, :, :], center_v[:, :, :], center_w[:, :, :], dx)
 
-        f1 = h5py.File("data_disp_sp.hdf5", "w")
+        f1 = h5py.File("data_disp_speed.hdf5", "w")
 
         dset1 = f1.create_dataset("lambda1", (nx_c, ny_c, nz_c), data=lambda1)
         dset2 = f1.create_dataset("lambda2", (nx_c, ny_c, nz_c), data=lambda2)
@@ -49,7 +49,7 @@ def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
         print("Calculated and saved lambda!\n")
 
     elif if_save == 0:
-        f1 = h5py.File('data_disp_sp.hdf5', 'r')
+        f1 = h5py.File('data_disp_speed.hdf5', 'r')
 
         lambda1 = np.array(f1['lambda1'])
         lambda2 = np.array(f1['lambda2'])
