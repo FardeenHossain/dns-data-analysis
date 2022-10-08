@@ -1,27 +1,23 @@
-import h5py
 import numpy as np
-import math
 
-# [gUx,gUy,gUz,gVx,gVy,gVz,gWx,gWy,gWz] = ...vel_grad(U,V,W,dx)
 
-def vel_grad(U,V,W,dx):
-    
+def vel_grad(u, v, w, dx):
     # Compute gradient of U
-    gC = np.gradient(U,dx)
-    gUx = gC[0]
-    gUy = gC[1]
-    gUz = gC[2]
+    g_c = np.gradient(u, dx)
+    g_ux = g_c[0]
+    g_uy = g_c[1]
+    g_uz = g_c[2]
 
     # Compute gradient of V
-    gC = np.gradient(V,dx)
-    gVx = gC[0]
-    gVy = gC[1]
-    gVz = gC[2]
+    g_c = np.gradient(v, dx)
+    g_vx = g_c[0]
+    g_vy = g_c[1]
+    g_vz = g_c[2]
 
     # Compute gradient of W
-    gC = np.gradient(W,dx)
-    gWx = gC[0]
-    gWy = gC[1]
-    gWz = gC[2]
-    
-    return [gUx,gUy,gUz,gVx,gVy,gVz,gWx,gWy,gWz]
+    g_c = np.gradient(w, dx)
+    g_wx = g_c[0]
+    g_wy = g_c[1]
+    g_wz = g_c[2]
+
+    return [g_ux, g_uy, g_uz, g_vx, g_vy, g_vz, g_wx, g_wy, g_wz]
