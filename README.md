@@ -1,6 +1,8 @@
 # Hydrogen and Methane Flame Analysis
 
-Analysis of large-scale Direct Numerical Simulation (DNS) data of turbulent hydrogen and methane flames to guide model development for Large Eddy Simulation (LES).
+Analysis of large-scale Direct Numerical Simulation (DNS) data of turbulent
+hydrogen and methane flames to guide model development for Large Eddy
+Simulation (LES).
 
 ## Built With
 

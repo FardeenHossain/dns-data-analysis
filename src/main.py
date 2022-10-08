@@ -114,4 +114,4 @@ plot.plot_disp_speed(disp_speed)
 
 # Print finish
 print("\nFinished!\n")
-print("\n----\n")
+print("\r----\n")
