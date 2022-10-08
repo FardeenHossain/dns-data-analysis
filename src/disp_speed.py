@@ -1,82 +1,8 @@
 import numpy as np
-import os
-import myh5
 
 
-def calc_disp_speed(in_path, ix_start, iy_start, iz_start, ix_end, iy_end,
-                    iz_end, nx, ny, nz, nx_c, ny_c, nz_c):
+def calc_disp_speed(nx_c, ny_c, nz_c, u_half, v_half, w_half, c_half, dx, dc):
     """Calculate displacement speed."""
-
-    # Oxygen values
-    o2_u = 2.237710e-01  # Unburned
-    o2_b = 6.677090e-02  # Burned
-
-    # Data files
-    data_file1 = os.path.join(in_path, 'data_1.300E-03.h5')
-    data_file2 = os.path.join(in_path, 'data2_1.300E-03.h5')
-
-    # Time derivative
-    dt = 1.15577e-07
-    # info = hdf5read(['../data_', listfile{i}], 'data', 'time_variables')
-    # dt = info(1)
-
-    # Read U
-    u_old = myh5.read_var(data_file1, '/data', '/data/U',
-                          [[ix_start, iy_start, iz_start],
-                           [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
-
-    u_new = myh5.read_var(data_file2, '/data', '/data/U',
-                          [[ix_start, iy_start, iz_start],
-                           [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
-
-    u_half = (u_old + u_new) / 2
-    print('Finished U!')
-
-    # Read V
-    v_old = myh5.read_var(data_file1, '/data', '/data/V',
-                          [[ix_start, iy_start, iz_start],
-                           [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
-
-    v_new = myh5.read_var(data_file2, '/data', '/data/V',
-                          [[ix_start, iy_start, iz_start],
-                           [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
-
-    v_half = (v_old + v_new) / 2
-    print('Finished V!')
-
-    # Read W
-    w_old = myh5.read_var(data_file1, '/data', '/data/W',
-                          [[ix_start, iy_start, iz_start],
-                           [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
-
-    w_new = myh5.read_var(data_file2, '/data', '/data/W',
-                          [[ix_start, iy_start, iz_start],
-                           [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
-
-    w_half = (w_old + w_new) / 2
-    print('Finished W!')
-
-    # Read O2
-    o2_old = myh5.read_var(data_file1, '/data', '/data/O2',
-                           [[ix_start, iy_start, iz_start],
-                            [ix_end, iy_end, iz_end]], nx, ny, nz)
-
-    o2_new = myh5.read_var(data_file2, '/data', '/data/O2',
-                           [[ix_start, iy_start, iz_start],
-                            [ix_end, iy_end, iz_end]], nx, ny, nz)
-
-    print('Finished O2!')
-
-    # Calculate C
-    c_new = 1 - ((o2_new - o2_b) / (o2_u - o2_b))
-    c_old = 1 - ((o2_old - o2_b) / (o2_u - o2_b))
-
-    c_half = (c_old + c_new) / 2
-    dc = (c_new - c_old) / dt
-    print('Finished C!\n')
-
-    # x derivative
-    dx = 20e-6
 
     g_c = np.gradient(c_half, dx)
 
@@ -88,7 +14,7 @@ def calc_disp_speed(in_path, ix_start, iy_start, iz_start, ix_end, iy_end,
     conv_u = np.zeros([nx_c, ny_c, nz_c])
     conv_v = np.zeros([nx_c, ny_c, nz_c])
     conv_w = np.zeros([nx_c, ny_c, nz_c])
-    sd_c = np.zeros([nx_c, ny_c, nz_c])
+    disp_speed = np.zeros([nx_c, ny_c, nz_c])
 
     # Calculate convective coefficients
     for i in range(0, nx_c):
@@ -104,9 +30,9 @@ def calc_disp_speed(in_path, ix_start, iy_start, iz_start, ix_end, iy_end,
     mag_g_c = (g_cx ** 2.0 + g_cy ** 2.0 + g_cz ** 2.0) ** 0.5
 
     # Calculate displacement speed
-    sd_c[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
-                     conv_w[:, :, :]) / mag_g_c[:, :, :]
+    disp_speed[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
+                           conv_w[:, :, :]) / mag_g_c[:, :, :]
 
     print('\nFinished displacement speed!\n')
 
-    return sd_c
+    return disp_speed
