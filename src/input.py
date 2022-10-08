@@ -1,7 +1,3 @@
-# Print title
-print('\nDNS Premixed - Compute Displacement Speed and Progress Variable')
-print('\r----\n')
-
 # File path
 in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/R3K1/'
 IF_save = 0
