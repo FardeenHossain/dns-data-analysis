@@ -1,8 +1,16 @@
 import matplotlib.pyplot as plt
 
-# Colormap
-cmap = plt.cm.get_cmap('Blues')
-cmap.set_under('white')
+# # Colormap
+# cmap = plt.cm.get_cmap('Blues')
+# cmap.set_under('white')
+
+
+def plot_prog_var(prog_var):
+    plt.contourf(prog_var[:, :, 1])
+    plt.xlabel('y-coordinate')
+    plt.ylabel('x-coordinate')
+    plt.colorbar(label='Progress Variable, C')
+    plt.show()
 
 
 def plot_disp_speed(disp_speed):

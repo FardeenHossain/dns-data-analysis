@@ -66,17 +66,19 @@ prog_var = prog_var.calc_prog_var(input.data_file1,
 c_half = prog_var[0]
 dc = prog_var[1]
 
-# Calculate displacement speed
-print('Calculating displacement speed...')
-disp_speed = disp_speed.calc_disp_speed(input.nx_c,
-                                        input.ny_c,
-                                        input.nz_c,
-                                        u_half,
-                                        v_half,
-                                        w_half,
-                                        c_half,
-                                        input.dx,
-                                        dc)
+plot.plot_prog_var(c_half)
+
+# # Calculate displacement speed
+# print('Calculating displacement speed...')
+# disp_speed = disp_speed.calc_disp_speed(input.nx_c,
+#                                         input.ny_c,
+#                                         input.nz_c,
+#                                         u_half,
+#                                         v_half,
+#                                         w_half,
+#                                         c_half,
+#                                         input.dx,
+#                                         dc)
 
 # # Calculate strain rate tensor eigenvalues
 # print('Calculating strain rate tensor eigenvalues...')
@@ -91,8 +93,8 @@ disp_speed = disp_speed.calc_disp_speed(input.nx_c,
 #                                                             c_half,
 #                                                             disp_speed)
 
-# Plot displacement speed
-plot.plot_disp_speed(disp_speed)
+# # Plot displacement speed
+# plot.plot_disp_speed(disp_speed)
 
 # # Plot displacement speed probability density function
 # plot.plot_disp_speed_pdf(lambda_eig[1], lambda_eig[2])
