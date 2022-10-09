@@ -66,6 +66,7 @@ prog_var = prog_var.calc_prog_var(input.data_file1,
 c_half = prog_var[0]
 dc = prog_var[1]
 
+# Plot progress variable
 plot.plot_prog_var(c_half)
 
 # # Calculate displacement speed

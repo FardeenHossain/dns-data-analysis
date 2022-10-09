@@ -24,9 +24,9 @@ def plot_disp_speed(disp_speed):
     plt.show()
 
 
-# Colormap
-cmap = plt.cmap('Blues')
-cmap.set_under('white')
+# # Colormap
+# cmap = plt.get_cmap('Blues')
+# cmap.set_under('white')
 
 
 def plot_figure(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):

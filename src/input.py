@@ -10,9 +10,9 @@ ny = 1922
 nz = 512
 
 # Chunk range
-nx_c = 30
-ny_c = 10
-nz_c = 50
+nx_c = 300
+ny_c = 100
+nz_c = 500
 
 # Start point
 ix_start = 800
