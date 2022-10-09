@@ -17,10 +17,9 @@ def plot_disp_speed(disp_speed):
 
     plt.figure(2)
     plt.contourf(disp_speed[:, :, 1], cmap='plasma')
-    plt.xlabel('y-coordinate')
-    plt.ylabel('x-coordinate')
+    plt.xlabel('Y-Coordinate')
+    plt.ylabel('X-Coordinate')
     plt.colorbar(label=r'Displacement Speed, $\rmS_{d}$')
-    plt.style.use('seaborn')
     plt.show()
 
 
