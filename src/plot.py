@@ -1,23 +1,22 @@
 import matplotlib.pyplot as plt
 
-# # Colormap
-# cmap = plt.cm.get_cmap('Blues')
-# cmap.set_under('white')
-
 
 def plot_prog_var(prog_var):
-    plt.contourf(prog_var[:, :, 1])
-    plt.xlabel('y-coordinate')
-    plt.ylabel('x-coordinate')
-    plt.colorbar(label='Progress Variable, C')
+    """Contour plot of progress variable."""
+
+    plt.figure(1)
+    plt.contourf(prog_var[:, :, 1], cmap='plasma')
+    plt.xlabel('Y-Coordinate')
+    plt.ylabel('X-Coordinate')
+    plt.colorbar(label='Progress Variable, C (-)')
     plt.show()
 
 
 def plot_disp_speed(disp_speed):
     """Contour plot of displacement speed."""
 
-    plt.figure(1)
-    plt.contourf(disp_speed[:, :, 1])
+    plt.figure(2)
+    plt.contourf(disp_speed[:, :, 1], cmap='plasma')
     plt.xlabel('y-coordinate')
     plt.ylabel('x-coordinate')
     plt.colorbar(label=r'Displacement Speed, $\rmS_{d}$')
@@ -25,10 +24,15 @@ def plot_disp_speed(disp_speed):
     plt.show()
 
 
-def plot_figure2(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
+# Colormap
+cmap = plt.cmap('Blues')
+cmap.set_under('white')
+
+
+def plot_figure(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
     """Unknown plot."""
 
-    plt.figure(2)
+    plt.figure(3)
     for j in range(0, len(pdf_disp_speed_cond[:, 0])):
         plt.plot(bin_pdf_disp_speed_cond, pdf_disp_speed_cond[j, :])
     plt.show()
@@ -37,7 +41,7 @@ def plot_figure2(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
 def plot_disp_speed_pdf(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
     """Probability density function of displacement speed."""
 
-    plt.figure(3)
+    plt.figure(4)
     plt.plot(bin_pdf_disp_speed_cond, pdf_disp_speed_cond[0, :])
     plt.ylabel('Probability Density Function')
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
@@ -52,7 +56,7 @@ def plot_comp_strain_tensor_jpdf(lambda1_jpdf_bin, lambda1_disp_speed_c_jpdf,
                                  bin_disp_speed):
     """Joint probability density function of compressive strain tensor."""
 
-    plt.figure(4)
+    plt.figure(5)
 
     plt.contourf(disp1_jpdf_bin, lambda1_jpdf_bin, lambda1_disp_speed_c_jpdf,
                  cmap=cmap,
@@ -76,7 +80,7 @@ def plot_int_strain_tensor_jpdf(lambda2_jpdf_bin, lambda2_disp_speed_c_jpdf,
                                 lambda2_cond_mean, disp2_jpdf_bin,
                                 bin_disp_speed):
     """Joint probability density function of intermediate strain tensor."""
-    plt.figure(5)
+    plt.figure(6)
 
     plt.contourf(disp2_jpdf_bin, lambda2_jpdf_bin, lambda2_disp_speed_c_jpdf,
                  cmap=cmap,
@@ -101,7 +105,7 @@ def plot_ext_strain_tensor_jpdf(lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf,
                                 bin_disp_speed):
     """Joint probability density function of extensive strain tensor."""
 
-    plt.figure(6)
+    plt.figure(7)
 
     plt.contourf(disp3_jpdf_bin, lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf,
                  cmap=cmap,
