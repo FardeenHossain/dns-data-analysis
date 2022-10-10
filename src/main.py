@@ -78,24 +78,25 @@ disp_speed = disp_speed.calc_disp_speed(input.nx_c,
                                         input.dx,
                                         dc)
 
-# # Calculate strain rate tensor eigenvalues
-# print('Calculating strain rate tensor eigenvalues...')
-# lambda_eig = strain_rate_tensor.calc_strain_rate_tensor_eig(input.if_save,
-#                                                             input.nx_c,
-#                                                             input.ny_c,
-#                                                             input.nz_c,
-#                                                             input.dx,
-#                                                             u_half,
-#                                                             v_half,
-#                                                             w_half,
-#                                                             c_half,
-#                                                             disp_speed)
+# Calculate strain rate tensor eigenvalues
+print('Calculating strain rate tensor eigenvalues...')
+lambda_eig = strain_rate_tensor.calc_strain_rate_tensor_eig(input.if_save,
+                                                            input.nx_c,
+                                                            input.ny_c,
+                                                            input.nz_c,
+                                                            input.dx,
+                                                            u_half,
+                                                            v_half,
+                                                            w_half,
+                                                            c_half,
+                                                            disp_speed)
+
+# Plot progress variable
+plot.plot_prog_var(c_half)
 
 # Plot displacement speed
 plot.plot_disp_speed(disp_speed)
 
-# Plot progress variable
-plot.plot_prog_var(c_half)
 
 # # Plot displacement speed probability density function
 # plot.plot_disp_speed_pdf(lambda_eig[1], lambda_eig[2])
