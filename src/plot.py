@@ -16,7 +16,7 @@ def plot_disp_speed(disp_speed):
     """Contour plot of displacement speed."""
 
     plt.figure(2)
-    plt.contourf(disp_speed[:, :, 1], cmap='spectral')
+    plt.contourf(disp_speed[:, :, 1], cmap='Spectral')
     plt.xlabel('Y-Coordinate')
     plt.ylabel('X-Coordinate')
     plt.colorbar(label=r'Displacement Speed, $\rmS_{d}$')
