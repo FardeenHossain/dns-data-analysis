@@ -73,7 +73,7 @@ def calc_prog_var(data_file1, data_file2, nx, ny, nz, ix_start, iy_start,
 
     print('Finished O2!')
 
-    # Calculate C
+    # Compute C from O2
     c_new = 1 - ((o2_new - o2_b) / (o2_u - o2_b))
     c_old = 1 - ((o2_old - o2_b) / (o2_u - o2_b))
 

@@ -25,6 +25,7 @@ def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
     center_v = np.zeros([nx_c, ny_c, nz_c])
     center_w = np.zeros([nx_c, ny_c, nz_c])
 
+    # Compute vorticity
     for i in range(0, nx_c):
         for j in range(0, ny_c):
             for k in range(0, nz_c):
@@ -32,6 +33,7 @@ def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
                 center_v[i, j, k] = (v_half[i, j + 1, k] + v_half[i, j, k]) / 2
                 center_w[i, j, k] = (w_half[i, j, k + 1] + w_half[i, j, k]) / 2
 
+    # Compute eigenvalues and eigenvectors
     if if_save == 1:
         lambda1[:, :, :], lambda2[:, :, :], lambda3[:, :, :], \
         rr1[:, :, :, :], rr2[:, :, :, :], rr3[:, :, :, :] = myeig.vec_val(

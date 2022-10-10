@@ -4,8 +4,8 @@ import numpy as np
 def calc_disp_speed(nx_c, ny_c, nz_c, u_half, v_half, w_half, c_half, dx, dc):
     """Calculate displacement speed."""
 
+    # Compute C gradient
     g_c = np.gradient(c_half, dx)
-
     g_cx = g_c[0]
     g_cy = g_c[1]
     g_cz = g_c[2]

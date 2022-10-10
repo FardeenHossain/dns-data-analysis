@@ -4,12 +4,12 @@ import os
 in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/R3K1/'
 if_save = 0
 
-# Data range
+# Data size
 nx = 2880
 ny = 1922
 nz = 512
 
-# Chunk range
+# Chunk size
 nx_c = 300
 ny_c = 100
 nz_c = 500
@@ -35,8 +35,6 @@ data_file2 = os.path.join(in_path, 'data2_1.300E-03.h5')
 # info = hdf5read(['../data_', listfile{i}], 'data', 'time_variables')
 # dt = info(1)
 
-# Time derivative
+# Constants
 dt = 1.15577e-07
-
-# x derivative
 dx = 20e-6
