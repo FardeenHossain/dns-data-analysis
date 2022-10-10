@@ -78,18 +78,18 @@ disp_speed = disp_speed.calc_disp_speed(input.nx_c,
                                         input.dx,
                                         dc)
 
-# Calculate strain rate tensor eigenvalues
-print('Calculating strain rate tensor eigenvalues...')
-lambda_eig = strain_rate_tensor.calc_strain_rate_tensor_eig(input.if_save,
-                                                            input.nx_c,
-                                                            input.ny_c,
-                                                            input.nz_c,
-                                                            input.dx,
-                                                            u_half,
-                                                            v_half,
-                                                            w_half,
-                                                            c_half,
-                                                            disp_speed)
+# # Calculate strain rate tensor eigenvalues
+# print('Calculating strain rate tensor eigenvalues...')
+# lambda_eig = strain_rate_tensor.calc_strain_rate_tensor_eig(input.if_save,
+#                                                             input.nx_c,
+#                                                             input.ny_c,
+#                                                             input.nz_c,
+#                                                             input.dx,
+#                                                             u_half,
+#                                                             v_half,
+#                                                             w_half,
+#                                                             c_half,
+#                                                             disp_speed)
 
 # Plot progress variable
 plot.plot_prog_var(c_half)
@@ -97,20 +97,19 @@ plot.plot_prog_var(c_half)
 # Plot displacement speed
 plot.plot_disp_speed(disp_speed)
 
-
 # # Plot displacement speed probability density function
 # plot.plot_disp_speed_pdf(lambda_eig[1], lambda_eig[2])
-#
+
 # # Plot compressive strain rate tensor joint probability density function
 # plot.plot_comp_strain_tensor_jpdf(lambda_eig[4], lambda_eig[5],
 #                                   lambda_eig[6], lambda_eig[7],
 #                                   lambda_eig[3])
-#
+
 # # Plot intermediate strain rate tensor joint probability density function
 # plot.plot_int_strain_tensor_jpdf(lambda_eig[8], lambda_eig[9],
 #                                  lambda_eig[10], lambda_eig[11],
 #                                  lambda_eig[3])
-#
+
 # # Plot extensive strain rate tensor joint probability density function
 # plot.plot_ext_strain_tensor_jpdf(lambda_eig[12], lambda_eig[13],
 #                                  lambda_eig[14], lambda_eig[15],
