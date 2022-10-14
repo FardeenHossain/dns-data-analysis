@@ -27,7 +27,7 @@ def plot_disp_speed_pdf(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
     """Probability density function of displacement speed."""
 
     plt.figure(3)
-    plt.style.use('seaborn-deep')
+    plt.style.use('seaborn')
 
     for i in range(0, len(pdf_disp_speed_cond[:, 0])):
         plt.plot(bin_pdf_disp_speed_cond, pdf_disp_speed_cond[i, :])
@@ -35,7 +35,7 @@ def plot_disp_speed_pdf(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
     # plt.plot(bin_pdf_disp_speed_cond, pdf_disp_speed_cond[0, :])
     plt.ylabel('Probability Density Function, PDF')
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
-    plt.xlim(-25, 25)
+    plt.xlim(-20, 20)
     plt.show()
 
 
