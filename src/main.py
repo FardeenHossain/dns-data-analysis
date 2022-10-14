@@ -52,22 +52,22 @@ plot.plot_prog_var(c_half)
 plot.plot_disp_speed(disp_speed)
 
 # Plot displacement speed probability density function
-plot.plot_disp_speed_pdf(lambda_eig[1], lambda_eig[2])
+plot.plot_disp_speed_pdf(lambda_eig[0], lambda_eig[1])
 
 # # Plot compressive strain rate tensor joint probability density function
-# plot.plot_comp_strain_tensor_jpdf(lambda_eig[4], lambda_eig[5],
-#                                   lambda_eig[6], lambda_eig[7],
-#                                   lambda_eig[3])
+# plot.plot_comp_strain_tensor_jpdf(lambda_eig[3], lambda_eig[4],
+#                                   lambda_eig[5], lambda_eig[6],
+#                                   lambda_eig[2])
 #
 # # Plot intermediate strain rate tensor joint probability density function
-# plot.plot_int_strain_tensor_jpdf(lambda_eig[8], lambda_eig[9],
-#                                  lambda_eig[10], lambda_eig[11],
-#                                  lambda_eig[3])
+# plot.plot_int_strain_tensor_jpdf(lambda_eig[7], lambda_eig[8],
+#                                  lambda_eig[9], lambda_eig[10],
+#                                  lambda_eig[2])
 #
 # # Plot extensive strain rate tensor joint probability density function
-# plot.plot_ext_strain_tensor_jpdf(lambda_eig[12], lambda_eig[13],
-#                                  lambda_eig[14], lambda_eig[15],
-#                                  lambda_eig[3])
+# plot.plot_ext_strain_tensor_jpdf(lambda_eig[11], lambda_eig[12],
+#                                  lambda_eig[13], lambda_eig[14],
+#                                  lambda_eig[2])
 
 # Print finish
 print("\nFinished!\n")
