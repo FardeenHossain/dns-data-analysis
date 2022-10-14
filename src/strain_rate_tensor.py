@@ -1,12 +1,14 @@
 import numpy as np
 import h5py
 
+from input import nx_c, ny_c, nz_c, dx
+
 import mystat
 import myeig
 
 
-def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
-                                w_half, c_half, disp_speed):
+def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
+                                disp_speed):
     """Calculate strain rate tensor eigenvalues."""
 
     cond = np.absolute(c_half - 0.73) < (0.2 / 2.0)
@@ -144,7 +146,7 @@ def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
         mean = np.mean(ext)
         lambda3_cond_mean[i] = mean
 
-    return (pdf_disp_speed_cond,
+    return [pdf_disp_speed_cond,
             bin_pdf_disp_speed_cond,
             bin_disp_speed,
             lambda1_jpdf_bin,
@@ -158,4 +160,4 @@ def calc_strain_rate_tensor_eig(if_save, nx_c, ny_c, nz_c, dx, u_half, v_half,
             lambda3_jpdf_bin,
             lambda3_disp_speed_c_jpdf,
             lambda3_cond_mean,
-            disp3_jpdf_bin)
+            disp3_jpdf_bin]

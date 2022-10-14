@@ -23,31 +23,26 @@ def plot_disp_speed(disp_speed):
     plt.show()
 
 
-# # Colormap
-# cmap = plt.get_cmap('Blues')
-# cmap.set_under('white')
-
-
-def plot_figure(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
-    """Unknown plot."""
-
-    plt.figure(3)
-    for j in range(0, len(pdf_disp_speed_cond[:, 0])):
-        plt.plot(bin_pdf_disp_speed_cond, pdf_disp_speed_cond[j, :])
-    plt.show()
-
-
 def plot_disp_speed_pdf(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
     """Probability density function of displacement speed."""
 
+    plt.figure(3)
+    for i in range(0, len(pdf_disp_speed_cond[:, 0])):
+        plt.plot(bin_pdf_disp_speed_cond, pdf_disp_speed_cond[i, :])
+
     plt.figure(4)
     plt.plot(bin_pdf_disp_speed_cond, pdf_disp_speed_cond[0, :])
-    plt.ylabel('Probability Density Function')
+    plt.ylabel('Probability Density Function, PDF')
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.xlim(-15, 15)
     plt.margins(x=0)
     plt.margins(y=0)
     plt.show()
+
+
+# Colormap
+cmap = plt.get_cmap('Blues')
+cmap.set_under('white')
 
 
 def plot_comp_strain_tensor_jpdf(lambda1_jpdf_bin, lambda1_disp_speed_c_jpdf,

@@ -1,8 +1,9 @@
 import myh5
+from input import nx, ny, nz, o2_u, o2_b, dt
 
 
-def calc_u(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
-           ix_end, iy_end, iz_end):
+def calc_u(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
+           iy_end, iz_end):
     """Calculate U."""
 
     # Read U
@@ -20,8 +21,8 @@ def calc_u(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
     return u_half
 
 
-def calc_v(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
-           ix_end, iy_end, iz_end):
+def calc_v(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
+           iy_end, iz_end):
     """Calculate V."""
 
     # Read V
@@ -39,8 +40,8 @@ def calc_v(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
     return v_half
 
 
-def calc_w(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
-           ix_end, iy_end, iz_end):
+def calc_w(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
+           iy_end, iz_end):
     """Calculate W."""
 
     # Read W
@@ -58,8 +59,8 @@ def calc_w(data_file1, data_file2, nx, ny, nz, ix_start, iy_start, iz_start,
     return w_half
 
 
-def calc_prog_var(data_file1, data_file2, nx, ny, nz, ix_start, iy_start,
-                  iz_start, ix_end, iy_end, iz_end, o2_u, o2_b, dt):
+def calc_prog_var(data_file1, data_file2, ix_start, iy_start, iz_start,
+                  ix_end, iy_end, iz_end):
     """Calculate progress variable."""
 
     # Read O2
@@ -81,4 +82,4 @@ def calc_prog_var(data_file1, data_file2, nx, ny, nz, ix_start, iy_start,
     dc = (c_new - c_old) / dt
     print('Finished C!\n')
 
-    return c_half, dc
+    return [c_half, dc]
