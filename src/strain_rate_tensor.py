@@ -98,7 +98,7 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
     lambda3_jpdf_bin = 0.5 * (lambda3_bin_edges[:-1] + lambda3_bin_edges[1:])
     disp3_jpdf_bin = 0.5 * (disp_bin_edges[:-1] + disp_bin_edges[1:])
 
-    f1 = h5py.File("data_disp_speed.hdf5", "w")
+    # f1 = h5py.File("data_disp_speed.hdf5", "w")
     f1.create_dataset("dataset_disp_sp_PROG", (nx_c, ny_c, nz_c), dtype='i',
                       data=disp_speed)
 
