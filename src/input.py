@@ -10,8 +10,8 @@ ny = 1922
 nz = 512
 
 # Chunk size
-nx_c = 10
-ny_c = 10
+nx_c = 100
+ny_c = 100
 nz_c = 10
 
 # Start point
