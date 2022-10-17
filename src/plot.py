@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import copy
 
 def plot_prog_var(prog_var):
     """Contour plot of progress variable."""
@@ -39,8 +39,12 @@ def plot_disp_speed_pdf(pdf_disp_speed_cond, bin_pdf_disp_speed_cond):
     plt.show()
 
 
+# # Colormap
+# cmap = plt.get_cmap('Blues')
+# cmap.set_under('white')
+
 # Colormap
-cmap = plt.get_cmap('Blues')
+cmap = copy.copy(plt.cm.Blues)
 cmap.set_under('white')
 
 
