@@ -43,12 +43,14 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
 
         f1 = h5py.File("data_disp_speed.hdf5", "w")
 
-        dset1 = f1.create_dataset("lambda1", (nx_c, ny_c, nz_c), data=lambda1)
-        dset2 = f1.create_dataset("lambda2", (nx_c, ny_c, nz_c), data=lambda2)
-        dset3 = f1.create_dataset("lambda3", (nx_c, ny_c, nz_c), data=lambda3)
-        dset4 = f1.create_dataset("rr1", (nx_c, ny_c, nz_c, 3), data=rr1)
-        dset5 = f1.create_dataset("rr2", (nx_c, ny_c, nz_c, 3), data=rr2)
-        dset6 = f1.create_dataset("rr3", (nx_c, ny_c, nz_c, 3), data=rr3)
+        f1.create_dataset("lambda1", (nx_c, ny_c, nz_c), data=lambda1)
+        f1.create_dataset("lambda2", (nx_c, ny_c, nz_c), data=lambda2)
+        f1.create_dataset("lambda3", (nx_c, ny_c, nz_c), data=lambda3)
+        f1.create_dataset("rr1", (nx_c, ny_c, nz_c, 3), data=rr1)
+        f1.create_dataset("rr2", (nx_c, ny_c, nz_c, 3), data=rr2)
+        f1.create_dataset("rr3", (nx_c, ny_c, nz_c, 3), data=rr3)
+
+        f1.close()
 
         print("\nCalculated and saved lambda!\n")
 
@@ -58,6 +60,8 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
         lambda1 = np.array(f1['lambda1'])
         lambda2 = np.array(f1['lambda2'])
         lambda3 = np.array(f1['lambda3'])
+
+        f1.close()
 
         print("\nImported lambda!\n")
 
@@ -98,9 +102,8 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
     lambda3_jpdf_bin = 0.5 * (lambda3_bin_edges[:-1] + lambda3_bin_edges[1:])
     disp3_jpdf_bin = 0.5 * (disp_bin_edges[:-1] + disp_bin_edges[1:])
 
-    if if_save == 0:
-        f1 = h5py.File("data_disp_speed.hdf5", "w")
-
+    # Save displacement speed
+    f1 = h5py.File("data_disp_speed.hdf5", "w")
     f1.create_dataset("dataset_disp_sp_PROG", (nx_c, ny_c, nz_c), dtype='i',
                       data=disp_speed)
 
