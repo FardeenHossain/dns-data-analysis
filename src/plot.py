@@ -56,11 +56,11 @@ def plot_comp_strain_tensor_jpdf(lambda1_jpdf_bin, lambda1_disp_speed_c_jpdf,
                  vmin=0.075e-6, levels=10)
 
     plt.plot(bin_disp_speed, lambda1_cond_mean[:], color='r',
-             label=r'Mean Compressive Strain Tensor, $\rm\gamma$')
+             label=r'Mean Compressive Strain Tensor')
 
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.ylabel(r'Compressive Strain Tensor, $\rm\gamma$')
-    plt.colorbar(label='Joint Probability Density Function')
+    plt.colorbar(label='Joint Probability Density Function, JPDF')
     plt.legend(loc="upper left", prop={'size': 12})
     plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
     plt.margins(x=0)
@@ -80,11 +80,11 @@ def plot_int_strain_tensor_jpdf(lambda2_jpdf_bin, lambda2_disp_speed_c_jpdf,
                  vmin=0.1e-6, levels=10)
 
     plt.plot(bin_disp_speed, lambda2_cond_mean[:], color='r',
-             label=r'Mean Intermediate Strain Tensor, $\rm\beta$')
+             label=r'Mean Intermediate Strain Tensor')
 
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.ylabel(r'Intermediate Strain Tensor, $\rm\beta$')
-    plt.colorbar(label='Joint Probability Density Function')
+    plt.colorbar(label='Joint Probability Density Function, JPDF')
     plt.legend(loc="upper left", prop={'size': 12})
     plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
     plt.margins(x=0)
@@ -105,11 +105,11 @@ def plot_ext_strain_tensor_jpdf(lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf,
                  vmin=0.075e-6, levels=10)
 
     plt.plot(bin_disp_speed, lambda3_cond_mean[:], color='r',
-             label=r'Mean Extensive Strain Tensor $\rm\alpha$')
+             label=r'Mean Extensive Strain Tensor')
 
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.ylabel(r'Extensive Strain Tensor, $\rm\alpha$')
-    plt.colorbar(label='Joint Probability Density Function')
+    plt.colorbar(label='Joint Probability Density Function, JPDF')
     plt.legend(loc="lower left", prop={'size': 12})
     plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
     plt.margins(x=0)
