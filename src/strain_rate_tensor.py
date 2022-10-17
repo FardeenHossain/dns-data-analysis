@@ -53,7 +53,7 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
         print("\nCalculated and saved lambda!\n")
 
     elif if_save == 0:
-        f1 = h5py.File('data_disp_speed.hdf5', 'r+')
+        f1 = h5py.File('data_disp_speed.hdf5', 'r')
 
         lambda1 = np.array(f1['lambda1'])
         lambda2 = np.array(f1['lambda2'])
@@ -98,8 +98,11 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
     lambda3_jpdf_bin = 0.5 * (lambda3_bin_edges[:-1] + lambda3_bin_edges[1:])
     disp3_jpdf_bin = 0.5 * (disp_bin_edges[:-1] + disp_bin_edges[1:])
 
-    dset = f1.create_dataset("dataset_disp_sp_PROG", (nx_c, ny_c, nz_c), dtype='i',
-                             data=disp_speed)
+    if if_save == 0:
+        f1 = h5py.File("data_disp_speed.hdf5", "w")
+
+    f1.create_dataset("dataset_disp_sp_PROG", (nx_c, ny_c, nz_c), dtype='i',
+                      data=disp_speed)
 
     bin_edges_pdf = np.linspace(-1e2, 1e2, 60)
     bin_c_cond = np.linspace(0.725, 0.735, 1)
