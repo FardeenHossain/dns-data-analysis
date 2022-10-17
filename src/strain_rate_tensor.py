@@ -50,8 +50,6 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
         f1.create_dataset("rr2", (nx_c, ny_c, nz_c, 3), data=rr2)
         f1.create_dataset("rr3", (nx_c, ny_c, nz_c, 3), data=rr3)
 
-        f1.close()
-
         print("\nCalculated and saved lambda!\n")
 
     elif if_save == 0:
@@ -60,8 +58,6 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
         lambda1 = np.array(f1['lambda1'])
         lambda2 = np.array(f1['lambda2'])
         lambda3 = np.array(f1['lambda3'])
-
-        f1.close()
 
         print("\nImported lambda!\n")
 
@@ -103,9 +99,9 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
     disp3_jpdf_bin = 0.5 * (disp_bin_edges[:-1] + disp_bin_edges[1:])
 
     # Save displacement speed
-    f1 = h5py.File("data_disp_speed.hdf5", "w")
-    f1.create_dataset("dataset_disp_sp_PROG", (nx_c, ny_c, nz_c), dtype='i',
-                      data=disp_speed)
+    if if_save == 1:
+        f1.create_dataset("dataset_disp_sp_PROG", (nx_c, ny_c, nz_c),
+                          dtype='i', data=disp_speed)
 
     bin_edges_pdf = np.linspace(-1e2, 1e2, 60)
     bin_c_cond = np.linspace(0.725, 0.735, 1)
