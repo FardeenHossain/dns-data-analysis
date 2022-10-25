@@ -105,8 +105,8 @@ def calc_strain_rate_tensor_eig(if_save, u_half, v_half, w_half, c_half,
 
     bin_edges_pdf = np.linspace(-1e2, 1e2, 60)
     bin_c_cond = np.linspace(0.725, 0.735, 1)
-
     d_bin_c_cond = 0.01
+
     [pdf_disp_speed_cond, bin_pdf_disp_speed_cond] = mystat.cond_pdf(
         disp_speed[:, :, :],
         c_half[:, :, :], bin_edges_pdf, bin_c_cond, d_bin_c_cond)
