@@ -58,13 +58,3 @@ def write_disp_speed(prog_var, disp_speed, data_file, flame):
     f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=disp_speed)
 
     print("\nSaved progress variable and displacement speed!\n")
-
-
-# Driver function
-data_files = list_data_files(flames[0])
-data_files1 = data_files[0]
-data_files2 = data_files[1]
-
-# Print files
-print(data_files1)
-print(data_files2)
