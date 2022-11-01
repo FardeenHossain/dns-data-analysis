@@ -43,10 +43,10 @@ for i in range(0, len(data_files1)):
                              input.ix_end, input.iy_end, input.iz_end)
 
     # Calculate progress variable
-    prog_var = prog_var.calc_prog_var(data_file1, data_file2,
-                                      input.ix_start, input.iy_start,
-                                      input.iz_start, input.ix_end,
-                                      input.iy_end, input.iz_end)
+    c = prog_var.calc_prog_var(data_file1, data_file2,
+                               input.ix_start, input.iy_start,
+                               input.iz_start, input.ix_end,
+                               input.iy_end, input.iz_end)
 
     c_half = prog_var[0]
     dc = prog_var[1]
