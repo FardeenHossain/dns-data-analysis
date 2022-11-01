@@ -37,7 +37,7 @@ def list_data_files(flame):
 
 
 # Driver function
-data_files = list_data_files(flames[3])
+data_files = list_data_files(flames[0])
 
 # Print files
 print(data_files[0])

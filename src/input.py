@@ -2,7 +2,7 @@ import os
 
 # File path
 in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/R3K1/'
-if_save = 0
+if_save = 1
 
 # Data size
 nx = 2880
