@@ -29,7 +29,7 @@ def list_data_files(flame):
     for data_file in dir_list:
         if data_file.startswith("data2"):
             # Data file name
-            data_file1 = data_file.replace("data2", "data1")
+            data_file1 = data_file.replace("data2", "data")
             data_file2 = data_file
 
             # Add to list
@@ -39,17 +39,16 @@ def list_data_files(flame):
     return [data_file1_list, data_file2_list]
 
 
-def write_disp_speed(prog_var, disp_speed, data_file1, flame):
+def write_disp_speed(prog_var, disp_speed, data_file, flame):
     """
     Write progress variable and displacement speed into reduced data files.
     """
 
     # Reformat data file name
-    data_file1 = data_file1.replace("data1_", "")
-    data_file1 = data_file1.replace(".h5", "")
+    data_file = data_file.replace(".h5", "")
 
     # Set file path
-    file_path = ".data/%s/%s_disp_speed.hdf5" % (flame, data_file1)
+    file_path = "./data/%s/%s_disp_speed.hdf5" % (flame, data_file)
 
     # Open file
     f1 = h5py.File(file_path, "w")
