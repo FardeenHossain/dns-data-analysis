@@ -48,8 +48,8 @@ for i in range(0, len(data_files1)):
                                input.iz_start, input.ix_end,
                                input.iy_end, input.iz_end)
 
-    c_half = prog_var[0]
-    dc = prog_var[1]
+    c_half = c[0]
+    dc = c[1]
 
     # Calculate displacement speed
     disp_speed = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
