@@ -24,7 +24,7 @@ for i in range(0, len(data_files1)):
 
     # Print current data file
     data_file = data_files1[i]
-    print("Writing: " + data_file)
+    print("Calculating: %s\n " % data_file)
 
     # Set data file path
     data_file1 = os.path.join(in_path, data_files1[i])
