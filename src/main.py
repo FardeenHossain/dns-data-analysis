@@ -3,6 +3,7 @@ import plot
 import prog_var
 import disp_speed
 import strain_rate_tensor
+import files
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')
@@ -68,6 +69,9 @@ plot.plot_int_strain_tensor_jpdf(lambda_eig[7], lambda_eig[8],
 plot.plot_ext_strain_tensor_jpdf(lambda_eig[11], lambda_eig[12],
                                  lambda_eig[13], lambda_eig[14],
                                  lambda_eig[2])
+
+# Write displacement speed and progress variable
+files.write_disp_speed(c_half, disp_speed, "data_1.300E-03.h5", "R3K1")
 
 # Print finish
 print("\nFinished!\n")
