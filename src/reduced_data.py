@@ -52,10 +52,10 @@ for i in range(0, len(data_files1)):
     dc = c[1]
 
     # Calculate displacement speed
-    disp_speed = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
+    s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
 
     # Write displacement speed and progress variable
-    files.write_disp_speed(c_half, disp_speed, data_file, flame)
+    files.write_disp_speed(c_half, s_d, data_file, flame)
 
 # Print finish
 print("\nFinished!\n")
