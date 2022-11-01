@@ -22,8 +22,11 @@ for i in range(0, len(data_files1)):
     # Set path
     in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/%s/' % flame
 
-    # Set data file path
+    # Print current data file
     data_file = data_files1[i]
+    print("Writing: " + data_file)
+
+    # Set data file path
     data_file1 = os.path.join(in_path, data_files1[i])
     data_file2 = os.path.join(in_path, data_files2[i])
 
