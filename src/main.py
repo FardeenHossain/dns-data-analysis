@@ -70,9 +70,6 @@ plot.plot_ext_strain_tensor_jpdf(lambda_eig[11], lambda_eig[12],
                                  lambda_eig[13], lambda_eig[14],
                                  lambda_eig[2])
 
-# Write displacement speed and progress variable
-files.write_disp_speed(c_half, disp_speed, "data_1.300E-03.h5", "R3K1")
-
 # Print finish
 print("\nFinished!\n")
 print("\r----\n")
