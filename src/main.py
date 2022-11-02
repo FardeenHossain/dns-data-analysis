@@ -3,7 +3,6 @@ import plot
 import prog_var
 import disp_speed
 import strain_rate_tensor
-import files
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')

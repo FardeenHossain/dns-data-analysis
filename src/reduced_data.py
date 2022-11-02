@@ -9,26 +9,20 @@ import files
 print('\nDirect Numerical Simulation (DNS) Premixed - Reduced Data')
 print('\r----\n')
 
-# Flame
-flame = "R3K1"
-
 # List of data files
-data_files = files.list_data_files(flame)
+data_files = files.list_data_files(input.flame)
 data_files1 = data_files[0]
 data_files2 = data_files[1]
 
 # Begin loop
 for i in range(0, len(data_files1)):
-    # Set path
-    in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/%s/' % flame
-
     # Print current data file
     data_file = data_files1[i]
     print("Calculating: %s\n " % data_file)
 
     # Set data file path
-    data_file1 = os.path.join(in_path, data_files1[i])
-    data_file2 = os.path.join(in_path, data_files2[i])
+    data_file1 = os.path.join(input.in_path, data_files1[i])
+    data_file2 = os.path.join(input.in_path, data_files2[i])
 
     # Calculate U
     u_half = prog_var.calc_u(data_file1, data_file2,
@@ -58,7 +52,7 @@ for i in range(0, len(data_files1)):
     s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
 
     # Write displacement speed and progress variable
-    files.write_disp_speed(c_half, s_d, data_file, flame)
+    files.write_disp_speed(c_half, s_d, data_file, input.flame)
 
 # Print finish
 print("\nFinished!\n")

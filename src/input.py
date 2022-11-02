@@ -1,13 +1,26 @@
 import os
 
+i = 3   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
+
+# Flames list
+flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
+
+# Flame
+flame = flames[i]
+
 # File path
-in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/R3K1/'
+in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/%s/' % flame
 if_save = 0
 
+# Data size list
+nx_list = [720, 1440, 4320, 2880, 5760]
+ny_list = [480, 960, 2160, 1922, 3844]
+nz_list = [256, 256, 512, 512, 1024]
+
 # Data size
-nx = 2880
-ny = 1922
-nz = 512
+nx = nx_list[i]
+ny = ny_list[i]
+nz = nz_list[i]
 
 # Chunk size
 nx_c = 100
