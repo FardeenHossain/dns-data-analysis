@@ -1,25 +1,13 @@
 import h5py
 import os
-from input import nx_c, ny_c, nz_c
-
-# File path
-path = '/hpcwork/itv/Antonio/premixed_jet_flames'
-
-# Flames
-flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
-
-# Data size
-nx = [720, 1440, 4320, 2880, 5760]
-ny = [480, 960, 2160, 1922, 3844]
-nz = [256, 256, 512, 512, 1024]
+from input import nx_c, ny_c, nz_c, in_path
 
 
-def list_data_files(flame):
+def list_data_files():
     """Return lists of data files."""
 
     # List of files in directory
-    file_path = "%s/%s/" % (path, flame)
-    dir_list = os.listdir(file_path)
+    dir_list = os.listdir(in_path)
 
     # Initialise empty arrays
     data_file1_list = []
