@@ -39,7 +39,7 @@ def list_data_files(flame):
     return [data_file1_list, data_file2_list]
 
 
-def write_disp_speed(prog_var, disp_speed, data_file, flame):
+def write_disp_speed(data_file, flame, prog_var, disp_speed):
     """
     Write progress variable and displacement speed into reduced data files.
     """
@@ -58,3 +58,27 @@ def write_disp_speed(prog_var, disp_speed, data_file, flame):
     f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=disp_speed)
 
     print("Saved progress variable and displacement speed!\n")
+
+
+def write_lambda(data_file, flame, lambda1, lambda2, lambda3, rr1, rr2, rr3):
+    """
+    Write strain rate tensor eigenvalues into reduced data files.
+    """
+
+    # Reformat data file name
+    data_file = data_file.replace(".h5", "")
+
+    # Set file path
+    file_path = "./data/%s/%s_lambda.hdf5" % (flame, data_file)
+
+    # Open file
+    f1 = h5py.File(file_path, "w")
+
+    f1.create_dataset("lambda1", (nx_c, ny_c, nz_c), data=lambda1)
+    f1.create_dataset("lambda2", (nx_c, ny_c, nz_c), data=lambda2)
+    f1.create_dataset("lambda3", (nx_c, ny_c, nz_c), data=lambda3)
+    f1.create_dataset("rr1", (nx_c, ny_c, nz_c, 3), data=rr1)
+    f1.create_dataset("rr2", (nx_c, ny_c, nz_c, 3), data=rr2)
+    f1.create_dataset("rr3", (nx_c, ny_c, nz_c, 3), data=rr3)
+
+    print("Saved strain rate tensor eigenvalues!\n")
