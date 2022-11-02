@@ -50,7 +50,7 @@ lambda_eig = strain_rate_tensor.calc_strain_rate_tensor_eig(input.if_save,
 plot.plot_prog_var(c_half)
 
 # Plot displacement speed
-plot.plot_disp_speed(disp_speed)
+plot.plot_disp_speed(s_d)
 
 # Plot displacement speed probability density function
 plot.plot_disp_speed_pdf(lambda_eig[0], lambda_eig[1])
