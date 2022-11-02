@@ -1,6 +1,6 @@
 import h5py
 import os
-from input import nx_c, ny_c, nz_c, in_path
+from input import nx_c, ny_c, nz_c, in_path, flame
 
 
 def list_data_files():
@@ -27,7 +27,7 @@ def list_data_files():
     return [data_file1_list, data_file2_list]
 
 
-def write_disp_speed(data_file, flame, prog_var, disp_speed):
+def write_disp_speed(data_file, prog_var, disp_speed):
     """
     Write progress variable and displacement speed into reduced data files.
     """
@@ -48,7 +48,7 @@ def write_disp_speed(data_file, flame, prog_var, disp_speed):
     print("Saved progress variable and displacement speed!\n")
 
 
-def write_lambda(data_file, flame, lambda1, lambda2, lambda3, rr1, rr2, rr3):
+def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     """
     Write strain rate tensor eigenvalues into reduced data files.
     """
