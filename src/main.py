@@ -79,5 +79,5 @@ plot.plot_ext_strain_tensor_jpdf(lambda_jpdf[11], lambda_jpdf[12],
                                  lambda_jpdf[2])
 
 # Print finish
-print("\nFinished!\n")
+print("\nFinished!")
 print("\r----\n")

@@ -74,7 +74,7 @@ def write_reduced_data_files():
         files.write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
         # Print finish
-        print("\nFinished!\n")
+        print("\nFinished!")
         print("\r----\n")
 
 

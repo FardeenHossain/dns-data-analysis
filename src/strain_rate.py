@@ -40,6 +40,8 @@ def calc_strain_rate_eig(if_save, u_half, v_half, w_half):
     rr2 = lambda_eig[4]
     rr3 = lambda_eig[5]
 
+    print('Finished strain rate tensor eigenvalues!\n')
+
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
@@ -125,6 +127,8 @@ def calc_strain_rate_jpdf(lambda1, lambda2, lambda3, c_half, disp_speed):
         ext = np.extract(cond, lambda3_cond_flat)
         mean = np.mean(ext)
         lambda3_cond_mean[i] = mean
+
+    print('Finished strain rate tensor JPDF!\n')
 
     return [pdf_disp_speed_cond,
             bin_pdf_disp_speed_cond,
