@@ -3,6 +3,7 @@ import h5py
 
 from input import nx_c, ny_c, nz_c, dx
 
+import files
 import mystat
 import myeig
 

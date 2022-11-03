@@ -1,5 +1,7 @@
+import numpy as np
 import h5py
 import os
+
 from input import nx_c, ny_c, nz_c, in_path, flame
 
 
@@ -70,3 +72,30 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     f1.create_dataset("rr3", (nx_c, ny_c, nz_c, 3), data=rr3)
 
     print("Saved strain rate tensor eigenvalues!\n")
+
+
+def read_lambda(data_file):
+    """
+    Read strain rate tensor eigenvalues from reduced data files.
+    """
+
+    # Reformat data file name
+    data_file = data_file.replace(".h5", "")
+
+    # Set file path
+    file_path = "./data/%s/%s_lambda.hdf5" % (flame, data_file)
+
+    # Open file
+    f1 = h5py.File(file_path, "r")
+
+    # Import variables
+    lambda1 = np.array(f1['lambda1'])
+    lambda2 = np.array(f1['lambda2'])
+    lambda3 = np.array(f1['lambda3'])
+    rr1 = np.array(f1['rr1'])
+    rr2 = np.array(f1['rr2'])
+    rr3 = np.array(f1['rr3'])
+
+    print("\nImported lambda!\n")
+
+    return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
