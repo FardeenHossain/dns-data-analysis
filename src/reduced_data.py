@@ -9,7 +9,7 @@ print('\nDirect Numerical Simulation (DNS) Premixed - Reduced Data')
 print('\r----\n')
 
 # List of data files
-data_files = files.list_data_files(input.flame)
+data_files = files.list_data_files()
 data_files1 = data_files[0]
 data_files2 = data_files[1]
 
@@ -51,7 +51,7 @@ for i in range(0, len(data_files1)):
     s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
 
     # Write displacement speed and progress variable
-    files.write_disp_speed(data_file, input.flame, c_half, s_d)
+    files.write_disp_speed(data_file, c_half, s_d)
 
 # Print finish
 print("\nFinished!\n")

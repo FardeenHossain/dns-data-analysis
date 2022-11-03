@@ -1,18 +1,17 @@
 import os
 
-i = 3   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
-
-# Flames list
+# Flames array
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
 
 # Flame
-flame = flames[i]
+i = 3               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
+flame = flames[i]   # Select flame from array
 
 # File path
 in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/%s/' % flame
 if_save = 0
 
-# Data size list
+# Data size array
 nx_list = [720, 1440, 4320, 2880, 5760]
 ny_list = [480, 960, 2160, 1922, 3844]
 nz_list = [256, 256, 512, 512, 1024]
