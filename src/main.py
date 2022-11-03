@@ -9,22 +9,22 @@ print('\nDirect Numerical Simulation (DNS) Premixed')
 print('\r----\n')
 
 # Calculate U
-u_half = prog_var.calc_u(input.data_file1, input.data_file2,
+u_half = prog_var.calc_u(input.data_file1_path, input.data_file2_path,
                          input.ix_start, input.iy_start, input.iz_start,
                          input.ix_end, input.iy_end, input.iz_end)
 
 # Calculate V
-v_half = prog_var.calc_v(input.data_file1, input.data_file2,
+v_half = prog_var.calc_v(input.data_file1_path, input.data_file2_path,
                          input.ix_start, input.iy_start, input.iz_start,
                          input.ix_end, input.iy_end, input.iz_end)
 
 # Calculate W
-w_half = prog_var.calc_w(input.data_file1, input.data_file2,
+w_half = prog_var.calc_w(input.data_file1_path, input.data_file2_path,
                          input.ix_start, input.iy_start, input.iz_start,
                          input.ix_end, input.iy_end, input.iz_end)
 
 # Calculate progress variable
-c = prog_var.calc_prog_var(input.data_file1, input.data_file2,
+c = prog_var.calc_prog_var(input.data_file1_path, input.data_file2_path,
                            input.ix_start, input.iy_start,
                            input.iz_start, input.ix_end,
                            input.iy_end, input.iz_end)

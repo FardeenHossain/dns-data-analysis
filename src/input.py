@@ -40,9 +40,13 @@ iz_end = iz_start + nz_c
 o2_u = 2.237710e-01  # Unburned
 o2_b = 6.677090e-02  # Burned
 
-# Data files
-data_file1 = os.path.join(in_path, 'data_1.300E-03.h5')
-data_file2 = os.path.join(in_path, 'data2_1.300E-03.h5')
+# Data file
+data_file1 = 'data_1.300E-03.h5'
+data_file2 = 'data2_1.300E-03.h5'
+
+# Data files path
+data_file1_path = os.path.join(in_path, data_file1)
+data_file2_path = os.path.join(in_path, data_file2)
 
 # info = hdf5read(['../data_', listfile{i}], 'data', 'time_variables')
 # dt = info(1)
