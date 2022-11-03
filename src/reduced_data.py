@@ -76,3 +76,6 @@ def write_reduced_data_files():
         # Print finish
         print("\nFinished!\n")
         print("\r----\n")
+
+
+write_reduced_data_files()
