@@ -47,7 +47,7 @@ def write_disp_speed(data_file, prog_var, disp_speed):
     f1.create_dataset("c_half", (nx_c, ny_c, nz_c), data=prog_var)
     f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=disp_speed)
 
-    print("Saved progress variable and displacement speed!\n")
+    print("Saved progress variable and displacement speed!")
 
 
 def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
@@ -71,7 +71,7 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     f1.create_dataset("rr2", (nx_c, ny_c, nz_c, 3), data=rr2)
     f1.create_dataset("rr3", (nx_c, ny_c, nz_c, 3), data=rr3)
 
-    print("Saved strain rate tensor eigenvalues!\n")
+    print("Saved strain rate tensor eigenvalues!")
 
 
 def read_lambda(data_file):
