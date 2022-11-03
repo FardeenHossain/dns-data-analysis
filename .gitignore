@@ -160,7 +160,5 @@ cython_debug/
 .idea/
 
 # Hierarchical data format files
-.h5
-.hdf5
-
-
+*.h5
+*.hdf5
