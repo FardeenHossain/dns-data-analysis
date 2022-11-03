@@ -4,12 +4,12 @@ import os
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
 
 # Flame
-i = 3               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
+i = 2               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
 flame = flames[i]   # Select flame from array
 
 # File path
 in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/%s/' % flame
-if_save = 0
+if_save = 1
 
 # Data size array
 nx_list = [720, 1440, 4320, 2880, 5760]
