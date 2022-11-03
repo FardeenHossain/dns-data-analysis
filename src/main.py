@@ -2,7 +2,7 @@ import input
 import plot
 import prog_var
 import disp_speed
-import strain_rate_tensor
+import strain_rate
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')
@@ -38,8 +38,8 @@ s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
 
 # Calculate strain rate tensor eigenvalues
 print('Calculating strain rate tensor eigenvalues...')
-lambda_eig = strain_rate_tensor.calc_strain_rate_eig(input.if_save, u_half,
-                                                     v_half, w_half)
+lambda_eig = strain_rate.calc_strain_rate_eig(input.if_save, u_half,
+                                              v_half, w_half)
 
 lambda1 = lambda_eig[0]
 lambda2 = lambda_eig[1]
@@ -50,9 +50,9 @@ rr2 = lambda_eig[4]
 rr3 = lambda_eig[5]
 
 # Calculate strain rate tensor joint probability density function
-lambda_jpdf = strain_rate_tensor.calc_strain_rate_jpdf(lambda1, lambda2,
-                                                       lambda3, c_half,
-                                                       disp_speed)
+lambda_jpdf = strain_rate.calc_strain_rate_jpdf(lambda1, lambda2,
+                                                lambda3, c_half,
+                                                disp_speed)
 
 # Plot progress variable
 plot.plot_prog_var(c_half)
