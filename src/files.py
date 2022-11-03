@@ -74,6 +74,27 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     print("Saved strain rate tensor eigenvalues!")
 
 
+def disp_speed(data_file):
+    """Read displacement speed from reduced data files."""
+
+    # Reformat data file name
+    data_file = data_file.replace(".h5", "")
+
+    # Set file path
+    file_path = "./data/%s/%s_disp_speed.hdf5" % (flame, data_file)
+
+    # Open file
+    f1 = h5py.File(file_path, "r")
+
+    # Import variables
+    c_half = np.array(f1['c_half'])
+    s_d = np.array(f1['s_d'])
+
+    print("Imported progress variable and displacement speed!")
+
+    return [c_half, s_d]
+
+
 def read_lambda(data_file):
     """
     Read strain rate tensor eigenvalues from reduced data files.
@@ -96,6 +117,6 @@ def read_lambda(data_file):
     rr2 = np.array(f1['rr2'])
     rr3 = np.array(f1['rr3'])
 
-    print("\nImported lambda!\n")
+    print("Imported lambda!")
 
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
