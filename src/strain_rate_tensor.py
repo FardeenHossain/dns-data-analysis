@@ -7,7 +7,7 @@ import mystat
 import myeig
 
 
-def calc_strain_rate_eig(if_save, u_half, v_half, w_half, c_half, disp_speed):
+def calc_strain_rate_eig(if_save, u_half, v_half, w_half):
     """Calculate strain rate tensor eigenvalues."""
 
     # Prefill arrays with zeroes
