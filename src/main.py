@@ -15,13 +15,27 @@ if input.write_data == 1:
 
 if input.import_data == 1:
     # Read reduced data files
-    c_half, s_d = files.read_disp_speed(input.data_file1)
-    lambda1, lambda2, lambda3 = files.read_lambda(input.data_file1)
+    reduced_data1 = files.read_disp_speed(input.data_file1)
+    reduced_data2 = files.read_lambda(input.data_file1)
+
+    c_half = reduced_data1[0]
+    s_d = reduced_data1[1]
+
+    lambda1 = reduced_data2[0]
+    lambda2 = reduced_data2[1]
+    lambda3 = reduced_data2[2]
 
 else:
     # Calculate data
-    c_half, s_d, lambda1, lambda2, lambda3 = calc_var.calculate_variables(
-        input.data_file1_path, input.data_file2_path)
+    data = calc_var.calculate_variables(input.data_file1_path,
+                                        input.data_file2_path)
+
+    c_half = data[0]
+    s_d = data[1]
+
+    lambda1 = data[2]
+    lambda2 = data[3]
+    lambda3 = data[4]
 
 # Calculate strain rate tensor joint probability density function
 lambda_jpdf = strain_rate.calc_strain_rate_jpdf(lambda1, lambda2, lambda3,
