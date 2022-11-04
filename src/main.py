@@ -1,10 +1,10 @@
 import input
 import plot
-import prog_var
-import disp_speed
-import strain_rate
 import files
 import reduced_data
+import calc_var
+
+import strain_rate
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')
@@ -16,58 +16,18 @@ if input.write_data == 1:
 
 if input.import_data == 1:
     # Read reduced data files
-    reduced_data1 = files.read_disp_speed(input.data_file1)
-    reduced_data2 = files.read_lambda(input.data_file1)
-
-    c_half = reduced_data1[0]
-    s_d = reduced_data1[1]
-
-    lambda1 = reduced_data2[0]
-    lambda2 = reduced_data2[1]
-    lambda3 = reduced_data2[2]
+    c_half, s_d = files.read_disp_speed(input.data_file1)
+    lambda1, lambda2, lambda3 = files.read_lambda(input.data_file1)
 
 else:
-    # Calculate U
-    u_half = prog_var.calc_u(input.data_file1_path, input.data_file2_path,
-                             input.ix_start, input.iy_start, input.iz_start,
-                             input.ix_end, input.iy_end, input.iz_end)
-
-    # Calculate V
-    v_half = prog_var.calc_v(input.data_file1_path, input.data_file2_path,
-                             input.ix_start, input.iy_start, input.iz_start,
-                             input.ix_end, input.iy_end, input.iz_end)
-
-    # Calculate W
-    w_half = prog_var.calc_w(input.data_file1_path, input.data_file2_path,
-                             input.ix_start, input.iy_start, input.iz_start,
-                             input.ix_end, input.iy_end, input.iz_end)
-
-    # Calculate progress variable
-    c = prog_var.calc_prog_var(input.data_file1_path, input.data_file2_path,
-                               input.ix_start, input.iy_start,
-                               input.iz_start, input.ix_end,
-                               input.iy_end, input.iz_end)
-
-    c_half = c[0]
-    dc = c[1]
-
-    # Calculate displacement speed
-    print('Calculating displacement speed...')
-    s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
-
-    # Calculate strain rate tensor eigenvalues
-    print('Calculating strain rate tensor eigenvalues...')
-    lambda_eig = strain_rate.calc_strain_rate_eig(input.if_save, u_half,
-                                                  v_half, w_half)
-
-    lambda1 = lambda_eig[0]
-    lambda2 = lambda_eig[1]
-    lambda3 = lambda_eig[2]
+    # Calculate data
+    c_half, s_d, lambda1, lambda2, lambda3 = calc_var.calculate_variables(
+        input.data_file1_path, input.data_file2_path)
 
 # Calculate strain rate tensor joint probability density function
 lambda_jpdf = strain_rate.calc_strain_rate_jpdf(lambda1, lambda2,
                                                 lambda3, c_half,
-                                                disp_speed)
+                                                s_d)
 
 # Plot progress variable
 plot.plot_prog_var(c_half)

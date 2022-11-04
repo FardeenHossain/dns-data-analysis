@@ -1,13 +1,12 @@
 import numpy as np
 
-from input import nx_c, ny_c, nz_c, dx, data_file1
-
-import files
 import mystat
 import myeig
 
+from input import nx_c, ny_c, nz_c, dx
 
-def calc_strain_rate_eig(if_save, u_half, v_half, w_half):
+
+def calc_strain_rate_eig(u_half, v_half, w_half):
     """Calculate strain rate tensor eigenvalues."""
 
     # Prefill arrays with zeroes
@@ -23,14 +22,8 @@ def calc_strain_rate_eig(if_save, u_half, v_half, w_half):
                 center_v[i, j, k] = (v_half[i, j + 1, k] + v_half[i, j, k]) / 2
                 center_w[i, j, k] = (w_half[i, j, k + 1] + w_half[i, j, k]) / 2
 
-    if if_save == 1:
-        # Calculate eigenvalues
-        lambda_eig = myeig.vec_val(center_u[:, :, :], center_v[:, :, :],
-                                   center_w[:, :, :], dx)
-
-    else:
-        # Import eigenvalues
-        lambda_eig = files.read_lambda(data_file1)
+    lambda_eig = myeig.vec_val(center_u[:, :, :], center_v[:, :, :],
+                               center_w[:, :, :], dx)
 
     lambda1 = lambda_eig[0]
     lambda2 = lambda_eig[1]

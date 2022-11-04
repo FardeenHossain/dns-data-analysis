@@ -58,8 +58,7 @@ def write_reduced_data_files():
         s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
 
         # Calculate strain rate tensor eigenvalues
-        lambda_eig = strain_rate.calc_strain_rate_eig(input.if_save, u_half,
-                                                      v_half, w_half)
+        lambda_eig = strain_rate.calc_strain_rate_eig(u_half, v_half, w_half)
 
         lambda1 = lambda_eig[0]
         lambda2 = lambda_eig[1]
