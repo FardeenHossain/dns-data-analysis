@@ -1,8 +1,5 @@
 import numpy as np
-
-import mystat
-import myeig
-
+import utils
 from input import nx_c, ny_c, nz_c, dx
 
 
@@ -22,7 +19,7 @@ def calc_strain_rate_eig(u_half, v_half, w_half):
                 center_v[i, j, k] = (v_half[i, j + 1, k] + v_half[i, j, k]) / 2
                 center_w[i, j, k] = (w_half[i, j, k + 1] + w_half[i, j, k]) / 2
 
-    lambda_eig = myeig.vec_val(center_u[:, :, :], center_v[:, :, :],
+    lambda_eig = utils.vec_val(center_u[:, :, :], center_v[:, :, :],
                                center_w[:, :, :], dx)
 
     lambda1 = lambda_eig[0]
@@ -87,12 +84,12 @@ def calc_strain_rate_jpdf(lambda1, lambda2, lambda3, c_half, disp_speed):
     bin_c_cond = np.linspace(0.725, 0.735, 1)
     d_bin_c_cond = 0.01
 
-    [pdf_disp_speed_cond, bin_pdf_disp_speed_cond] = mystat.cond_pdf(
+    [pdf_disp_speed_cond, bin_pdf_disp_speed_cond] = utils.cond_pdf(
         disp_speed[:, :, :],
         c_half[:, :, :], bin_edges_pdf, bin_c_cond, d_bin_c_cond)
 
     bin_edges_pdf_lambda = np.linspace(-1e6, 1e6, 400)
-    [pdf_lambda1_cond, bin_pdf_lambda1_cond] = mystat.cond_pdf(
+    [pdf_lambda1_cond, bin_pdf_lambda1_cond] = utils.cond_pdf(
         lambda1[:, :, :], c_half[:, :, :], bin_edges_pdf_lambda, bin_c_cond,
         d_bin_c_cond)
 

@@ -1,5 +1,5 @@
-import h5py
 import numpy as np
+import h5py
 
 
 def read_var(filename, group_name, var, ijk, nx, ny, nz):
