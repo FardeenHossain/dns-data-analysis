@@ -25,7 +25,7 @@ def write_disp_speed(data_file, prog_var, disp_speed):
     f1.create_dataset("c_half", (nx_c, ny_c, nz_c), data=prog_var)
     f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=disp_speed)
 
-    print("Saved progress variable and displacement speed!")
+    print("Saved displacement speed!")
 
 
 def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
@@ -150,6 +150,5 @@ def write_reduced_data_files():
             = calc_var.calculate_variables(data_file1_path, data_file2_path)
 
         # Write reduced data file
-        print('\nWriting file...')
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
