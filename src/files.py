@@ -2,31 +2,9 @@ import numpy as np
 import h5py
 import os
 
+import calc_var
+
 from input import nx_c, ny_c, nz_c, in_path, flame
-
-
-def list_data_files():
-    """Return lists of data files."""
-
-    # List of files in directory
-    dir_list = os.listdir(in_path)
-
-    # Initialise empty arrays
-    data_file1_list = []
-    data_file2_list = []
-
-    # Data files
-    for data_file in dir_list:
-        if data_file.startswith("data2"):
-            # Data file name
-            data_file1 = data_file.replace("data2", "data")
-            data_file2 = data_file
-
-            # Add to list
-            data_file1_list.append(data_file1)
-            data_file2_list.append(data_file2)
-
-    return [data_file1_list, data_file2_list]
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
@@ -120,3 +98,58 @@ def read_lambda(data_file):
     print("Imported strain rate tensor eigenvalues!")
 
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
+
+
+def list_data_files():
+    """Return lists of data files."""
+
+    # List of files in directory
+    dir_list = os.listdir(in_path)
+
+    # Initialise empty arrays
+    data_file1_list = []
+    data_file2_list = []
+
+    # Data files
+    for data_file in dir_list:
+        if data_file.startswith("data2"):
+            # Data file name
+            data_file1 = data_file.replace("data2", "data")
+            data_file2 = data_file
+
+            # Add to list
+            data_file1_list.append(data_file1)
+            data_file2_list.append(data_file2)
+
+    return [data_file1_list, data_file2_list]
+
+
+def write_reduced_data_files():
+    """
+    Writes reduced data files storing progress variable, displacement speed,
+    and strain rate tensor eigenvalues.
+    """
+
+    # List of data files
+    data_files = list_data_files()
+    data_files1 = data_files[0]
+    data_files2 = data_files[1]
+
+    for i in range(0, len(data_files1)):
+        # Print current data file
+        data_file = data_files1[i]
+        print('\nCalculating: %s ' % data_file)
+        print('\r----\n')
+
+        # Set data file path
+        data_file1_path = os.path.join(in_path, data_files1[i])
+        data_file2_path = os.path.join(in_path, data_files2[i])
+
+        # Calculate data
+        c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3 \
+            = calc_var.calculate_variables(data_file1_path, data_file2_path)
+
+        # Write reduced data file
+        print('\nWriting file...')
+        write_disp_speed(data_file, c_half, s_d)
+        write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)

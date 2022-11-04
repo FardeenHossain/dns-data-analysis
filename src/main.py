@@ -1,7 +1,6 @@
 import input
 import plot
 import files
-import reduced_data
 import calc_var
 
 import strain_rate
@@ -12,7 +11,7 @@ print('\r----\n')
 
 if input.write_data == 1:
     # Write reduced data files
-    reduced_data.write_reduced_data_files()
+    files.write_reduced_data_files()
 
 if input.import_data == 1:
     # Read reduced data files
