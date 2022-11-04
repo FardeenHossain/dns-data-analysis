@@ -70,12 +70,6 @@ def write_reduced_data_files():
         rr3 = lambda_eig[5]
 
         # Write reduced data file
+        print('\nWriting file...')
         files.write_disp_speed(data_file, c_half, s_d)
         files.write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
-
-        # Print finish
-        print("\nFinished!")
-        print("\r----\n")
-
-
-write_reduced_data_files()

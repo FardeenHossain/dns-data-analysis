@@ -74,7 +74,7 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     print("Saved strain rate tensor eigenvalues!")
 
 
-def disp_speed(data_file):
+def read_disp_speed(data_file):
     """Read displacement speed from reduced data files."""
 
     # Reformat data file name
@@ -117,6 +117,6 @@ def read_lambda(data_file):
     rr2 = np.array(f1['rr2'])
     rr3 = np.array(f1['rr3'])
 
-    print("Imported lambda!")
+    print("Imported strain rate tensor eigenvalues!")
 
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]

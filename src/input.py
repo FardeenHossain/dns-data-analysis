@@ -9,7 +9,10 @@ flame = flames[i]   # Select flame from array
 
 # File path
 in_path = '/hpcwork/itv/Antonio/premixed_jet_flames/%s/' % flame
-if_save = 1
+
+# Input arguments
+import_data = 1
+write_data = 0
 
 # Data size array
 nx_list = [720, 1440, 4320, 2880, 5760]
