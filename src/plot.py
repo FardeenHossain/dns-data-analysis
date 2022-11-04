@@ -95,3 +95,35 @@ def plot_ext_strain_tensor_jpdf(lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf,
     plt.xlim(-15, 15)
     plt.ylim(-1.5e5, 1.5e5)
     plt.show()
+
+
+def plot_all(prog_var, disp_speed, pdf_disp_speed_cond,
+             bin_pdf_disp_speed_cond, bin_disp_speed, lambda1_jpdf_bin,
+             lambda1_disp_speed_c_jpdf, lambda1_cond_mean, disp1_jpdf_bin,
+             lambda2_jpdf_bin, lambda2_disp_speed_c_jpdf, lambda2_cond_mean,
+             disp2_jpdf_bin, lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf,
+             lambda3_cond_mean, disp3_jpdf_bin):
+
+    # Plot progress variable
+    plot_prog_var(prog_var)
+
+    # Plot displacement speed
+    plot_disp_speed(disp_speed)
+
+    # Plot displacement speed probability density function
+    plot_disp_speed_pdf(pdf_disp_speed_cond, bin_pdf_disp_speed_cond)
+
+    # Plot compressive strain rate tensor joint probability density function
+    plot_comp_strain_tensor_jpdf(lambda1_jpdf_bin, lambda1_disp_speed_c_jpdf,
+                                 lambda1_cond_mean, disp1_jpdf_bin,
+                                 bin_disp_speed)
+
+    # Plot intermediate strain rate tensor joint probability density function
+    plot_int_strain_tensor_jpdf(lambda2_jpdf_bin, lambda2_disp_speed_c_jpdf,
+                                lambda2_cond_mean, disp2_jpdf_bin,
+                                bin_disp_speed)
+
+    # Plot extensive strain rate tensor joint probability density function
+    plot_ext_strain_tensor_jpdf(lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf,
+                                lambda3_cond_mean, disp3_jpdf_bin,
+                                bin_disp_speed)
