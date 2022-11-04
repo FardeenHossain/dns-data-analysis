@@ -1,4 +1,8 @@
-from scripts import input, files, calc_var, plot, strain_rate
+import input
+import files
+import calc_var
+import plot
+import strain_rate
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')
