@@ -149,9 +149,20 @@ def write_reduced_data_files():
         c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3 \
             = calc_var.calculate_variables(data_file1_path, data_file2_path)
 
-        # Write reduced data file
+        # Calculate plot data
+        plot_data = calc_var.calculate_plot_data(lambda1, lambda2, lambda3,
+                                                 c_half, s_d)
+
+        # Write reduced data files
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
+
+        # Write plot data to text file
+        write_plot_data(c_half, s_d, plot_data[0], plot_data[1], plot_data[2],
+                        plot_data[3], plot_data[4], plot_data[5], plot_data[6],
+                        plot_data[7], plot_data[8], plot_data[9],
+                        plot_data[10], plot_data[11], plot_data[12],
+                        plot_data[13], plot_data[14], data_file)
 
 
 def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,

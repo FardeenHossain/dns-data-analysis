@@ -53,5 +53,4 @@ def calculate_plot_data(lambda1, lambda2, lambda3, c_half, s_d):
     return (plot_data[0], plot_data[1], plot_data[2], plot_data[3],
             plot_data[4], plot_data[5], plot_data[6], plot_data[7],
             plot_data[8], plot_data[9], plot_data[10], plot_data[11],
-            plot_data[12], plot_data[13], plot_data[14], plot_data[15],
-            plot_data[16])
+            plot_data[12], plot_data[13], plot_data[14])
