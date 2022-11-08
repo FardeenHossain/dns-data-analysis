@@ -152,3 +152,28 @@ def write_reduced_data_files():
         # Write reduced data file
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
+
+
+def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
+                    bin_pdf_disp_speed_cond, bin_disp_speed, lambda1_jpdf_bin,
+                    lambda1_disp_speed_c_jpdf, lambda1_cond_mean,
+                    disp1_jpdf_bin, lambda2_jpdf_bin,
+                    lambda2_disp_speed_c_jpdf, lambda2_cond_mean,
+                    disp2_jpdf_bin, lambda3_jpdf_bin,
+                    lambda3_disp_speed_c_jpdf, lambda3_cond_mean,
+                    disp3_jpdf_bin, data_file):
+    return
+
+
+def write_to_text_file(file_name, array):
+    """Write array to text file."""
+
+    # Open file
+    file = open(file_name, "w+")
+
+    # Write to file
+    for line in array:
+        file.write(line)
+
+    # Close file
+    file.close()
