@@ -162,18 +162,31 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
                     disp2_jpdf_bin, lambda3_jpdf_bin,
                     lambda3_disp_speed_c_jpdf, lambda3_cond_mean,
                     disp3_jpdf_bin, data_file):
-    return
+    # Reformat data file name
+    data_file = data_file.replace(".h5", "")
 
+    # Set file path
+    file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
 
-def write_to_text_file(file_name, array):
-    """Write array to text file."""
+    file = open(file_path, "w+")
 
-    # Open file
-    file = open(file_name, "w+")
+    # Write data to file
+    for i in range(0, len(prog_var)):
+        file.write(prog_var[i] + " " +
+                   disp_speed[i] + " " +
+                   pdf_disp_speed_cond[i] + " " +
+                   bin_pdf_disp_speed_cond[i] + " " +
+                   bin_disp_speed[i] + " " +
+                   lambda1_jpdf_bin[i] + " " +
+                   lambda1_disp_speed_c_jpdf[i] + " " +
+                   lambda1_cond_mean[i] + " " +
+                   disp1_jpdf_bin[i] + " " +
+                   lambda2_jpdf_bin[i] + " " +
+                   lambda2_disp_speed_c_jpdf[i] + " " +
+                   lambda2_cond_mean[i] + " " +
+                   disp2_jpdf_bin[i] + " " +
+                   lambda3_jpdf_bin[i] + " " +
+                   lambda3_disp_speed_c_jpdf[i] + " " +
+                   lambda3_cond_mean[i] + " " +
+                   disp3_jpdf_bin[i])
 
-    # Write to file
-    for line in array:
-        file.write(line)
-
-    # Close file
-    file.close()
