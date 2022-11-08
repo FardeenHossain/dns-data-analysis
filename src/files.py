@@ -162,12 +162,15 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
                     disp2_jpdf_bin, lambda3_jpdf_bin,
                     lambda3_disp_speed_c_jpdf, lambda3_cond_mean,
                     disp3_jpdf_bin, data_file):
+    """Write plot data to text file."""
+
     # Reformat data file name
     data_file = data_file.replace(".h5", "")
 
     # Set file path
     file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
 
+    # Open file
     file = open(file_path, "w+")
 
     # Write data to file
@@ -190,3 +193,66 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
                    lambda3_cond_mean[i] + " " +
                    disp3_jpdf_bin[i])
 
+    # Close
+    file.close()
+
+
+def read_plot_data(data_file):
+    """Read plot data from text file."""
+
+    # Reformat data file name
+    data_file = data_file.replace(".h5", "")
+
+    # Set file path
+    file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
+
+    # Open file
+    file = open(file_path, "r")
+
+    # Initialise array
+    prog_var = []
+    disp_speed = []
+    pdf_disp_speed_cond = []
+    bin_pdf_disp_speed_cond = []
+    bin_disp_speed = []
+    lambda1_jpdf_bin = []
+    lambda1_disp_speed_c_jpdf = []
+    lambda1_cond_mean = []
+    disp1_jpdf_bin = []
+    lambda2_jpdf_bin = []
+    lambda2_disp_speed_c_jpdf = []
+    lambda2_cond_mean = []
+    disp2_jpdf_bin = []
+    lambda3_jpdf_bin = []
+    lambda3_disp_speed_c_jpdf = []
+    lambda3_cond_mean = []
+    disp3_jpdf_bin = []
+
+    # Read line
+    for line in file:
+        prog_var.append(line.split(" ")[0])
+        disp_speed.append(line.split(" ")[1])
+        pdf_disp_speed_cond.append(line.split(" ")[2])
+        bin_pdf_disp_speed_cond.append(line.split(" ")[3])
+        bin_disp_speed.append(line.split(" ")[4])
+        lambda1_jpdf_bin.append(line.split(" ")[5])
+        lambda1_disp_speed_c_jpdf.append(line.split(" ")[6])
+        lambda1_cond_mean.append(line.split(" ")[7])
+        disp1_jpdf_bin.append(line.split(" ")[8])
+        lambda2_jpdf_bin.append(line.split(" ")[9])
+        lambda2_disp_speed_c_jpdf.append(line.split(" ")[10])
+        lambda2_cond_mean.append(line.split(" ")[11])
+        disp2_jpdf_bin.append(line.split(" ")[12])
+        lambda3_jpdf_bin.append(line.split(" ")[13])
+        lambda3_disp_speed_c_jpdf.append(line.split(" ")[14])
+        lambda3_cond_mean.append(line.split(" ")[15])
+        disp3_jpdf_bin.append(line.split(" ")[16])
+
+    return (prog_var, disp_speed, pdf_disp_speed_cond,
+            bin_pdf_disp_speed_cond, bin_disp_speed, lambda1_jpdf_bin,
+            lambda1_disp_speed_c_jpdf, lambda1_cond_mean,
+            disp1_jpdf_bin, lambda2_jpdf_bin,
+            lambda2_disp_speed_c_jpdf, lambda2_cond_mean,
+            disp2_jpdf_bin, lambda3_jpdf_bin,
+            lambda3_disp_speed_c_jpdf, lambda3_cond_mean,
+            disp3_jpdf_bin)
