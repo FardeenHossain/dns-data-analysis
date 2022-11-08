@@ -36,7 +36,6 @@ def calculate_variables(data_file1_path, data_file2_path):
     lambda1 = lambda_eig[0]
     lambda2 = lambda_eig[1]
     lambda3 = lambda_eig[2]
-
     rr1 = lambda_eig[3]
     rr2 = lambda_eig[4]
     rr3 = lambda_eig[5]
