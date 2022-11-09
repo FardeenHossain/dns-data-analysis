@@ -1,7 +1,6 @@
 import numpy as np
 import h5py
 import os
-
 import calc_var
 
 from input import nx_c, ny_c, nz_c, in_path, flame
@@ -42,6 +41,7 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     # Open file
     f1 = h5py.File(file_path, "w")
 
+    # Save dataset
     f1.create_dataset("lambda1", (nx_c, ny_c, nz_c), data=lambda1)
     f1.create_dataset("lambda2", (nx_c, ny_c, nz_c), data=lambda2)
     f1.create_dataset("lambda3", (nx_c, ny_c, nz_c), data=lambda3)
@@ -110,7 +110,6 @@ def list_data_files():
     data_file1_list = []
     data_file2_list = []
 
-    # Data files
     for data_file in dir_list:
         if data_file.startswith("data2"):
             # Data file name
@@ -124,7 +123,7 @@ def list_data_files():
     return [data_file1_list, data_file2_list]
 
 
-def write_reduced_data_files():
+def write_data_files():
     """
     Writes reduced data files storing progress variable, displacement speed,
     and strain rate tensor eigenvalues.
@@ -204,6 +203,7 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
                    lambda3_cond_mean[i] + " " +
                    disp3_jpdf_bin[i])
 
+    # Close file
     file.close()
 
 
@@ -258,6 +258,7 @@ def read_plot_data(data_file):
         lambda3_cond_mean.append(line.split(" ")[15])
         disp3_jpdf_bin.append(line.split(" ")[16])
 
+    # Close file
     file.close()
 
     return (prog_var, disp_speed, pdf_disp_speed_cond, bin_pdf_disp_speed_cond,

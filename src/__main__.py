@@ -2,22 +2,22 @@ import input
 import files
 import calc_var
 import plot
-import strain_rate
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')
 print('\r----\n')
 
 if input.write_data == 1:
-    # Write reduced data files
+    # Write data files
     files.write_reduced_data_files()
 
 if input.import_data == 1:
-    # Read reduced data files
+    # Read data files
     reduced_data1 = files.read_disp_speed(input.data_file1)
     reduced_data2 = files.read_lambda(input.data_file1)
     plot_data = files.read_plot_data(input.data_file1)
 
+    # Assign variables
     c_half = reduced_data1[0]
     s_d = reduced_data1[1]
     lambda1 = reduced_data2[0]
@@ -29,12 +29,14 @@ else:
     data = calc_var.calculate_variables(input.data_file1_path,
                                         input.data_file2_path)
 
+    # Assign variables
     c_half = data[0]
     s_d = data[1]
     lambda1 = data[2]
     lambda2 = data[3]
     lambda3 = data[4]
 
+    # Calculate plot data
     plot_data = calc_var.calculate_plot_data(lambda1, lambda2, lambda3,
                                              c_half, s_d)
 

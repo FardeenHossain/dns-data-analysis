@@ -103,6 +103,7 @@ def plot_all(prog_var, disp_speed, pdf_disp_speed_cond,
              lambda2_jpdf_bin, lambda2_disp_speed_c_jpdf, lambda2_cond_mean,
              disp2_jpdf_bin, lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf,
              lambda3_cond_mean, disp3_jpdf_bin):
+    """Function to plot all graphs."""
 
     # Plot progress variable
     plot_prog_var(prog_var)
