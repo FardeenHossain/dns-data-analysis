@@ -183,25 +183,41 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
     # Open file
     file = open(file_path, "w+")
 
-    # Write data to file
-    for i in range(0, len(prog_var)):
-        file.write(str(prog_var[i]) + " " +
-                   str(disp_speed[i]) + " " +
-                   str(pdf_disp_speed_cond[i]) + " " +
-                   str(bin_pdf_disp_speed_cond[i]) + " " +
-                   str(bin_disp_speed[i]) + " " +
-                   str(lambda1_jpdf_bin[i]) + " " +
-                   str(lambda1_disp_speed_c_jpdf[i]) + " " +
-                   str(lambda1_cond_mean[i]) + " " +
-                   str(disp1_jpdf_bin[i]) + " " +
-                   str(lambda2_jpdf_bin[i]) + " " +
-                   str(lambda2_disp_speed_c_jpdf[i]) + " " +
-                   str(lambda2_cond_mean[i]) + " " +
-                   str(disp2_jpdf_bin[i]) + " " +
-                   str(lambda3_jpdf_bin[i]) + " " +
-                   str(lambda3_disp_speed_c_jpdf[i]) + " " +
-                   str(lambda3_cond_mean[i]) + " " +
-                   str(disp3_jpdf_bin[i]))
+    file.write(str(pdf_disp_speed_cond) + "," +
+               str(bin_pdf_disp_speed_cond) + "," +
+               str(bin_disp_speed) + "," +
+               str(lambda1_jpdf_bin) + "," +
+               str(lambda1_disp_speed_c_jpdf) + "," +
+               str(lambda1_cond_mean) + "," +
+               str(disp1_jpdf_bin) + "," +
+               str(lambda2_jpdf_bin) + "," +
+               str(lambda2_disp_speed_c_jpdf) + " " +
+               str(lambda2_cond_mean) + "," +
+               str(disp2_jpdf_bin) + "," +
+               str(lambda3_jpdf_bin) + "," +
+               str(lambda3_disp_speed_c_jpdf) + "," +
+               str(lambda3_cond_mean) + "," +
+               str(disp3_jpdf_bin))
+
+    # # Write data to file
+    # for i in range(0, len(prog_var)):
+    #     file.write(str(prog_var[i]) + " " +
+    #                str(disp_speed[i]) + " " +
+    #                str(pdf_disp_speed_cond[i]) + " " +
+    #                str(bin_pdf_disp_speed_cond[i]) + " " +
+    #                str(bin_disp_speed[i]) + " " +
+    #                str(lambda1_jpdf_bin[i]) + " " +
+    #                str(lambda1_disp_speed_c_jpdf[i]) + " " +
+    #                str(lambda1_cond_mean[i]) + " " +
+    #                str(disp1_jpdf_bin[i]) + " " +
+    #                str(lambda2_jpdf_bin[i]) + " " +
+    #                str(lambda2_disp_speed_c_jpdf[i]) + " " +
+    #                str(lambda2_cond_mean[i]) + " " +
+    #                str(disp2_jpdf_bin[i]) + " " +
+    #                str(lambda3_jpdf_bin[i]) + " " +
+    #                str(lambda3_disp_speed_c_jpdf[i]) + " " +
+    #                str(lambda3_cond_mean[i]) + " " +
+    #                str(disp3_jpdf_bin[i]))
 
     # Close file
     file.close()
