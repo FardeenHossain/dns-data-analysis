@@ -219,6 +219,8 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
     #                str(lambda3_cond_mean[i]) + " " +
     #                str(disp3_jpdf_bin[i]))
 
+    print("Saved strain rate tensor joint probability density function!")
+
     # Close file
     file.close()
 
@@ -273,6 +275,8 @@ def read_plot_data(data_file):
         lambda3_disp_speed_c_jpdf.append(line.split(" ")[14])
         lambda3_cond_mean.append(line.split(" ")[15])
         disp3_jpdf_bin.append(line.split(" ")[16])
+
+    print("Imported strain rate tensor joint probability density function!")
 
     # Close file
     file.close()
