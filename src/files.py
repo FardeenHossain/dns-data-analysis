@@ -157,15 +157,15 @@ def write_data_files():
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
         # Write plot data to text file
-        write_plot_data(c_half, s_d, plot_data[0], plot_data[1], plot_data[2],
+        write_plot_data(plot_data[0], plot_data[1], plot_data[2],
                         plot_data[3], plot_data[4], plot_data[5], plot_data[6],
                         plot_data[7], plot_data[8], plot_data[9],
                         plot_data[10], plot_data[11], plot_data[12],
                         plot_data[13], plot_data[14], data_file)
 
 
-def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
-                    bin_pdf_disp_speed_cond, bin_disp_speed, lambda1_jpdf_bin,
+def write_plot_data(pdf_disp_speed_cond, bin_pdf_disp_speed_cond,
+                    bin_disp_speed, lambda1_jpdf_bin,
                     lambda1_disp_speed_c_jpdf, lambda1_cond_mean,
                     disp1_jpdf_bin, lambda2_jpdf_bin,
                     lambda2_disp_speed_c_jpdf, lambda2_cond_mean,
@@ -183,6 +183,7 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
     # Open file
     file = open(file_path, "w+")
 
+    # Write data
     file.write(str(pdf_disp_speed_cond) + "," +
                str(bin_pdf_disp_speed_cond) + "," +
                str(bin_disp_speed) + "," +
@@ -198,26 +199,6 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
                str(lambda3_disp_speed_c_jpdf) + "," +
                str(lambda3_cond_mean) + "," +
                str(disp3_jpdf_bin))
-
-    # # Write data to file
-    # for i in range(0, len(prog_var)):
-    #     file.write(str(prog_var[i]) + " " +
-    #                str(disp_speed[i]) + " " +
-    #                str(pdf_disp_speed_cond[i]) + " " +
-    #                str(bin_pdf_disp_speed_cond[i]) + " " +
-    #                str(bin_disp_speed[i]) + " " +
-    #                str(lambda1_jpdf_bin[i]) + " " +
-    #                str(lambda1_disp_speed_c_jpdf[i]) + " " +
-    #                str(lambda1_cond_mean[i]) + " " +
-    #                str(disp1_jpdf_bin[i]) + " " +
-    #                str(lambda2_jpdf_bin[i]) + " " +
-    #                str(lambda2_disp_speed_c_jpdf[i]) + " " +
-    #                str(lambda2_cond_mean[i]) + " " +
-    #                str(disp2_jpdf_bin[i]) + " " +
-    #                str(lambda3_jpdf_bin[i]) + " " +
-    #                str(lambda3_disp_speed_c_jpdf[i]) + " " +
-    #                str(lambda3_cond_mean[i]) + " " +
-    #                str(disp3_jpdf_bin[i]))
 
     print("Saved strain rate tensor joint probability density function!")
 
@@ -237,51 +218,32 @@ def read_plot_data(data_file):
     # Open file
     file = open(file_path, "r")
 
-    # Initialise arrays
-    prog_var = []
-    disp_speed = []
-    pdf_disp_speed_cond = []
-    bin_pdf_disp_speed_cond = []
-    bin_disp_speed = []
-    lambda1_jpdf_bin = []
-    lambda1_disp_speed_c_jpdf = []
-    lambda1_cond_mean = []
-    disp1_jpdf_bin = []
-    lambda2_jpdf_bin = []
-    lambda2_disp_speed_c_jpdf = []
-    lambda2_cond_mean = []
-    disp2_jpdf_bin = []
-    lambda3_jpdf_bin = []
-    lambda3_disp_speed_c_jpdf = []
-    lambda3_cond_mean = []
-    disp3_jpdf_bin = []
+    # Read file
+    text = file.read()
 
-    # Read line and append to array
-    for line in file:
-        prog_var.append(line.split(" ")[0])
-        disp_speed.append(line.split(" ")[1])
-        pdf_disp_speed_cond.append(line.split(" ")[2])
-        bin_pdf_disp_speed_cond.append(line.split(" ")[3])
-        bin_disp_speed.append(line.split(" ")[4])
-        lambda1_jpdf_bin.append(line.split(" ")[5])
-        lambda1_disp_speed_c_jpdf.append(line.split(" ")[6])
-        lambda1_cond_mean.append(line.split(" ")[7])
-        disp1_jpdf_bin.append(line.split(" ")[8])
-        lambda2_jpdf_bin.append(line.split(" ")[9])
-        lambda2_disp_speed_c_jpdf.append(line.split(" ")[10])
-        lambda2_cond_mean.append(line.split(" ")[11])
-        disp2_jpdf_bin.append(line.split(" ")[12])
-        lambda3_jpdf_bin.append(line.split(" ")[13])
-        lambda3_disp_speed_c_jpdf.append(line.split(" ")[14])
-        lambda3_cond_mean.append(line.split(" ")[15])
-        disp3_jpdf_bin.append(line.split(" ")[16])
+    # Assign variables
+    pdf_disp_speed_cond = (text.split(",")[0])
+    bin_pdf_disp_speed_cond = (text.split(",")[1])
+    bin_disp_speed = (text.split(",")[2])
+    lambda1_jpdf_bin = (text.split(",")[3])
+    lambda1_disp_speed_c_jpdf = (text.split(",")[4])
+    lambda1_cond_mean = (text.split(",")[5])
+    disp1_jpdf_bin = (text.split(",")[6])
+    lambda2_jpdf_bin = (text.split(",")[7])
+    lambda2_disp_speed_c_jpdf = (text.split(",")[8])
+    lambda2_cond_mean = (text.split(",")[9])
+    disp2_jpdf_bin = (text.split(",")[10])
+    lambda3_jpdf_bin = (text.split(",")[11])
+    lambda3_disp_speed_c_jpdf = (text.split(",")[12])
+    lambda3_cond_mean = (text.split(",")[13])
+    disp3_jpdf_bin = (text.split(",")[14])
 
     print("Imported strain rate tensor joint probability density function!")
 
     # Close file
     file.close()
 
-    return (prog_var, disp_speed, pdf_disp_speed_cond, bin_pdf_disp_speed_cond,
+    return (pdf_disp_speed_cond, bin_pdf_disp_speed_cond,
             bin_disp_speed, lambda1_jpdf_bin, lambda1_disp_speed_c_jpdf,
             lambda1_cond_mean, disp1_jpdf_bin, lambda2_jpdf_bin,
             lambda2_disp_speed_c_jpdf, lambda2_cond_mean, disp2_jpdf_bin,
