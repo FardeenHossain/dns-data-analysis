@@ -192,7 +192,7 @@ def write_plot_data(pdf_disp_speed_cond, bin_pdf_disp_speed_cond,
                str(lambda1_cond_mean) + "," +
                str(disp1_jpdf_bin) + "," +
                str(lambda2_jpdf_bin) + "," +
-               str(lambda2_disp_speed_c_jpdf) + " " +
+               str(lambda2_disp_speed_c_jpdf) + "," +
                str(lambda2_cond_mean) + "," +
                str(disp2_jpdf_bin) + "," +
                str(lambda3_jpdf_bin) + "," +
