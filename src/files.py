@@ -185,23 +185,23 @@ def write_plot_data(prog_var, disp_speed, pdf_disp_speed_cond,
 
     # Write data to file
     for i in range(0, len(prog_var)):
-        file.write(prog_var[i] + " " +
-                   disp_speed[i] + " " +
-                   pdf_disp_speed_cond[i] + " " +
-                   bin_pdf_disp_speed_cond[i] + " " +
-                   bin_disp_speed[i] + " " +
-                   lambda1_jpdf_bin[i] + " " +
-                   lambda1_disp_speed_c_jpdf[i] + " " +
-                   lambda1_cond_mean[i] + " " +
-                   disp1_jpdf_bin[i] + " " +
-                   lambda2_jpdf_bin[i] + " " +
-                   lambda2_disp_speed_c_jpdf[i] + " " +
-                   lambda2_cond_mean[i] + " " +
-                   disp2_jpdf_bin[i] + " " +
-                   lambda3_jpdf_bin[i] + " " +
-                   lambda3_disp_speed_c_jpdf[i] + " " +
-                   lambda3_cond_mean[i] + " " +
-                   disp3_jpdf_bin[i])
+        file.write(str(prog_var[i]) + " " +
+                   str(disp_speed[i]) + " " +
+                   str(pdf_disp_speed_cond[i]) + " " +
+                   str(bin_pdf_disp_speed_cond[i]) + " " +
+                   str(bin_disp_speed[i]) + " " +
+                   str(lambda1_jpdf_bin[i]) + " " +
+                   str(lambda1_disp_speed_c_jpdf[i]) + " " +
+                   str(lambda1_cond_mean[i]) + " " +
+                   str(disp1_jpdf_bin[i]) + " " +
+                   str(lambda2_jpdf_bin[i]) + " " +
+                   str(lambda2_disp_speed_c_jpdf[i]) + " " +
+                   str(lambda2_cond_mean[i]) + " " +
+                   str(disp2_jpdf_bin[i]) + " " +
+                   str(lambda3_jpdf_bin[i]) + " " +
+                   str(lambda3_disp_speed_c_jpdf[i]) + " " +
+                   str(lambda3_cond_mean[i]) + " " +
+                   str(disp3_jpdf_bin[i]))
 
     # Close file
     file.close()
