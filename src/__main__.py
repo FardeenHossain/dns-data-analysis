@@ -9,7 +9,7 @@ print('\r----\n')
 
 if input.write_data == 1:
     # Write data files
-    files.write_reduced_data_files()
+    files.write_data_files()
 
 if input.import_data == 1:
     # Read data files
