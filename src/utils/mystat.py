@@ -34,13 +34,8 @@ def cond_pdf2d(q1, q2, c, bin_edges_pdf, bin_c_cond, d_bin_c_cond):
         q1_cond = np.extract(cond, q1)
         q2_cond = np.extract(cond, q2)
 
-        q1_cond_flat = np.ndarray.flatten(q1_cond)
-        q2_cond_flat = np.ndarray.flatten(q2_cond)
-
-        pdf, x_edges, y_edges = np.histogram2d(q1_cond_flat, q2_cond_flat,
-                                               bins=(bin_edges_pdf,
-                                                     bin_edges_pdf),
-                                               density=True)
+        pdf, x_edges, y_edges = np.histogram2d(q1_cond, q2_cond, bins=(
+            bin_edges_pdf, bin_edges_pdf), density=True)
 
         pdf2d_cond[j, :, :] = pdf
 
