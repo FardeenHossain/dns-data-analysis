@@ -15,7 +15,7 @@ if input.import_data == 1:
     # Read data files
     reduced_data1 = files.read_disp_speed(input.data_file1)
     reduced_data2 = files.read_lambda(input.data_file1)
-    plot_data = files.read_plot_data(input.data_file1)
+    # plot_data = files.read_plot_data(input.data_file1)
 
     # Assign variables
     c_half = reduced_data1[0]
@@ -36,15 +36,15 @@ else:
     lambda2 = data[3]
     lambda3 = data[4]
 
-    # Calculate plot data
-    plot_data = calc_var.calculate_plot_data(lambda1, lambda2, lambda3,
-                                             c_half, s_d)
+    # # Calculate plot data
+    # plot_data = calc_var.calculate_plot_data(lambda1, lambda2, lambda3,
+    #                                          c_half, s_d)
 
-# Plot graphs
-plot.plot_all(c_half, s_d, plot_data[0], plot_data[1], plot_data[2],
-              plot_data[3], plot_data[4], plot_data[5], plot_data[6],
-              plot_data[7], plot_data[8], plot_data[9], plot_data[10],
-              plot_data[11], plot_data[12], plot_data[13], plot_data[14])
+# # Plot graphs
+# plot.plot_all(c_half, s_d, plot_data[0], plot_data[1], plot_data[2],
+#               plot_data[3], plot_data[4], plot_data[5], plot_data[6],
+#               plot_data[7], plot_data[8], plot_data[9], plot_data[10],
+#               plot_data[11], plot_data[12], plot_data[13], plot_data[14])
 
 # Print finish
 print("\nFinished!")
