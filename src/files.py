@@ -193,17 +193,15 @@ def write_pdf(data_file, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
     file = open(file_path, "w+")
 
     # Write headings
-    file.write("lambda1_pdf lambda1_bin_pdf lambda2_pdf lambda2_bin_pdf "
-               "lambda3_pdf lambda3_bin_pdf\n")
+    file.write("lambda1_pdf lambda2_pdf lambda3_pdf\n")
 
     for i in range(0, len(lambda1_pdf[:, 0, 0])):
         for j in range(0, len(lambda1_pdf[0, :, 0])):
             for k in range(0, len(lambda1_pdf[0, 0, :])):
                 # Write file
-                file.write("%d %d %d %d %d %d\n" %
-                           (lambda1_pdf[i, j, k], lambda1_bin_pdf[i, j, k],
-                            lambda2_pdf[i, j, k], lambda2_bin_pdf[i, j, k],
-                            lambda3_pdf[i, j, k], lambda3_bin_pdf[i, j, k],))
+                file.write("%d %d %d\n" %
+                           (lambda1_pdf[i, j, k], lambda2_pdf[i, j, k],
+                            lambda3_pdf[i, j, k]))
 
     print("Saved strain rate tensor probability density function!")
 
