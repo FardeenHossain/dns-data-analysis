@@ -64,17 +64,17 @@ def calc_strain_rate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
     d_bin_c_cond = 0.01
 
     # Compressive strain rate tensor PDF
-    lambda1_pdf, lambda1_bin_pdf = utils.cond_pdf2d(s_d, lambda1, c_half,
+    lambda1_pdf, lambda1_bin_pdf = utils.cond_pdf2d(lambda1, s_d, c_half,
                                                     bin_edges_pdf, bin_c_cond,
                                                     d_bin_c_cond)
 
     # Intermediate strain rate tensor PDF
-    lambda2_pdf, lambda2_bin_pdf = utils.cond_pdf2d(s_d, lambda2, c_half,
+    lambda2_pdf, lambda2_bin_pdf = utils.cond_pdf2d(lambda2, s_d, c_half,
                                                     bin_edges_pdf, bin_c_cond,
                                                     d_bin_c_cond)
 
     # Extensive strain rate tensor PDF
-    lambda3_pdf, lambda3_bin_pdf = utils.cond_pdf2d(s_d, lambda3, c_half,
+    lambda3_pdf, lambda3_bin_pdf = utils.cond_pdf2d(lambda3, s_d, c_half,
                                                     bin_edges_pdf, bin_c_cond,
                                                     d_bin_c_cond)
 
