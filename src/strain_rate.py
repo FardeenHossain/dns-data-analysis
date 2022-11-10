@@ -36,6 +36,37 @@ def calc_strain_rate_eig(u_half, v_half, w_half):
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
+def calc_strain_rate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
+    """
+    Calculate strain rate tensor eigenvalues probability density function.
+    """
+
+    # Bin spacing
+    bin_edges_pdf = np.linspace(-1e2, 1e2, 60)
+    bin_c_cond = np.linspace(0.725, 0.735, 1)
+    d_bin_c_cond = 0.01
+
+    # Compressive strain rate tensor PDF
+    lambda1_pdf, lambda1_bin_pdf = utils.cond_pdf2d(s_d, lambda1, c_half,
+                                                    bin_edges_pdf, bin_c_cond,
+                                                    d_bin_c_cond)
+
+    # Intermediate strain rate tensor PDF
+    lambda2_pdf, lambda2_bin_pdf = utils.cond_pdf2d(s_d, lambda2, c_half,
+                                                    bin_edges_pdf, bin_c_cond,
+                                                    d_bin_c_cond)
+
+    # Extensive strain rate tensor PDF
+    lambda3_pdf, lambda3_bin_pdf = utils.cond_pdf2d(s_d, lambda3, c_half,
+                                                    bin_edges_pdf, bin_c_cond,
+                                                    d_bin_c_cond)
+
+    print('Finished strain rate tensor PDF!')
+
+    return [lambda1_pdf, lambda1_bin_pdf, lambda2_pdf, lambda2_bin_pdf,
+            lambda3_pdf, lambda3_bin_pdf]
+
+
 def calc_strain_rate_jpdf(lambda1, lambda2, lambda3, c_half, disp_speed):
     """Calculate strain rate tensor eigenvalues."""
 
