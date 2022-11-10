@@ -59,7 +59,7 @@ def calc_strain_rate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
     """
 
     # Bin spacing
-    bin_edges_pdf = np.linspace(-1e2, 1e2, 60)
+    bin_edges_pdf = np.linspace(-15e4, 15e4, 60)
     bin_c_cond = np.linspace(0.725, 0.735, 1)
     d_bin_c_cond = 0.01
 

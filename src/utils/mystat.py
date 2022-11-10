@@ -10,9 +10,11 @@ def cond_pdf(q, c, bin_edges_pdf, bin_c_cond, d_bin_c_cond):
     pdf_cond = np.zeros([nc, nb])
 
     for j in range(0, nc):
-        condition = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
-        q_c = np.extract(condition, q)
-        pdf, dum = np.histogram(q_c, bins=bin_edges_pdf, density=True)
+        cond = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
+
+        q_cond = np.extract(cond, q)
+
+        pdf, dum = np.histogram(q_cond, bins=bin_edges_pdf, density=True)
         pdf_cond[j, :] = pdf
 
     return [pdf_cond, bin_c_pdf]
@@ -27,11 +29,19 @@ def cond_pdf2d(q1, q2, c, bin_edges_pdf, bin_c_cond, d_bin_c_cond):
     pdf2d_cond = np.zeros([nc, nb, nb])
 
     for j in range(0, nc):
-        condition = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
-        q1_c = np.extract(condition, q1)
-        q2_c = np.extract(condition, q2)
-        pdf, x_edges, y_edges = np.histogram2d(q1_c, q2_c, bins=(
-            bin_edges_pdf, bin_edges_pdf), density=True)
+        cond = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
+
+        q1_cond = np.extract(cond, q1)
+        q2_cond = np.extract(cond, q2)
+
+        q1_cond_flat = np.ndarray.flatten(q1_cond)
+        q2_cond_flat = np.ndarray.flatten(q2_cond)
+
+        pdf, x_edges, y_edges = np.histogram2d(q1_cond_flat, q2_cond_flat,
+                                               bins=(bin_edges_pdf,
+                                                     bin_edges_pdf),
+                                               density=True)
+
         pdf2d_cond[j, :, :] = pdf
 
     return [pdf2d_cond, bin_c_pdf]
