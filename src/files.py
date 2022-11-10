@@ -81,8 +81,8 @@ def write_data_files():
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
         # Write PDF data
-        write_pdf(data_file, lambda1, lambda1_pdf, lambda2, lambda2_pdf,
-                  lambda3, lambda3_pdf)
+        write_pdf(data_file, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
+                  lambda2_bin_pdf, lambda3_pdf, lambda3_bin_pdf)
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
@@ -179,8 +179,8 @@ def read_lambda(data_file):
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
-def write_pdf(data_file, lambda1, lambda1_pdf, lambda2, lambda2_pdf, lambda3,
-              lambda3_pdf):
+def write_pdf(data_file, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
+              lambda2_bin_pdf, lambda3_pdf, lambda3_bin_pdf):
     """Write probability density function to text file."""
 
     # Reformat data file name
@@ -193,16 +193,17 @@ def write_pdf(data_file, lambda1, lambda1_pdf, lambda2, lambda2_pdf, lambda3,
     file = open(file_path, "w+")
 
     # Write headings
-    file.write("lambda1 lambda1_pdf lambda2 lambda2_pdf lambda3 lambda3_pdf")
+    file.write("lambda1_pdf lambda1_bin_pdf lambda2_pdf lambda2_bin_pdf "
+               "lambda3_pdf lambda3_bin_pdf\n")
 
-    for i in range(0, len(lambda1[:, 0, 0])):
-        for j in range(0, len(lambda1[0, :, 0])):
-            for k in range(0, len(lambda1[0, 0, :])):
+    for i in range(0, len(lambda1_pdf[:, 0, 0])):
+        for j in range(0, len(lambda1_pdf[0, :, 0])):
+            for k in range(0, len(lambda1_pdf[0, 0, :])):
                 # Write file
-                file.write("%d %d %d %d %d %d" %
-                           (lambda1[i, j, k], lambda1_pdf[i, j, k],
-                            lambda2[i, j, k], lambda2_pdf[i, j, k],
-                            lambda3[i, j, k],lambda3_pdf[i, j, k]))
+                file.write("%d %d %d %d %d %d\n" %
+                           (lambda1_pdf[i, j, k], lambda1_bin_pdf[i, j, k],
+                            lambda2_pdf[i, j, k], lambda2_bin_pdf[i, j, k],
+                            lambda3_pdf[i, j, k], lambda3_bin_pdf[i, j, k],))
 
     print("Saved strain rate tensor probability density function!")
 
