@@ -9,10 +9,7 @@ def cond_pdf(q, c, bin_edges_pdf, bin_c_cond, d_bin_c_cond):
 
     pdf_cond = np.zeros([nc, nb])
 
-    print(nc)
-
     for j in range(0, nc):
-        print(j, bin_c_cond[j])
         condition = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
         q_c = np.extract(condition, q)
         pdf, dum = np.histogram(q_c, bins=bin_edges_pdf, density=True)
@@ -29,10 +26,7 @@ def cond_pdf2d(q1, q2, c, bin_edges_pdf, bin_c_cond, d_bin_c_cond):
 
     pdf2d_cond = np.zeros([nc, nb, nb])
 
-    print(nc)
-
     for j in range(0, nc):
-        print(j, bin_c_cond[j])
         condition = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
         q1_c = np.extract(condition, q1)
         q2_c = np.extract(condition, q2)
