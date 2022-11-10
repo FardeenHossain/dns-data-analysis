@@ -33,6 +33,7 @@ def calculate_variables(data_file1_path, data_file2_path):
     # Calculate strain rate tensor eigenvalues
     lambda_eig = strain_rate.calc_strain_rate_eig(u_half, v_half, w_half)
 
+    # Assign variables
     lambda1 = lambda_eig[0]
     lambda2 = lambda_eig[1]
     lambda3 = lambda_eig[2]
@@ -41,6 +42,29 @@ def calculate_variables(data_file1_path, data_file2_path):
     rr3 = lambda_eig[5]
 
     return [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3]
+
+
+def calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
+    """Calculate displacement speed and strain rate tensor eigenvalues
+    probability density function."""
+
+    # Calculate displacement speed PDF
+    s_d_pdf, s_d_bin_pdf = strain_rate.calc_disp_speed_pdf(c_half, s_d)
+
+    # Calculate lambda PDF
+    lambda_pdf = strain_rate.calc_strain_rate_pdf(c_half, s_d, lambda1,
+                                                  lambda2, lambda3)
+
+    # Assign variables
+    lambda1_pdf = lambda_pdf[0]
+    lambda1_bin_pdf = lambda_pdf[1]
+    lambda2_pdf = lambda_pdf[2]
+    lambda2_bin_pdf = lambda_pdf[3]
+    lambda3_pdf = lambda_pdf[4]
+    lambda3_bin_pdf = lambda_pdf[5]
+
+    return [s_d_pdf, s_d_bin_pdf, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
+            lambda2_bin_pdf, lambda3_pdf, lambda3_bin_pdf]
 
 
 # def calculate_plot_data(lambda1, lambda2, lambda3, c_half, s_d):
