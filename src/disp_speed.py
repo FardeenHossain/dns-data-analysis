@@ -15,7 +15,7 @@ def calc_disp_speed(u_half, v_half, w_half, c_half, dc):
     conv_u = np.zeros([nx_c, ny_c, nz_c])
     conv_v = np.zeros([nx_c, ny_c, nz_c])
     conv_w = np.zeros([nx_c, ny_c, nz_c])
-    disp_speed = np.zeros([nx_c, ny_c, nz_c])
+    s_d = np.zeros([nx_c, ny_c, nz_c])
 
     # Calculate convective coefficients
     for i in range(0, nx_c):
@@ -31,9 +31,9 @@ def calc_disp_speed(u_half, v_half, w_half, c_half, dc):
     mag_g_c = (g_cx ** 2.0 + g_cy ** 2.0 + g_cz ** 2.0) ** 0.5
 
     # Calculate displacement speed
-    disp_speed[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
-                           conv_w[:, :, :]) / mag_g_c[:, :, :]
+    s_d[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
+                    conv_w[:, :, :]) / mag_g_c[:, :, :]
 
     print('Finished displacement speed!')
 
-    return disp_speed
+    return s_d

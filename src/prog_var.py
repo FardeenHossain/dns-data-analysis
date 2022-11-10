@@ -16,6 +16,7 @@ def calc_u(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
                             [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
 
     u_half = (u_old + u_new) / 2
+
     print('Finished U!')
 
     return u_half
@@ -35,6 +36,7 @@ def calc_v(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
                             [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
 
     v_half = (v_old + v_new) / 2
+
     print('Finished V!')
 
     return v_half
@@ -54,6 +56,7 @@ def calc_w(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
                             [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
 
     w_half = (w_old + w_new) / 2
+
     print('Finished W!')
 
     return w_half
@@ -72,13 +75,13 @@ def calc_prog_var(data_file1, data_file2, ix_start, iy_start, iz_start,
                             [[ix_start, iy_start, iz_start],
                              [ix_end, iy_end, iz_end]], nx, ny, nz)
 
-    print('Finished O2!')
-
     # Compute C from O2
     c_new = 1 - ((o2_new - o2_b) / (o2_u - o2_b))
     c_old = 1 - ((o2_old - o2_b) / (o2_u - o2_b))
 
     c_half = (c_old + c_new) / 2
     dc = (c_new - c_old) / dt
+
+    print('Finished progress variable!')
 
     return [c_half, dc]

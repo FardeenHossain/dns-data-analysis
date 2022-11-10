@@ -2,16 +2,13 @@ import input
 import files
 import calc_var
 
-# Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')
 print('\r----\n')
 
 if input.write_data == 1:
-    # Write data files
     files.write_data_files()
 
 if input.import_data == 1:
-    # Read data files
     reduced_data1 = files.read_disp_speed(input.data_file1)
     reduced_data2 = files.read_lambda(input.data_file1)
 
@@ -47,6 +44,5 @@ else:
     lambda3_pdf = pdf[6]
     lambda3_bin_pdf = pdf[7]
 
-# Print finish
 print("\nFinished!")
 print("\r----\n")
