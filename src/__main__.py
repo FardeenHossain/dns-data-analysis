@@ -1,7 +1,6 @@
 import input
 import files
 import calc_var
-import plot
 
 # Print title
 print('\nDirect Numerical Simulation (DNS) Premixed')

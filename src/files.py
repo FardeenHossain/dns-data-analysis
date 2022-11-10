@@ -203,51 +203,7 @@ def write_pdf(data_file, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
                            (lambda1_pdf[i, j, k], lambda2_pdf[i, j, k],
                             lambda3_pdf[i, j, k]))
 
-    print("Saved strain rate tensor probability density function!")
+    print("Saved strain rate tensor PDF!")
 
     # Close file
     file.close()
-
-# def read_plot_data(data_file):
-#     """Read plot data from text file."""
-#
-#     # Reformat data file name
-#     data_file = data_file.replace(".h5", "")
-#
-#     # Set file path
-#     file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
-#
-#     # Open file
-#     file = open(file_path, "r")
-#
-#     # Read file
-#     text = file.read()
-#
-#     # Assign variables
-#     pdf_disp_speed_cond = (text.split(",")[0])
-#     bin_pdf_disp_speed_cond = (text.split(",")[1])
-#     bin_disp_speed = (text.split(",")[2])
-#     lambda1_jpdf_bin = (text.split(",")[3])
-#     lambda1_disp_speed_c_jpdf = (text.split(",")[4])
-#     lambda1_cond_mean = (text.split(",")[5])
-#     disp1_jpdf_bin = (text.split(",")[6])
-#     lambda2_jpdf_bin = (text.split(",")[7])
-#     lambda2_disp_speed_c_jpdf = (text.split(",")[8])
-#     lambda2_cond_mean = (text.split(",")[9])
-#     disp2_jpdf_bin = (text.split(",")[10])
-#     lambda3_jpdf_bin = (text.split(",")[11])
-#     lambda3_disp_speed_c_jpdf = (text.split(",")[12])
-#     lambda3_cond_mean = (text.split(",")[13])
-#     disp3_jpdf_bin = (text.split(",")[14])
-#
-#     print("Imported strain rate tensor joint probability density function!")
-#
-#     # Close file
-#     file.close()
-#
-#     return (pdf_disp_speed_cond, bin_pdf_disp_speed_cond,
-#             bin_disp_speed, lambda1_jpdf_bin, lambda1_disp_speed_c_jpdf,
-#             lambda1_cond_mean, disp1_jpdf_bin, lambda2_jpdf_bin,
-#             lambda2_disp_speed_c_jpdf, lambda2_cond_mean, disp2_jpdf_bin,
-#             lambda3_jpdf_bin, lambda3_disp_speed_c_jpdf, lambda3_cond_mean,
-#             disp3_jpdf_bin)

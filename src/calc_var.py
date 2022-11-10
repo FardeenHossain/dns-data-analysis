@@ -65,15 +65,3 @@ def calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
 
     return [s_d_pdf, s_d_bin_pdf, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
             lambda2_bin_pdf, lambda3_pdf, lambda3_bin_pdf]
-
-
-# def calculate_plot_data(lambda1, lambda2, lambda3, c_half, s_d):
-#     """Calculate joint probability density function plot data."""
-#
-#     plot_data = strain_rate.calc_strain_rate_jpdf(lambda1, lambda2, lambda3,
-#                                                   c_half, s_d)
-#
-#     return (plot_data[0], plot_data[1], plot_data[2], plot_data[3],
-#             plot_data[4], plot_data[5], plot_data[6], plot_data[7],
-#             plot_data[8], plot_data[9], plot_data[10], plot_data[11],
-#             plot_data[12], plot_data[13], plot_data[14])
