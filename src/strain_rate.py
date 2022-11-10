@@ -36,6 +36,23 @@ def calc_strain_rate_eig(u_half, v_half, w_half):
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
+def calc_disp_speed_pdf(c_half, s_d):
+    """Calculate displacement speed probability density function."""
+
+    # Bin spacing
+    bin_edges_pdf = np.linspace(-1e2, 1e2, 60)
+    bin_c_cond = np.linspace(0.725, 0.735, 1)
+    d_bin_c_cond = 0.01
+
+    # Displacement speed PDF
+    s_d_pdf, s_d_bin_pdf = utils.cond_pdf(s_d, c_half, bin_edges_pdf,
+                                          bin_c_cond, d_bin_c_cond)
+
+    print('Displacement speed PDF!')
+
+    return [s_d_pdf, s_d_bin_pdf]
+
+
 def calc_strain_rate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
     """
     Calculate strain rate tensor eigenvalues probability density function.
