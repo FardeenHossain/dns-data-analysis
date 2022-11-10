@@ -48,7 +48,7 @@ def calc_disp_speed_pdf(c_half, s_d):
     s_d_pdf, s_d_bin_pdf = utils.cond_pdf(s_d, c_half, bin_edges_pdf,
                                           bin_c_cond, d_bin_c_cond)
 
-    print('Displacement speed PDF!')
+    print('Finished displacement speed PDF!')
 
     return [s_d_pdf, s_d_bin_pdf]
 

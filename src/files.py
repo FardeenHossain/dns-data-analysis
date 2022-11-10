@@ -81,8 +81,8 @@ def write_data_files():
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
         # Write PDF data
-        write_pdf(data_file, c_half, s_d, s_d_pdf, lambda1, lambda1_pdf,
-                  lambda2, lambda2_pdf, lambda3, lambda3_pdf)
+        write_pdf(data_file, c_half, s_d, lambda1, lambda1_pdf, lambda2,
+                  lambda2_pdf, lambda3, lambda3_pdf)
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
@@ -179,7 +179,7 @@ def read_lambda(data_file):
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
-def write_pdf(data_file, c_half, s_d, s_d_pdf, lambda1, lambda1_pdf,
+def write_pdf(data_file, c_half, s_d, lambda1, lambda1_pdf,
               lambda2, lambda2_pdf, lambda3, lambda3_pdf):
     """Write probability density function to text file."""
 
@@ -192,14 +192,19 @@ def write_pdf(data_file, c_half, s_d, s_d_pdf, lambda1, lambda1_pdf,
     # Open file
     file = open(file_path, "w+")
 
+    # Write headings
+    file.write("c_half s_d lambda1 lambda1_pdf lambda2 lambda2_pdf lambda3 "
+               "lambda3_pdf")
+
     for i in range(0, len(c_half[:, 0, 0])):
         for j in range(0, len(c_half[0, :, 0])):
-            for k in range(0, len(c_half[0, 0, k])):
-                file.write("%d %d %d %d %d %d %d %d %d" %
-                           (c_half[i, j, k], s_d[i, j, k], s_d_pdf[i, j, k],
-                            lambda1[i, j, k], lambda1_pdf[i, j, k],
-                            lambda2[i, j, k], lambda2_pdf[i, j, k],
-                            lambda3[i, j, k], lambda3_pdf[i, j, k]))
+            for k in range(0, len(c_half[0, 0, :])):
+                # Write file
+                file.write("%d %d %d %d %d %d %d %d" %
+                           (c_half[i, j, k], s_d[i, j, k], lambda1[i, j, k],
+                            lambda1_pdf[i, j, k], lambda2[i, j, k],
+                            lambda2_pdf[i, j, k], lambda3[i, j, k],
+                            lambda3_pdf[i, j, k]))
 
     print("Saved strain rate tensor probability density function!")
 
