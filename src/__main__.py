@@ -10,27 +10,14 @@ if input.write_data == 1:
     files.write_data_files()
 
 if input.import_data == 1:
-    reduced_data1 = files.read_disp_speed(input.data_file1)
-    reduced_data2 = files.read_lambda(input.data_file1)
-
-    # Assign variables
-    c_half = reduced_data1[0]
-    s_d = reduced_data1[1]
-    lambda1 = reduced_data2[0]
-    lambda2 = reduced_data2[1]
-    lambda3 = reduced_data2[2]
+    # Import reduced data
+    [c_half, s_d] = files.read_disp_speed(input.data_file1)
+    [lambda1, lambda2, lambda3] = files.read_lambda(input.data_file1)
 
 else:
-    # Calculate variables
-    var = calc_var.calculate_variables(input.data_file1_path,
-                                       input.data_file2_path)
-
-    # Assign variables
-    c_half = var[0]
-    s_d = var[1]
-    lambda1 = var[2]
-    lambda2 = var[3]
-    lambda3 = var[4]
+    # Calculate data
+    [c_half, s_d, lambda1, lambda2, lambda3] = calc_var.calculate_variables(
+        input.data_file1_path, input.data_file2_path)
 
 # TEST FUNCTION
 

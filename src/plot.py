@@ -23,13 +23,13 @@ def plot_disp_speed(s_d):
     plt.show()
 
 
-def plot_disp_speed_pdf(s_d_pdf, s_d_bin_pdf):
+def plot_disp_speed_pdf(s_d_pdf, s_d_pdf_bin):
     """Probability density function of displacement speed."""
 
     plt.figure(3)
     plt.style.use('seaborn')
     for i in range(0, len(s_d_pdf[:, 0])):
-        plt.plot(s_d_bin_pdf, s_d_pdf[i, :])
+        plt.plot(s_d_pdf_bin, s_d_pdf[i, :])
     plt.ylabel('Probability Density Function, PDF')
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.xlim(-15, 15)
@@ -37,15 +37,15 @@ def plot_disp_speed_pdf(s_d_pdf, s_d_bin_pdf):
     plt.show()
 
 
-def plot_comp_strain_tensor_jpdf(lambda1_bin_pdf, lambda1_pdf,
-                                 lambda1_cond_mean, s_d_bin_pdf1,
-                                 s_d_bin_pdf_cond):
+def plot_comp_strain_tensor_jpdf(lambda1_jpdf, lambda1_jpdf_bin,
+                                 lambda1_mean, s_d_jpdf_bin,
+                                 s_d_mean_bin):
     """Joint probability density function of compressive strain tensor."""
 
     plt.figure(5)
-    plt.contourf(s_d_bin_pdf1, lambda1_bin_pdf, lambda1_pdf,
+    plt.contourf(s_d_jpdf_bin, lambda1_jpdf_bin, lambda1_jpdf,
                  cmap='inferno')
-    plt.plot(s_d_bin_pdf_cond, lambda1_cond_mean[:], color='w',
+    plt.plot(s_d_mean_bin, lambda1_mean[:], color='w',
              label=r'Mean Compressive Strain Rate Tensor')
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.ylabel(r'Compressive Strain Rate Tensor, $\rm\gamma$')
@@ -57,15 +57,15 @@ def plot_comp_strain_tensor_jpdf(lambda1_bin_pdf, lambda1_pdf,
     plt.show()
 
 
-def plot_int_strain_tensor_jpdf(lambda2_bin_pdf, lambda2_pdf,
-                                lambda2_cond_mean, s_d_bin_pdf2,
-                                s_d_bin_pdf):
+def plot_int_strain_tensor_jpdf(lambda2_jpdf, lambda2_jpdf_bin,
+                                lambda2_mean, s_d_jpdf_bin,
+                                s_d_mean_bin):
     """Joint probability density function of intermediate strain tensor."""
 
     plt.figure(6)
-    plt.contourf(s_d_bin_pdf2, lambda2_bin_pdf, lambda2_pdf,
+    plt.contourf(s_d_jpdf_bin, lambda2_jpdf_bin, lambda2_jpdf,
                  cmap='inferno')
-    plt.plot(s_d_bin_pdf, lambda2_cond_mean[:], color='w',
+    plt.plot(s_d_mean_bin, lambda2_mean[:], color='w',
              label=r'Mean Intermediate Strain Rate Tensor')
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.ylabel(r'Intermediate Strain Rate Tensor, $\rm\beta$')
@@ -77,15 +77,15 @@ def plot_int_strain_tensor_jpdf(lambda2_bin_pdf, lambda2_pdf,
     plt.show()
 
 
-def plot_ext_strain_tensor_jpdf(lambda3_bin_pdf, lambda3_pdf,
-                                lambda3_cond_mean, s_d_bin_pdf2,
-                                s_d_bin_pdf):
+def plot_ext_strain_tensor_jpdf(lambda3_jpdf, lambda3_jpdf_bin,
+                                lambda3_mean, s_d_jpdf_bin,
+                                s_d_mean_bin):
     """Joint probability density function of extensive strain tensor."""
 
     plt.figure(7)
-    plt.contourf(s_d_bin_pdf2, lambda3_bin_pdf, lambda3_pdf,
+    plt.contourf(s_d_jpdf_bin, lambda3_jpdf_bin, lambda3_jpdf,
                  cmap='inferno')
-    plt.plot(s_d_bin_pdf, lambda3_cond_mean[:], color='w',
+    plt.plot(s_d_mean_bin, lambda3_mean[:], color='w',
              label=r'Mean Extensive Strain Rate Tensor')
     plt.xlabel(r'Displacement Speed, $\rmS_{d}$')
     plt.ylabel(r'Extensive Strain Rate Tensor, $\rm\alpha$')

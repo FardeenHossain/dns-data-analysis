@@ -5,7 +5,7 @@ import strain_rate
 from input import ix_start, iy_start, iz_start, ix_end, iy_end, iz_end
 
 
-def calculate_variables(data_file1_path, data_file2_path):
+def calculate_data(data_file1_path, data_file2_path):
     """ Calculate displacement speed and strain rate tensor eigenvalues."""
 
     # Calculate U
@@ -21,25 +21,16 @@ def calculate_variables(data_file1_path, data_file2_path):
                              iy_start, iz_start, ix_end, iy_end, iz_end)
 
     # Calculate progress variable
-    c = prog_var.calc_prog_var(data_file1_path, data_file2_path, ix_start,
-                               iy_start, iz_start, ix_end, iy_end, iz_end)
-
-    c_half = c[0]
-    dc = c[1]
+    [c_half, dc] = prog_var.calc_prog_var(data_file1_path, data_file2_path,
+                                          ix_start, iy_start, iz_start, ix_end,
+                                          iy_end, iz_end)
 
     # Calculate displacement speed
     s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
 
     # Calculate strain rate tensor eigenvalues
-    lambda_eig = strain_rate.calc_strain_rate_eig(u_half, v_half, w_half)
-
-    # Assign variables
-    lambda1 = lambda_eig[0]
-    lambda2 = lambda_eig[1]
-    lambda3 = lambda_eig[2]
-    rr1 = lambda_eig[3]
-    rr2 = lambda_eig[4]
-    rr3 = lambda_eig[5]
+    [lambda1, lambda2, lambda3, rr1, rr2,
+     rr3] = strain_rate.calc_strain_rate_eig(u_half, v_half, w_half)
 
     return [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
@@ -49,19 +40,13 @@ def calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
     probability density function."""
 
     # Calculate displacement speed PDF
-    s_d_pdf, s_d_pdf_bin = strain_rate.calc_disp_speed_pdf(c_half, s_d)
+    [s_d_pdf, s_d_pdf_bin] = strain_rate.calc_disp_speed_pdf(c_half, s_d)
 
     # Calculate lambda PDF
-    lambda_pdf = strain_rate.calc_strain_rate_pdf(c_half, lambda1, lambda2,
-                                                  lambda3)
-
-    # Assign variables
-    lambda1_pdf = lambda_pdf[0]
-    lambda1_pdf_bin = lambda_pdf[1]
-    lambda2_pdf = lambda_pdf[2]
-    lambda2_pdf_bin = lambda_pdf[3]
-    lambda3_pdf = lambda_pdf[4]
-    lambda3_pdf_bin = lambda_pdf[5]
+    [lambda1_pdf, lambda1_pdf_bin, lambda2_pdf, lambda2_pdf_bin, lambda3_pdf,
+     lambda3_pdf_bin] = strain_rate.calc_strain_rate_pdf(c_half, lambda1,
+                                                         lambda2,
+                                                         lambda3)
 
     return [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
             lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin]

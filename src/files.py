@@ -33,9 +33,7 @@ def write_data_files():
     and strain rate tensor eigenvalues."""
 
     # List of data files
-    data_files = list_data_files()
-    data_files1 = data_files[0]
-    data_files2 = data_files[1]
+    [data_files1, data_files2] = list_data_files()
 
     for i in range(0, len(data_files1)):
         data_file = data_files1[i]
@@ -46,36 +44,20 @@ def write_data_files():
         data_file2_path = os.path.join(in_path, data_files2[i])
 
         # Calculate variables
-        var = calc_var.calculate_variables(data_file1_path, data_file2_path)
-
-        # Assign variables
-        c_half = var[0]
-        s_d = var[1]
-        lambda1 = var[2]
-        lambda2 = var[3]
-        lambda3 = var[4]
-        rr1 = var[5]
-        rr2 = var[6]
-        rr3 = var[7]
+        [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2,
+         rr3] = calc_var.calculate_data(data_file1_path, data_file2_path)
 
         # Calculate PDF values
-        pdf = calc_var.calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3)
-
-        # Assign variables
-        s_d_pdf = pdf[0]
-        s_d_bin_pdf = pdf[1]
-        lambda1_pdf = pdf[2]
-        lambda1_bin_pdf = pdf[3]
-        lambda2_pdf = pdf[4]
-        lambda2_bin_pdf = pdf[5]
-        lambda3_pdf = pdf[6]
-        lambda3_bin_pdf = pdf[7]
+        [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin,
+         lambda2_pdf, lambda2_pdf_bin, lambda3_pdf,
+         lambda3_pdf_bin] = calc_var.calculate_pdf(c_half, s_d, lambda1,
+                                                   lambda2, lambda3)
 
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
-        write_pdf(data_file, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
-                  lambda2_bin_pdf, lambda3_pdf, lambda3_bin_pdf)
+        write_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
+                  lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin)
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
