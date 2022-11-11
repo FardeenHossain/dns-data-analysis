@@ -50,3 +50,16 @@ def calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
 
     return [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
             lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin]
+
+
+def calculate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
+    """Calculate strain rate tensor eigenvalues joint probability density
+     function."""
+
+    # Calculate lambda JPDF
+    [lambda1_jpdf, lambda1_jpdf_bin, lambda2_jpdf, lambda2_jpdf_bin,
+     lambda3_jpdf, lambda3_jpdf_bin] = strain_rate.calc_strain_rate_jpdf(
+        c_half, s_d, lambda1, lambda2, lambda3)
+
+    return [lambda1_jpdf, lambda1_jpdf_bin, lambda2_jpdf, lambda2_jpdf_bin,
+            lambda3_jpdf, lambda3_jpdf_bin]
