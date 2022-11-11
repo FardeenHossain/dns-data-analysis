@@ -117,8 +117,8 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
             lambda3_jpdf, lambda3_jpdf_bin]
 
 
-def calc_strain_rate_jpdf_legacy(lambda1, lambda2, lambda3, c_half, s_d):
-    """Calculate strain rate tensor eigenvalues."""
+def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
+    """Calculate strain rate tensor JPDF."""
 
     # Condition
     cond = np.absolute(c_half - 0.73) < (0.2 / 2.0)
@@ -205,18 +205,7 @@ def calc_strain_rate_jpdf_legacy(lambda1, lambda2, lambda3, c_half, s_d):
 
     print('Finished strain rate tensor JPDF!')
 
-    return [s_d_pdf,
-            s_d_pdf_bin,
-            s_d_mean_bin,
-            lambda1_jpdf,
-            lambda1_jpdf_bin,
-            lambda1_mean,
-            s_d_jpdf_bin1,
-            lambda2_jpdf,
-            lambda2_jpdf_bin,
-            lambda2_mean,
-            s_d_jpdf_bin2,
-            lambda3_jpdf,
-            lambda3_jpdf_bin,
-            lambda3_mean,
-            s_d_jpdf_bin3]
+    return [s_d_pdf, s_d_pdf_bin, s_d_mean_bin, lambda1_jpdf, lambda1_jpdf_bin,
+            lambda1_mean, s_d_jpdf_bin1, lambda2_jpdf, lambda2_jpdf_bin,
+            lambda2_mean, s_d_jpdf_bin2, lambda3_jpdf, lambda3_jpdf_bin,
+            lambda3_mean, s_d_jpdf_bin3]
