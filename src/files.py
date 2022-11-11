@@ -150,8 +150,8 @@ def write_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
     for i in range(0, len(lambda1_pdf[:, 0])):
         for j in range(0, len(lambda1_pdf[0, :])):
             file.write("%d %d %d %d %d %f\n" % (
-                lambda1_pdf[i, j], lambda1_pdf_bin[j], lambda2_pdf[i, j],
-                lambda2_pdf_bin[j], lambda3_pdf[i, j], lambda3_pdf_bin[j]))
+                lambda1_pdf_bin[j], lambda1_pdf[i, j], lambda2_pdf_bin[j],
+                lambda2_pdf[i, j], lambda3_pdf_bin[j], lambda3_pdf[i, j],))
 
     print("Saved strain rate tensor PDF!")
 

@@ -26,7 +26,5 @@ else:
 files.write_pdf(input.data_file1, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
                 lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin)
 
-print("Saved strain rate tensor PDF!")
-
 print("\nFinished!")
 print("\r----\n")
