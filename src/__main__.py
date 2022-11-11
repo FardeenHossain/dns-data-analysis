@@ -1,7 +1,6 @@
 import input
 import files
 import calc_var
-import strain_rate
 
 print('\nDirect Numerical Simulation (DNS) Premixed')
 print('\r----\n')
@@ -16,38 +15,15 @@ if input.import_data == 1:
 
 else:
     # Calculate data
-    [c_half, s_d, lambda1, lambda2, lambda3] = calc_var.calculate_variables(
+    [c_half, s_d, lambda1, lambda2, lambda3] = calc_var.calculate_data(
         input.data_file1_path, input.data_file2_path)
 
 # TEST FUNCTION
-
-# Calculate PDF values
-lambda_pdf = strain_rate.calc_strain_rate_pdf(c_half, lambda1, lambda2,
-                                              lambda3)
-
-# Assign variables
-lambda1_pdf = lambda_pdf[0]
-lambda1_pdf_bin = lambda_pdf[1]
-lambda2_pdf = lambda_pdf[2]
-lambda2_pdf_bin = lambda_pdf[3]
-lambda3_pdf = lambda_pdf[4]
-lambda3_pdf_bin = lambda_pdf[5]
-
-# Set file path
-data_file = input.data_file1
-data_file = data_file.replace(".h5", "")
-
-file_path = "./data/%s/%s_plot.txt" % (input.flame, data_file)
-file = open(file_path, "w+")
-
-file.write("lambda_1_pdf lambda1_pdf_bin\n")
-
-# Write data
-for i in range(0, len(lambda1_pdf[:, 0])):
-    for j in range(0, len(lambda1_pdf[0, :])):
-        file.write("%d %d\n" % (lambda1_pdf[i, j], lambda1_pdf_bin[j]))
-
-file.close()
+[s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
+ lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin] = calc_var.calculate_pdf(
+    c_half, s_d, lambda1, lambda2, lambda3)
+files.write_pdf(input.data_file1, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
+                lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin)
 
 print("Saved strain rate tensor PDF!")
 

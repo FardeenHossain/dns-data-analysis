@@ -47,15 +47,15 @@ def write_data_files():
         [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2,
          rr3] = calc_var.calculate_data(data_file1_path, data_file2_path)
 
-        # Calculate PDF values
+        # Calculate PDF variables
         [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin,
          lambda2_pdf, lambda2_pdf_bin, lambda3_pdf,
          lambda3_pdf_bin] = calc_var.calculate_pdf(c_half, s_d, lambda1,
                                                    lambda2, lambda3)
 
+        # Save variables
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
-
         write_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
                   lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin)
 
@@ -137,23 +137,44 @@ def read_lambda(data_file):
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
-def write_pdf(data_file, lambda1_pdf, lambda1_bin_pdf, lambda2_pdf,
-              lambda2_bin_pdf, lambda3_pdf, lambda3_bin_pdf):
+def write_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
+              lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin):
     """Write probability density function to text file."""
 
     data_file = data_file.replace(".h5", "")
     file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
     file = open(file_path, "w+")
 
-    file.write("lambda1_pdf lambda2_pdf lambda3_pdf\n")
+    file.write("lambda1 lambda1_pdf lambda2 lambda2_pdf lambda3 lambda3_pdf\n")
 
-    for i in range(0, len(lambda1_pdf[:, 0, 0])):
-        for j in range(0, len(lambda1_pdf[0, :, 0])):
-            for k in range(0, len(lambda1_pdf[0, 0, :])):
-                file.write("%d %d %d\n" %
-                           (lambda1_pdf[i, j, k], lambda2_pdf[i, j, k],
-                            lambda3_pdf[i, j, k]))
+    for i in range(0, len(lambda1_pdf[:, 0])):
+        for j in range(0, len(lambda1_pdf[0, :])):
+            file.write("%d %d %d %d %d %f\n" % (
+                lambda1_pdf[i, j], lambda1_pdf_bin[j], lambda2_pdf[i, j],
+                lambda2_pdf_bin[j], lambda3_pdf[i, j], lambda3_pdf_bin[j]))
 
     print("Saved strain rate tensor PDF!")
+
+    file.close()
+
+
+def write_jpdf(data_file, lambda1_jpdf, lambda1_jpdf_bin, lambda2_jpdf,
+               lambda2_jpdf_bin, lambda3_jpdf, lambda3_jpdf_bin):
+    """Write probability density function to text file."""
+
+    data_file = data_file.replace(".h5", "")
+    file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
+    file = open(file_path, "w+")
+
+    file.write("lambda1_jpdf lambda2_jpdf lambda3_jpdf\n")
+
+    for i in range(0, len(lambda1_jpdf[:, 0, 0])):
+        for j in range(0, len(lambda1_jpdf[0, :, 0])):
+            for k in range(0, len(lambda1_jpdf[0, 0, :])):
+                file.write("%d %d %d\n" %
+                           (lambda1_jpdf[i, j, k], lambda2_jpdf[i, j, k],
+                            lambda3_jpdf[i, j, k]))
+
+    print("Saved strain rate tensor JPDF!")
 
     file.close()
