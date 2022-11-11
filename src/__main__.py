@@ -11,7 +11,8 @@ if input.write_data == 1:
 if input.import_data == 1:
     # Import reduced data
     [c_half, s_d] = files.read_disp_speed(input.data_file1)
-    [lambda1, lambda2, lambda3] = files.read_lambda(input.data_file1)
+    [lambda1, lambda2, lambda3, rr1, rr2, rr3] = files.read_lambda(
+        input.data_file1)
 
 else:
     # Calculate data
