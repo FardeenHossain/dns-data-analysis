@@ -158,8 +158,7 @@ def write_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
     file.close()
 
 
-def write_jpdf(data_file, lambda1_jpdf, lambda1_jpdf_bin, lambda2_jpdf,
-               lambda2_jpdf_bin, lambda3_jpdf, lambda3_jpdf_bin):
+def write_jpdf(data_file, lambda1_jpdf, lambda2_jpdf, lambda3_jpdf):
     """Write probability density function to text file."""
 
     data_file = data_file.replace(".h5", "")

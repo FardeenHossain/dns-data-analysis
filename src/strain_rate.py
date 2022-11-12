@@ -85,39 +85,34 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     function."""
 
     # Bin spacing
-    bin_edges_pdf = np.linspace(-1e6, 1e6, 100)
+    lambda_bin_edges_pdf = np.linspace(-1e6, 1e6, 100)
+    s_d_bin_edges_pdf = np.linspace(-15, 15, 100)
     bin_c_cond = np.linspace(0.73, 0.73, 1)
     d_bin_c_cond = 0.2
 
-    # # Bin spacing
-    # lambda_bin_edges_pdf = np.linspace(-1.5e5, 1.5e5, 100)
-    # s_d_bin_edges_pdf = np.linspace(-15, 15, 100)
-
     # Calculate compressive strain rate tensor PDF
-    lambda1_jpdf, lambda1_jpdf_bin = utils.cond_pdf2d(lambda1, s_d, c_half,
-                                                      bin_edges_pdf,
-                                                      bin_c_cond,
-                                                      d_bin_c_cond)
+    [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y] = utils.cond_pdf2d(
+        lambda1, s_d, c_half, lambda_bin_edges_pdf, s_d_bin_edges_pdf,
+        bin_c_cond, d_bin_c_cond)
 
     # Calculate intermediate strain rate tensor PDF
-    lambda2_jpdf, lambda2_jpdf_bin = utils.cond_pdf2d(lambda2, s_d, c_half,
-                                                      bin_edges_pdf,
-                                                      bin_c_cond,
-                                                      d_bin_c_cond)
+    [lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y] = utils.cond_pdf2d(
+        lambda2, s_d, c_half, lambda_bin_edges_pdf, s_d_bin_edges_pdf,
+        bin_c_cond, d_bin_c_cond)
 
     # Calculate extensive strain rate tensor PDF
-    lambda3_jpdf, lambda3_jpdf_bin = utils.cond_pdf2d(lambda3, s_d, c_half,
-                                                      bin_edges_pdf,
-                                                      bin_c_cond,
-                                                      d_bin_c_cond)
+    [lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y] = utils.cond_pdf2d(
+        lambda3, s_d, c_half, lambda_bin_edges_pdf, s_d_bin_edges_pdf,
+        bin_c_cond, d_bin_c_cond)
 
     print('Finished strain rate tensor JPDF!')
 
-    return [lambda1_jpdf, lambda1_jpdf_bin, lambda2_jpdf, lambda2_jpdf_bin,
-            lambda3_jpdf, lambda3_jpdf_bin]
+    return [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
+            lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
+            lambda3_jpdf_bin_x, lambda3_jpdf_bin_y]
 
 
-def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
+def calc_strain_rate_tensor_jpdf(lambda1, lambda2, lambda3, c_half, s_d):
     """Calculate strain rate tensor JPDF."""
 
     # Condition
@@ -137,11 +132,11 @@ def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
 
     # Bin spacing
     lambda_jpdf_bin = np.linspace(-15e4, 15e4, 60)
-    s_d_mean_bin = np.linspace(-15, 15, 60)
+    s_d_jpdf_bin = np.linspace(-15, 15, 60)
 
     # Calculate compressive strain rate tensor PDF
     [lambda1_jpdf, lambda1_edges, s_d_edges] = np.histogram2d(
-        lambda1_cond_flat, s_d_cond_flat, bins=(lambda_jpdf_bin, s_d_mean_bin),
+        lambda1_cond_flat, s_d_cond_flat, bins=(lambda_jpdf_bin, s_d_jpdf_bin),
         density=True)
 
     lambda1_jpdf_bin = 0.5 * (lambda1_edges[:-1] + lambda1_edges[1:])
@@ -149,7 +144,7 @@ def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
 
     # Calculate intermediate strain rate tensor PDF
     [lambda2_jpdf, lambda2_bin_edges, s_d_edges] = np.histogram2d(
-        lambda2_cond_flat, s_d_cond_flat, bins=(lambda_jpdf_bin, s_d_mean_bin),
+        lambda2_cond_flat, s_d_cond_flat, bins=(lambda_jpdf_bin, s_d_jpdf_bin),
         density=True)
 
     lambda2_jpdf_bin = 0.5 * (lambda2_bin_edges[:-1] + lambda2_bin_edges[1:])
@@ -157,7 +152,7 @@ def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
 
     # Calculate extensive strain rate tensor PDF
     [lambda3_jpdf, lambda3_bin_edges, s_d_edges] = np.histogram2d(
-        lambda3_cond_flat, s_d_cond_flat, bins=(lambda_jpdf_bin, s_d_mean_bin),
+        lambda3_cond_flat, s_d_cond_flat, bins=(lambda_jpdf_bin, s_d_jpdf_bin),
         density=True)
 
     lambda3_jpdf_bin = 0.5 * (lambda3_bin_edges[:-1] + lambda3_bin_edges[1:])
@@ -173,10 +168,10 @@ def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
                                             bin_edges_pdf, bin_c_cond,
                                             d_bin_c_cond)
 
-    s_d_mean_bin = np.linspace(-9, 14, 20)
+    s_d_jpdf_bin = np.linspace(-9, 14, 20)
     d_bin_s_d = 1 / 20
 
-    nc = len(s_d_mean_bin)
+    nc = len(s_d_jpdf_bin)
 
     # Pre-fill arrays with zeroes
     lambda1_mean = np.zeros([nc])
@@ -186,7 +181,7 @@ def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
     for i in range(0, nc):
         # Condition
         cond = np.absolute(s_d_cond_flat -
-                           s_d_mean_bin[i]) < d_bin_s_d / 2.0
+                           s_d_jpdf_bin[i]) < d_bin_s_d / 2.0
 
         # Calculate compressive strain rate tensor conditional mean
         ext = np.extract(cond, lambda1_cond_flat)
@@ -205,7 +200,7 @@ def calc_strain_rate_tensor_pdf(lambda1, lambda2, lambda3, c_half, s_d):
 
     print('Finished strain rate tensor JPDF!')
 
-    return [s_d_pdf, s_d_pdf_bin, s_d_mean_bin, lambda1_jpdf, lambda1_jpdf_bin,
+    return [s_d_pdf, s_d_pdf_bin, s_d_jpdf_bin, lambda1_jpdf, lambda1_jpdf_bin,
             lambda1_mean, s_d_jpdf_bin1, lambda2_jpdf, lambda2_jpdf_bin,
             lambda2_mean, s_d_jpdf_bin2, lambda3_jpdf, lambda3_jpdf_bin,
             lambda3_mean, s_d_jpdf_bin3]
