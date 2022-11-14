@@ -26,5 +26,14 @@ else:
 files.write_pdf(input.data_file1, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
                 lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin)
 
+[lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
+ lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
+ lambda3_jpdf_bin_x, lambda3_jpdf_bin_y] = calc_var.calculate_jpdf(
+    c_half, s_d, lambda1, lambda2, lambda3)
+
+print(s_d_pdf)
+print(lambda1_pdf)
+print(lambda1_jpdf)
+
 print("\nFinished!")
 print("\r----\n")
