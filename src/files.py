@@ -165,7 +165,7 @@ def write_disp_speed_pdf(data_file, s_d_pdf, s_d_pdf_bin):
     file = open(file_path, "w+")
 
     # Write headings
-    file.write("s_d_bin s_d_bin\n")
+    file.write("s_d_bin s_d\n")
 
     # Write PDF
     for i in range(0, len(s_d_pdf[:, 0])):
