@@ -37,10 +37,29 @@ def plot_disp_speed_pdf(s_d_pdf, s_d_pdf_bin):
     plt.show()
 
 
-def plot_comp_strain_tensor_jpdf(lambda1_jpdf, lambda1_jpdf_bin,
-                                 lambda1_mean, s_d_jpdf_bin,
-                                 s_d_mean_bin):
-    """Joint probability density function of compressive strain tensor."""
+def plot_strain_rate_pdf(lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
+                         lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin):
+    """Probability density function of strain rate tensor."""
+
+    plt.figure(4)
+    plt.style.use('seaborn')
+    for i in range(0, len(lambda1_pdf[:, 0])):
+        plt.plot(lambda1_pdf_bin, lambda1_pdf[i, :], label=r'$\rm\alpha$')
+    for i in range(0, len(lambda2_pdf[:, 0])):
+        plt.plot(lambda2_pdf_bin, lambda2_pdf[i, :], label=r'$\rm\beta$')
+    for i in range(0, len(lambda3_pdf[:, 0])):
+        plt.plot(lambda3_pdf_bin, lambda3_pdf[i, :], label=r'$\rm\gamma$')
+    plt.ylabel('Probability Density Function, PDF')
+    plt.xlabel(r'Strain Rate Tensor')
+    plt.xlim(-5e5, 5e5)
+    plt.ylim(0, 3e-5)
+    plt.show()
+
+
+def plot_comp_strain_rate_jpdf(lambda1_jpdf, lambda1_jpdf_bin,
+                               lambda1_mean, s_d_jpdf_bin,
+                               s_d_mean_bin):
+    """Joint probability density function of compressive strain rate tensor."""
 
     plt.figure(5)
     plt.contourf(s_d_jpdf_bin, lambda1_jpdf_bin, lambda1_jpdf,
@@ -57,10 +76,11 @@ def plot_comp_strain_tensor_jpdf(lambda1_jpdf, lambda1_jpdf_bin,
     plt.show()
 
 
-def plot_int_strain_tensor_jpdf(lambda2_jpdf, lambda2_jpdf_bin,
-                                lambda2_mean, s_d_jpdf_bin,
-                                s_d_mean_bin):
-    """Joint probability density function of intermediate strain tensor."""
+def plot_int_strain_rate_jpdf(lambda2_jpdf, lambda2_jpdf_bin,
+                              lambda2_mean, s_d_jpdf_bin,
+                              s_d_mean_bin):
+    """Joint probability density function of intermediate strain rate
+    tensor."""
 
     plt.figure(6)
     plt.contourf(s_d_jpdf_bin, lambda2_jpdf_bin, lambda2_jpdf,
@@ -77,10 +97,10 @@ def plot_int_strain_tensor_jpdf(lambda2_jpdf, lambda2_jpdf_bin,
     plt.show()
 
 
-def plot_ext_strain_tensor_jpdf(lambda3_jpdf, lambda3_jpdf_bin,
-                                lambda3_mean, s_d_jpdf_bin,
-                                s_d_mean_bin):
-    """Joint probability density function of extensive strain tensor."""
+def plot_ext_strain_rate_jpdf(lambda3_jpdf, lambda3_jpdf_bin,
+                              lambda3_mean, s_d_jpdf_bin,
+                              s_d_mean_bin):
+    """Joint probability density function of extensive strain rate tensor."""
 
     plt.figure(7)
     plt.contourf(s_d_jpdf_bin, lambda3_jpdf_bin, lambda3_jpdf,
