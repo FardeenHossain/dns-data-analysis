@@ -2,7 +2,7 @@ import input
 import files
 import calc_var
 
-print('\nDirect Numerical Simulation (DNS) Premixed')
+print('\nDNS Data Analysis')
 print('\r----\n')
 
 if input.write_data == 1:
