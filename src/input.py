@@ -5,7 +5,7 @@ flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
 i = 2               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
 flame = flames[i]   # Select flame from array
 
-in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
+in_path = "/hpcwork/itv/Antonio/premixed_jet_flames/%s/" % flame
 
 # Input arguments
 import_data = 1
@@ -40,8 +40,8 @@ iz_end = iz_start + nz_c
 o2_u = 2.237710e-01  # Unburned
 o2_b = 6.677090e-02  # Burned
 
-data_file1 = 'data_1.300E-03.h5'
-data_file2 = 'data2_1.300E-03.h5'
+data_file1 = "data_1.300E-03.h5"
+data_file2 = "data2_1.300E-03.h5"
 
 data_file1_path = os.path.join(in_path, data_file1)
 data_file2_path = os.path.join(in_path, data_file2)
