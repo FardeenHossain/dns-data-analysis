@@ -182,7 +182,7 @@ def write_lambda_pdf(data_file, lambda_pdf, lambda_pdf_bin, count):
     """Write probability density function to text file."""
 
     data_file = data_file.replace(".h5", "")
-    file_path = f"./data/{flame}/{data_file}_lambda{count}d_pdf.txt"
+    file_path = f"./data/{flame}/{data_file}_lambda{count}_pdf.txt"
     file = open(file_path, "w+")
 
     # Write headings
