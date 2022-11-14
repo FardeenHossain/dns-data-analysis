@@ -62,8 +62,22 @@ def write_data_files():
         # Save variables
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
-        write_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
-                  lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin)
+
+        # Save displacement speed PDF
+        write_disp_speed_pdf(data_file, s_d_pdf, s_d_pdf_bin)
+
+        # Save strain rate tensor PDF
+        write_lambda_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, 1)
+        write_lambda_pdf(data_file, lambda2_pdf, lambda2_pdf_bin, 2)
+        write_lambda_pdf(data_file, lambda3_pdf, lambda3_pdf_bin, 3)
+
+        # Save strain rate tensor JPDF
+        write_lambda_jpdf(data_file, lambda1_jpdf, lambda1_jpdf_bin_x,
+                          lambda1_jpdf_bin_y, 1)
+        write_lambda_jpdf(data_file, lambda2_jpdf, lambda2_jpdf_bin_x,
+                          lambda2_jpdf_bin_y, 2)
+        write_lambda_jpdf(data_file, lambda3_jpdf, lambda3_jpdf_bin_x,
+                          lambda3_jpdf_bin_y, 3)
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
@@ -143,42 +157,64 @@ def read_lambda(data_file):
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
-def write_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
-              lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin):
+def write_disp_speed_pdf(data_file, s_d_pdf, s_d_pdf_bin):
     """Write probability density function to text file."""
 
     data_file = data_file.replace(".h5", "")
-    file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
+    file_path = "./data/%s/%s_s_d_pdf.txt" % (flame, data_file)
     file = open(file_path, "w+")
 
-    file.write("lambda1 lambda1_pdf lambda2 lambda2_pdf lambda3 lambda3_pdf\n")
+    # Write headings
+    file.write("s_d_bin s_d_bin\n")
 
-    for i in range(0, len(lambda1_pdf[:, 0])):
-        for j in range(0, len(lambda1_pdf[0, :])):
-            file.write("%d %d %d %d %d %f\n" % (
-                lambda1_pdf_bin[j], lambda1_pdf[i, j], lambda2_pdf_bin[j],
-                lambda2_pdf[i, j], lambda3_pdf_bin[j], lambda3_pdf[i, j],))
+    # Write PDF
+    for i in range(0, len(s_d_pdf[:, 0])):
+        for j in range(0, len(s_d_pdf[0, :])):
+            file.write("%d %d\n" % (s_d_pdf_bin[j], s_d_pdf[i, j]))
+
+    print("Saved displacement speed PDF!")
+
+    file.close()
+
+
+def write_lambda_pdf(data_file, lambda_pdf, lambda_pdf_bin, count):
+    """Write probability density function to text file."""
+
+    data_file = data_file.replace(".h5", "")
+    file_path = "./data/%s/%s_lambda%d_pdf.txt" % (flame, data_file, count)
+    file = open(file_path, "w+")
+
+    # Write headings
+    file.write("lambda_bin lambda_pdf\n")
+
+    # Write PDF
+    for i in range(0, len(lambda_pdf[:, 0])):
+        for j in range(0, len(lambda_pdf[0, :])):
+            file.write("%d %d\n" % (lambda_pdf_bin[j], lambda_pdf[i, j]))
 
     print("Saved strain rate tensor PDF!")
 
     file.close()
 
 
-def write_jpdf(data_file, lambda1_jpdf, lambda2_jpdf, lambda3_jpdf):
-    """Write probability density function to text file."""
+def write_lambda_jpdf(data_file, lambda_jpdf, lambda_pdf_bin_x,
+                      lambda_pdf_bin_y, count):
+    """Write joint probability density function to text file."""
 
     data_file = data_file.replace(".h5", "")
-    file_path = "./data/%s/%s_plot.txt" % (flame, data_file)
+    file_path = "./data/%s/%s_lambda%d_jpdf.txt" % (flame, data_file, count)
     file = open(file_path, "w+")
 
-    file.write("lambda1_jpdf lambda2_jpdf lambda3_jpdf\n")
+    # Write headings
+    file.write("lambda_bin_x lambda_bin_y lambda_jpdf\n")
 
-    for i in range(0, len(lambda1_jpdf[:, 0, 0])):
-        for j in range(0, len(lambda1_jpdf[0, :, 0])):
-            for k in range(0, len(lambda1_jpdf[0, 0, :])):
+    # Write JPDF
+    for i in range(0, len(lambda_jpdf[:, 0, 0])):
+        for j in range(0, len(lambda_jpdf[0, :, 0])):
+            for k in range(0, len(lambda_jpdf[0, 0, :])):
                 file.write("%d %d %d\n" %
-                           (lambda1_jpdf[i, j, k], lambda2_jpdf[i, j, k],
-                            lambda3_jpdf[i, j, k]))
+                           (lambda_pdf_bin_x[j], lambda_pdf_bin_y[k],
+                            lambda_jpdf[i, j, k]))
 
     print("Saved strain rate tensor JPDF!")
 
