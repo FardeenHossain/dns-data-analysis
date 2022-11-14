@@ -37,7 +37,7 @@ def write_data_files():
 
     for i in range(0, len(data_files1)):
         data_file = data_files1[i]
-        print(data_file)
+        print("\n" + data_file)
         print("\r----\n")
 
         data_file1_path = os.path.join(in_path, data_files1[i])
