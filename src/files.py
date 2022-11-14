@@ -38,7 +38,7 @@ def write_data_files():
     for i in range(0, len(data_files1)):
         data_file = data_files1[i]
         print(data_file)
-        print('\r----\n')
+        print("\r----\n")
 
         data_file1_path = os.path.join(in_path, data_files1[i])
         data_file2_path = os.path.join(in_path, data_files2[i])
@@ -127,8 +127,8 @@ def read_disp_speed(data_file):
     f1 = h5py.File(file_path, "r")
 
     # Read variables
-    c_half = np.array(f1['c_half'])
-    s_d = np.array(f1['s_d'])
+    c_half = np.array(f1["c_half"])
+    s_d = np.array(f1["s_d"])
 
     print("Imported progress variable and displacement speed!")
 
@@ -145,12 +145,12 @@ def read_lambda(data_file):
     f1 = h5py.File(file_path, "r")
 
     # Read variables
-    lambda1 = np.array(f1['lambda1'])
-    lambda2 = np.array(f1['lambda2'])
-    lambda3 = np.array(f1['lambda3'])
-    rr1 = np.array(f1['rr1'])
-    rr2 = np.array(f1['rr2'])
-    rr3 = np.array(f1['rr3'])
+    lambda1 = np.array(f1["lambda1"])
+    lambda2 = np.array(f1["lambda2"])
+    lambda3 = np.array(f1["lambda3"])
+    rr1 = np.array(f1["rr1"])
+    rr2 = np.array(f1["rr2"])
+    rr3 = np.array(f1["rr3"])
 
     print("Imported strain rate tensor eigenvalues!")
 

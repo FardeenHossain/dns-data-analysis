@@ -34,6 +34,6 @@ def calc_disp_speed(u_half, v_half, w_half, c_half, dc):
     s_d[:, :, :] = (dc[:, :, :] + conv_u[:, :, :] + conv_v[:, :, :] +
                     conv_w[:, :, :]) / mag_g_c[:, :, :]
 
-    print('Finished displacement speed!')
+    print("Finished displacement speed!")
 
     return s_d

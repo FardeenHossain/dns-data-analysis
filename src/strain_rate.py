@@ -24,7 +24,7 @@ def calc_strain_rate_eig(u_half, v_half, w_half):
     [lambda1, lambda2, lambda3, rr1, rr2, rr3] = utils.vec_val(
         center_u[:, :, :], center_v[:, :, :], center_w[:, :, :], dx)
 
-    print('Finished strain rate tensor eigenvalues!')
+    print("Finished strain rate tensor eigenvalues!")
 
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
@@ -41,7 +41,7 @@ def calc_disp_speed_pdf(c_half, s_d):
     s_d_pdf, s_d_bin_pdf = utils.cond_pdf(s_d, c_half, bin_edges_pdf,
                                           bin_c_cond, d_bin_c_cond)
 
-    print('Finished displacement speed PDF!')
+    print("Finished displacement speed PDF!")
 
     return [s_d_pdf, s_d_bin_pdf]
 
@@ -73,7 +73,7 @@ def calc_strain_rate_pdf(c_half, lambda1, lambda2, lambda3):
                                                   bin_c_cond,
                                                   d_bin_c_cond)
 
-    print('Finished strain rate tensor PDF!')
+    print("Finished strain rate tensor PDF!")
 
     return [lambda1_pdf, lambda1_pdf_bin, lambda2_pdf, lambda2_pdf_bin,
             lambda3_pdf, lambda3_pdf_bin]
@@ -104,7 +104,7 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
         lambda3, s_d, c_half, lambda_bin_edges_pdf, s_d_bin_edges_pdf,
         bin_c_cond, d_bin_c_cond)
 
-    print('Finished strain rate tensor JPDF!')
+    print("Finished strain rate tensor JPDF!")
 
     return [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
             lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
@@ -197,7 +197,7 @@ def calc_strain_rate_tensor_jpdf(lambda1, lambda2, lambda3, c_half, s_d):
         mean = np.mean(ext)
         lambda3_mean[i] = mean
 
-    print('Finished strain rate tensor JPDF!')
+    print("Finished strain rate tensor JPDF!")
 
     return [s_d_pdf, s_d_pdf_bin, s_d_jpdf_bin, lambda1_jpdf, lambda1_jpdf_bin,
             lambda1_mean, s_d_jpdf_bin1, lambda2_jpdf, lambda2_jpdf_bin,

@@ -2,8 +2,8 @@ import input
 import files
 import calc_var
 
-print('\nDNS Data Analysis')
-print('\r----\n')
+print("\nDNS Data Analysis")
+print("\r----\n")
 
 if input.write_data == 1:
     files.write_data_files()
