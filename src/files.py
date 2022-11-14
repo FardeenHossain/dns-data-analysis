@@ -53,6 +53,12 @@ def write_data_files():
          lambda3_pdf_bin] = calc_var.calculate_pdf(c_half, s_d, lambda1,
                                                    lambda2, lambda3)
 
+        # Calculate JPDF variables
+        [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
+         lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
+         lambda3_jpdf_bin_x, lambda3_jpdf_bin_y] = calc_var.calculate_jpdf(
+            c_half, s_d, lambda1, lambda2, lambda3)
+
         # Save variables
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
