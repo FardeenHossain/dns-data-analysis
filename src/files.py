@@ -171,7 +171,7 @@ def write_disp_speed_pdf(data_file, s_d_pdf, s_d_pdf_bin):
     for i in range(0, len(s_d_pdf[:, 0])):
         for j in range(0, len(s_d_pdf[i, :])):
             file.write(f"{s_d_pdf_bin[j]} {s_d_pdf[i, j]}\n")
-        print("\n")
+        file.write("\n")
 
     print("Saved displacement speed PDF!")
 
@@ -192,7 +192,7 @@ def write_lambda_pdf(data_file, lambda_pdf, lambda_pdf_bin, count):
     for i in range(0, len(lambda_pdf[:, 0])):
         for j in range(0, len(lambda_pdf[i, :])):
             file.write(f"{lambda_pdf_bin[j]} {lambda_pdf[i, j]}\n")
-        print("\n")
+        file.write("\n")
 
     print("Saved strain rate tensor PDF!")
 
@@ -216,7 +216,7 @@ def write_lambda_jpdf(data_file, lambda_jpdf, lambda_pdf_bin_x,
             for k in range(0, len(lambda_jpdf[i, j, :])):
                 file.write(f"{lambda_pdf_bin_x[j]} {lambda_pdf_bin_y[k]} "
                            f"{lambda_jpdf[i, j, k]}\n")
-        print("\n")
+        file.write("\n")
 
     print("Saved strain rate tensor JPDF!")
 
