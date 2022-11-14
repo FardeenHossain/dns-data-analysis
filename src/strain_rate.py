@@ -22,8 +22,7 @@ def calc_strain_rate_eig(u_half, v_half, w_half):
 
     # Calculate eigenvalues
     [lambda1, lambda2, lambda3, rr1, rr2, rr3] = utils.vec_val(
-        center_u[:, :, :], center_v[:, :, :],
-        center_w[:, :, :], dx)
+        center_u[:, :, :], center_v[:, :, :], center_w[:, :, :], dx)
 
     print('Finished strain rate tensor eigenvalues!')
 
@@ -34,8 +33,8 @@ def calc_disp_speed_pdf(c_half, s_d):
     """Calculate displacement speed probability density function."""
 
     # Bin spacing
-    bin_edges_pdf = np.linspace(-15, 15, 100)
-    bin_c_cond = np.linspace(0.73, 0.73, 1)
+    bin_edges_pdf = np.linspace(-1e2, 1e2, 100)
+    bin_c_cond = np.linspace(0.1, 0.9, 5)
     d_bin_c_cond = 0.01
 
     # Calculate displacement speed PDF
@@ -52,9 +51,9 @@ def calc_strain_rate_pdf(c_half, lambda1, lambda2, lambda3):
     function."""
 
     # Bin spacing
-    bin_edges_pdf = np.linspace(-5e5, 5e5, 100)
-    bin_c_cond = np.linspace(0.73, 0.73, 1)
-    d_bin_c_cond = 0.2
+    bin_edges_pdf = np.linspace(-1e6, 1e6, 100)
+    bin_c_cond = np.linspace(0.1, 0.9, 5)
+    d_bin_c_cond = 0.01
 
     # Calculate compressive strain rate tensor PDF
     lambda1_pdf, lambda1_pdf_bin = utils.cond_pdf(lambda1, c_half,
@@ -87,7 +86,7 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     # Bin spacing
     lambda_bin_edges_pdf = np.linspace(-1.5e5, 1.5e5, 100)
     s_d_bin_edges_pdf = np.linspace(-15, 15, 100)
-    bin_c_cond = np.linspace(0.73, 0.73, 1)
+    bin_c_cond = np.linspace(0.1, 0.9, 5)
     d_bin_c_cond = 0.2
 
     # Calculate compressive strain rate tensor PDF
