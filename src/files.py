@@ -80,6 +80,26 @@ def write_data_files():
                           lambda3_jpdf_bin_y, 3)
 
 
+def read_data_files():
+    """Writes reduced data files storing progress variable, displacement speed,
+    and strain rate tensor eigenvalues."""
+
+    # List of data files
+    [data_files1, data_files2] = list_data_files()
+
+    for i in range(0, len(data_files1)):
+        data_file = data_files1[i]
+
+        [c_half, s_d] = read_disp_speed(data_file)
+        [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_file)
+
+        c_half_all = [i, c_half]
+
+    print(c_half_all)
+    print(f"{len(c_half_all[:, 0, 0, 0])}, {len(c_half_all[0, :, 0, 0])},"
+          f" {len(c_half_all[0, 0, :, 0])}, {len(c_half_all[0, 0, 0, :])}")
+
+
 def write_disp_speed(data_file, prog_var, disp_speed):
     """Write progress variable and displacement speed into reduced data
     files."""
