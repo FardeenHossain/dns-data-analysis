@@ -28,7 +28,7 @@ def list_data_files():
     return [data_file1_list, data_file2_list]
 
 
-def write_data_files():
+def write_reduced_data():
     """Writes reduced data files storing progress variable, displacement speed,
     and strain rate tensor eigenvalues."""
 
@@ -47,41 +47,13 @@ def write_data_files():
         [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2,
          rr3] = calc_var.calculate_data(data_file1_path, data_file2_path)
 
-        # Calculate PDF variables
-        [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin,
-         lambda2_pdf, lambda2_pdf_bin, lambda3_pdf,
-         lambda3_pdf_bin] = calc_var.calculate_pdf(c_half, s_d, lambda1,
-                                                   lambda2, lambda3)
-
-        # Calculate JPDF variables
-        [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
-         lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
-         lambda3_jpdf_bin_x, lambda3_jpdf_bin_y] = calc_var.calculate_jpdf(
-            c_half, s_d, lambda1, lambda2, lambda3)
-
-        # Save variables
+        # Save data
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
-        # Save displacement speed PDF
-        write_disp_speed_pdf(data_file, s_d_pdf, s_d_pdf_bin)
 
-        # Save strain rate tensor PDF
-        write_lambda_pdf(data_file, lambda1_pdf, lambda1_pdf_bin, 1)
-        write_lambda_pdf(data_file, lambda2_pdf, lambda2_pdf_bin, 2)
-        write_lambda_pdf(data_file, lambda3_pdf, lambda3_pdf_bin, 3)
-
-        # Save strain rate tensor JPDF
-        write_lambda_jpdf(data_file, lambda1_jpdf, lambda1_jpdf_bin_x,
-                          lambda1_jpdf_bin_y, 1)
-        write_lambda_jpdf(data_file, lambda2_jpdf, lambda2_jpdf_bin_x,
-                          lambda2_jpdf_bin_y, 2)
-        write_lambda_jpdf(data_file, lambda3_jpdf, lambda3_jpdf_bin_x,
-                          lambda3_jpdf_bin_y, 3)
-
-
-def read_data_files():
-    """Writes reduced data files storing progress variable, displacement speed,
+def read_reduced_data():
+    """Reads reduced data files storing progress variable, displacement speed,
     and strain rate tensor eigenvalues."""
 
     # List of data files

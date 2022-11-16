@@ -6,7 +6,9 @@ print("\nDNS Data Analysis")
 print("\r----\n")
 
 if input.write_data == 1:
-    files.write_data_files()
+    # TO DO
+    print()
+
 
 if input.import_data == 1:
     # Import reduced data
@@ -19,7 +21,6 @@ else:
     [c_half, s_d, lambda1, lambda2, lambda3] = calc_var.calculate_data(
         input.data_file1_path, input.data_file2_path)
 
-files.read_data_files()
 
 print("\nFinished!")
 print("\r----\n")
