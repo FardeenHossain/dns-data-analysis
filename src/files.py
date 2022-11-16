@@ -95,7 +95,7 @@ def read_data_files():
         [c_half, s_d] = read_disp_speed(data_file)
         [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_file)
 
-        c_half_all[i, :, :, :] = c_half
+        c_half_all = np.concatenate(c_half_all, c_half)
 
     print(c_half_all)
     print(f"{len(c_half_all[:, 0, 0, 0])}, {len(c_half_all[0, :, 0, 0])},"
