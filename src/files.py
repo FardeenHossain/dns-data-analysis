@@ -37,8 +37,7 @@ def write_reduced_data():
 
     for i in range(0, len(data_files1)):
         data_file = data_files1[i]
-        print("\n" + data_file)
-        print("\r----\n")
+        print(f"{data_file}")
 
         data_file1_path = os.path.join(in_path, data_files1[i])
         data_file2_path = os.path.join(in_path, data_files2[i])
@@ -51,7 +50,7 @@ def write_reduced_data():
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
-        print("Finished writing reduced data!")
+        print("Finished writing reduced data!\n")
 
 
 def read_reduced_data():
@@ -104,7 +103,7 @@ def write_plot_data():
     write_lambda_jpdf(lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, 2)
     write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
 
-    print("Finished writing plot data!")
+    print("Finished writing plot data!\n")
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
