@@ -88,22 +88,22 @@ def read_data_files():
     [data_files, data_files2] = list_data_files()
 
     # Initialise arrays
-    [c_half_all, s_d_all] = read_disp_speed(data_files[0])
-    [lambda1_all, lambda2_all, lambda3_all, rr1_all, rr2_all,
-     rr3_all] = read_lambda(data_files[0])
+    [c_half_full, s_d_full] = read_disp_speed(data_files[0])
+    [lambda1_full, lambda2_full, lambda3_full, rr1_full, rr2_full,
+     rr3_full] = read_lambda(data_files[0])
 
     for i in range(1, len(data_files)):
         [c_half, s_d] = read_disp_speed(data_files[i])
         [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_files[i])
 
         # Append to array
-        c_half_all = np.concatenate((c_half_all, c_half))
-        s_d_all = np.concatenate((s_d_all, s_d))
-        lambda1_all = np.concatenate((lambda1_all, lambda1))
-        lambda2_all = np.concatenate((lambda2_all, lambda2))
-        lambda3_all = np.concatenate((lambda3_all, lambda3))
+        c_half_full = np.concatenate((c_half_full, c_half))
+        s_d_full = np.concatenate((s_d_full, s_d))
+        lambda1_full = np.concatenate((lambda1_full, lambda1))
+        lambda2_full = np.concatenate((lambda2_full, lambda2))
+        lambda3_full = np.concatenate((lambda3_full, lambda3))
 
-    return [c_half_all, s_d_all, lambda1_all, lambda2_all, lambda3_all]
+    return [c_half_full, s_d_full, lambda1_full, lambda2_full, lambda3_full]
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
@@ -183,11 +183,10 @@ def read_lambda(data_file):
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
-def write_disp_speed_pdf(data_file, s_d_pdf, s_d_pdf_bin):
+def write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin):
     """Write probability density function to text file."""
 
-    data_file = data_file.replace(".h5", "")
-    file_path = f"./data/{flame}/{data_file}_disp_speed_pdf.txt"
+    file_path = f"./data/plots/{flame}_pdf_disp_speed.txt"
     file = open(file_path, "w+")
 
     # Write headings
@@ -204,11 +203,10 @@ def write_disp_speed_pdf(data_file, s_d_pdf, s_d_pdf_bin):
     file.close()
 
 
-def write_lambda_pdf(data_file, lambda_pdf, lambda_pdf_bin, count):
+def write_lambda_pdf(lambda_pdf, lambda_pdf_bin, subscript):
     """Write probability density function to text file."""
 
-    data_file = data_file.replace(".h5", "")
-    file_path = f"./data/{flame}/{data_file}_lambda{count}_pdf.txt"
+    file_path = f"./data/plots/{flame}_pdf_lambda_{subscript}.txt"
     file = open(file_path, "w+")
 
     # Write headings
@@ -225,12 +223,11 @@ def write_lambda_pdf(data_file, lambda_pdf, lambda_pdf_bin, count):
     file.close()
 
 
-def write_lambda_jpdf(data_file, lambda_jpdf, lambda_pdf_bin_x,
-                      lambda_pdf_bin_y, count):
+def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
+                      subscript):
     """Write joint probability density function to text file."""
 
-    data_file = data_file.replace(".h5", "")
-    file_path = f"./data/{flame}/{data_file}_lambda{count}_jpdf.txt"
+    file_path = f"./data/plots/{flame}_jpdf_lambda_{subscript}.txt"
     file = open(file_path, "w+")
 
     # Write headings
@@ -240,7 +237,7 @@ def write_lambda_jpdf(data_file, lambda_jpdf, lambda_pdf_bin_x,
     for i in range(0, len(lambda_jpdf[:, 0, 0])):
         for j in range(0, len(lambda_jpdf[i, :, 0])):
             for k in range(0, len(lambda_jpdf[i, j, :])):
-                file.write(f"{lambda_pdf_bin_x[j]} {lambda_pdf_bin_y[k]} "
+                file.write(f"{lambda_jpdf_bin_x[j]} {lambda_jpdf_bin_y[k]} "
                            f"{lambda_jpdf[i, j, k]}\n")
         file.write("\n")
 
