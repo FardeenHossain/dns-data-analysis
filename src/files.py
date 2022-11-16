@@ -87,15 +87,16 @@ def read_data_files():
     # List of data files
     [data_files1, data_files2] = list_data_files()
 
-    c_half_all = []
-
     for i in range(0, len(data_files1)):
         data_file = data_files1[i]
 
         [c_half, s_d] = read_disp_speed(data_file)
         [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_file)
 
-        c_half_all = np.concatenate(c_half_all, c_half)
+        if i == 0:
+            c_half_all = c_half
+        else:
+            c_half_all = np.concatenate((c_half_all, c_half))
 
     print(c_half_all)
     print(f"{len(c_half_all[:, 0, 0, 0])}, {len(c_half_all[0, :, 0, 0])},"
