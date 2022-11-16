@@ -78,6 +78,31 @@ def read_reduced_data():
     return [c_half_full, s_d_full, lambda1_full, lambda2_full, lambda3_full]
 
 
+def write_plot_data():
+    # Read reduced data
+    [c_half, s_d, lambda1, lambda2, lambda3] = read_reduced_data()
+
+    # Calculate PDF
+    [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
+     lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin] = calc_var.calculate_pdf(
+        c_half, s_d, lambda1, lambda2, lambda3)
+
+    # Calculate JPDF
+    [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
+     lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf, lambda3_jpdf_bin_x,
+     lambda3_jpdf_bin_y] = calc_var.calculate_jpdf(c_half, s_d, lambda1,
+                                                   lambda2, lambda3)
+
+    # Write to text file
+    write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin)
+    write_lambda_pdf(lambda1_pdf, lambda1_pdf_bin, 1)
+    write_lambda_pdf(lambda2_pdf, lambda2_pdf_bin, 2)
+    write_lambda_pdf(lambda3_pdf, lambda3_pdf_bin, 3)
+    write_lambda_jpdf(lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, 1)
+    write_lambda_jpdf(lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, 2)
+    write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
+
+
 def write_disp_speed(data_file, prog_var, disp_speed):
     """Write progress variable and displacement speed into reduced data
     files."""
