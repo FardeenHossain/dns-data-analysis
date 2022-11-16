@@ -85,22 +85,25 @@ def read_data_files():
     and strain rate tensor eigenvalues."""
 
     # List of data files
-    [data_files1, data_files2] = list_data_files()
+    [data_files, data_files2] = list_data_files()
 
-    for i in range(0, len(data_files1)):
-        data_file = data_files1[i]
+    # Initialise arrays
+    [c_half_all, s_d_all] = read_disp_speed(data_files[0])
+    [lambda1_all, lambda2_all, lambda3_all, rr1_all, rr2_all,
+     rr3_all] = read_lambda(data_files[0])
 
-        [c_half, s_d] = read_disp_speed(data_file)
-        [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_file)
+    for i in range(1, len(data_files)):
+        [c_half, s_d] = read_disp_speed(data_files[i])
+        [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_files[i])
 
-        if i == 0:
-            c_half_all = c_half
-        else:
-            c_half_all = np.concatenate((c_half_all, c_half))
+        # Append to array
+        c_half_all = np.concatenate((c_half_all, c_half))
+        s_d_all = np.concatenate((s_d_all, s_d))
+        lambda1_all = np.concatenate((lambda1_all, lambda1))
+        lambda2_all = np.concatenate((lambda2_all, lambda2))
+        lambda3_all = np.concatenate((lambda3_all, lambda3))
 
-    print(c_half_all)
-    print(f"{len(c_half_all[:, 0, 0, 0])}, {len(c_half_all[0, :, 0, 0])},"
-          f" {len(c_half_all[0, 0, :, 0])}, {len(c_half_all[0, 0, 0, :])}")
+    return [c_half_all, s_d_all, lambda1_all, lambda2_all, lambda3_all]
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
