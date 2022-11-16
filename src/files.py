@@ -104,7 +104,7 @@ def write_plot_data():
     write_lambda_jpdf(lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, 2)
     write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
 
-    print("Finished writing plog data!")
+    print("Finished writing plot data!")
 
 
 def write_disp_speed(data_file, prog_var, disp_speed):
