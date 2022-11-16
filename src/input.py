@@ -2,7 +2,7 @@ import os
 
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
 
-i = 0               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
+i = 2               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
 flame = flames[i]   # Select flame from array
 
 in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
@@ -12,14 +12,14 @@ write_reduced_data = 1
 write_plot_data = 1
 
 # Data size array
-nx_list = [720, 1440, 2880, 5760]
-ny_list = [480, 960, 1922, 3844]
-nz_list = [256, 256, 512, 1024]
+nx_array = [720, 1440, 2880, 5760]
+ny_array = [480, 960, 1922, 3844]
+nz_array = [256, 256, 512, 1024]
 
 # Data size
-nx = nx_list[i]
-ny = ny_list[i]
-nz = nz_list[i]
+nx = nx_array[i]
+ny = ny_array[i]
+nz = nz_array[i]
 
 # Chunk size
 nx_c = 100
@@ -27,9 +27,9 @@ ny_c = 100
 nz_c = 10
 
 # Start point
-ix_start = 0
-iy_start = 0
-iz_start = 0
+ix_start = 800
+iy_start = 850
+iz_start = 1
 
 # End point
 ix_end = ix_start + nx_c
