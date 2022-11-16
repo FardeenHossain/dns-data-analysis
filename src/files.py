@@ -51,6 +51,8 @@ def write_reduced_data():
         write_disp_speed(data_file, c_half, s_d)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
+        print("Finished writing reduced data!")
+
 
 def read_reduced_data():
     """Reads reduced data files storing progress variable, displacement speed,
@@ -102,6 +104,8 @@ def write_plot_data():
     write_lambda_jpdf(lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, 2)
     write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
 
+    print("Finished writing plog data!")
+
 
 def write_disp_speed(data_file, prog_var, disp_speed):
     """Write progress variable and displacement speed into reduced data
@@ -116,8 +120,6 @@ def write_disp_speed(data_file, prog_var, disp_speed):
     # Save dataset
     f1.create_dataset("c_half", (nx_c, ny_c, nz_c), data=prog_var)
     f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=disp_speed)
-
-    print("Saved displacement speed!")
 
 
 def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
@@ -137,8 +139,6 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     f1.create_dataset("rr2", (nx_c, ny_c, nz_c, 3), data=rr2)
     f1.create_dataset("rr3", (nx_c, ny_c, nz_c, 3), data=rr3)
 
-    print("Saved strain rate tensor eigenvalues!")
-
 
 def read_disp_speed(data_file):
     """Read displacement speed from reduced data files."""
@@ -152,8 +152,6 @@ def read_disp_speed(data_file):
     # Read variables
     c_half = np.array(f1["c_half"])
     s_d = np.array(f1["s_d"])
-
-    print("Imported progress variable and displacement speed!")
 
     return [c_half, s_d]
 
@@ -175,8 +173,6 @@ def read_lambda(data_file):
     rr2 = np.array(f1["rr2"])
     rr3 = np.array(f1["rr3"])
 
-    print("Imported strain rate tensor eigenvalues!")
-
     return [lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
@@ -195,8 +191,6 @@ def write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin):
             file.write(f"{s_d_pdf_bin[j]} {s_d_pdf[i, j]}\n")
         file.write("\n")
 
-    print("Saved displacement speed PDF!")
-
     file.close()
 
 
@@ -214,8 +208,6 @@ def write_lambda_pdf(lambda_pdf, lambda_pdf_bin, subscript):
         for j in range(0, len(lambda_pdf[i, :])):
             file.write(f"{lambda_pdf_bin[j]} {lambda_pdf[i, j]}\n")
         file.write("\n")
-
-    print("Saved strain rate tensor PDF!")
 
     file.close()
 
@@ -237,7 +229,5 @@ def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
                 file.write(f"{lambda_jpdf_bin_x[j]} {lambda_jpdf_bin_y[k]} "
                            f"{lambda_jpdf[i, j, k]}\n")
         file.write("\n")
-
-    print("Saved strain rate tensor JPDF!")
 
     file.close()

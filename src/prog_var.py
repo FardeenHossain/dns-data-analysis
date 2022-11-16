@@ -17,8 +17,6 @@ def calc_u(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
 
     u_half = (u_old + u_new) / 2
 
-    print('Finished U!')
-
     return u_half
 
 
@@ -37,8 +35,6 @@ def calc_v(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
 
     v_half = (v_old + v_new) / 2
 
-    print('Finished V!')
-
     return v_half
 
 
@@ -56,8 +52,6 @@ def calc_w(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
                             [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
 
     w_half = (w_old + w_new) / 2
-
-    print('Finished W!')
 
     return w_half
 
