@@ -76,6 +76,4 @@ def calc_prog_var(data_file1, data_file2, ix_start, iy_start, iz_start,
     c_half = (c_old + c_new) / 2
     dc = (c_new - c_old) / dt
 
-    print("Finished progress variable!")
-
     return [c_half, dc]
