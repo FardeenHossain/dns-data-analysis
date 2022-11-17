@@ -27,8 +27,8 @@ ny_c = 100
 nz_c = 10
 
 # Start point
-ix_start = nx_array[i]/2
-iy_start = ny_array[i]/2
+ix_start = int(nx_array[i]/2)
+iy_start = int(ny_array[i]/2)
 iz_start = 1
 
 # End point
