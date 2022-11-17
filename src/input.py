@@ -26,15 +26,10 @@ nx_c = 100
 ny_c = 100
 nz_c = 10
 
-# Start point array
-ix_start_array = [200, 400, 800, 1600]
-iy_start_array = [200, 400, 800, 1600]
-iz_start_array = [1, 1, 1, 1]
-
 # Start point
-ix_start = ix_start_array[i]
-iy_start = iy_start_array[i]
-iz_start = iz_start_array[i]
+ix_start = nx_array[i]/2
+iy_start = ny_array[i]/2
+iz_start = 1
 
 # End point
 ix_end = ix_start + nx_c
