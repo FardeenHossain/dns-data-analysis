@@ -18,7 +18,7 @@ def list_data_files():
 
     for data_file in dir_list:
         if data_file.startswith("data2"):
-            data_file2 = data_file.startswith("data2")
+            data_file2 = data_file
 
             # Check if file exists
             for data_file1 in dir_list:
