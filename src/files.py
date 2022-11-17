@@ -18,12 +18,14 @@ def list_data_files():
 
     for data_file in dir_list:
         if data_file.startswith("data2"):
-            data_file1 = data_file.replace("data2", "data")
-            data_file2 = data_file
+            data_file2 = data_file.startswith("data2")
 
-            # Add to list
-            data_file1_list.append(data_file1)
-            data_file2_list.append(data_file2)
+            # Check if file exists
+            for data_file1 in dir_list:
+                if data_file1 == data_file.replace("data2", "data"):
+                    # Add to list
+                    data_file1_list.append(data_file1)
+                    data_file2_list.append(data_file2)
 
     return [data_file1_list, data_file2_list]
 
