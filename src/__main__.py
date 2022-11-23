@@ -1,11 +1,6 @@
 import input
 import files
 
-import os
-import prog_var
-from input import in_path, ix_start, iy_start, iz_start, ix_end, iy_end, iz_end
-import matplotlib.pyplot as plt
-
 print("\nDNS Data Analysis")
 print("\r----\n")
 
