@@ -17,16 +17,14 @@ ny_array = [480, 960, 1922, 3844]
 nz_array = [256, 256, 512, 1024]
 
 # Chunk size array
-# nx_c_array = [20, 20, 20, 20]
-# ny_c_array = [100, 100, 100, 100]
+nx_c_array = [20, 20, 20, 20]
+ny_c_array = [100, 200, 300, 600]
 # nz_c_array = [255, 255, 511, 1023]
-nx_c_array = [719, 1339, 2879, 5759]
-ny_c_array = [479, 959, 1921, 3843]
-nz_c_array = [255, 255, 511, 1023]
+nz_c_array = [1, 1, 1, 1]
 
 # Start point array
 ix_start_array = [200, 400, 800, 1000]
-iy_start_array = [200, 400, 850, 1750]
+iy_start_array = [175, 350, 700, 1600]
 iz_start_array = [0, 0, 0, 0]
 
 # Data size
@@ -40,12 +38,9 @@ ny_c = ny_c_array[i]
 nz_c = nz_c_array[i]
 
 # Start point
-# ix_start = ix_start_array[i]
-# iy_start = iy_start_array[i]
-# iz_start = iz_start_array[i]
-ix_start = 0
-iy_start = 0
-iz_start = 0
+ix_start = ix_start_array[i]
+iy_start = iy_start_array[i]
+iz_start = iz_start_array[i]
 
 # End point
 ix_end = ix_start + nx_c
