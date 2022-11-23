@@ -18,13 +18,13 @@ nz_array = [256, 256, 512, 1024]
 
 # Chunk size array
 nx_c_array = [20, 20, 20, 20]
-ny_c_array = [100, 200, 300, 600]
+ny_c_array = [100, 100, 300, 600]
 # nz_c_array = [255, 255, 511, 1023]
 nz_c_array = [1, 1, 1, 1]
 
 # Start point array
 ix_start_array = [200, 400, 800, 1000]
-iy_start_array = [175, 350, 700, 1600]
+iy_start_array = [185, 425, 800, 1600]
 iz_start_array = [0, 0, 0, 0]
 
 # Data size
