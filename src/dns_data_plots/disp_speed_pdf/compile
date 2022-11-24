@@ -1,0 +1,2 @@
+gnuplot plot.gnu
+pdflatex disp_speed_pdf.tex
