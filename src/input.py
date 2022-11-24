@@ -18,9 +18,8 @@ nz_array = [256, 256, 512, 1024]
 
 # Chunk size array
 nx_c_array = [20, 20, 20, 20]
-ny_c_array = [100, 200, 300, 600]
-# nz_c_array = [255, 255, 511, 1023]
-nz_c_array = [1, 1, 1, 1]
+ny_c_array = [75, 150, 300, 600]
+nz_c_array = [255, 255, 511, 1023]
 
 # Start point array
 ix_start_array = [200, 400, 800, 1000]
@@ -50,15 +49,6 @@ iz_end = iz_start + nz_c
 # Oxygen values
 o2_u = 2.237710e-01  # Unburned
 o2_b = 6.677090e-02  # Burned
-
-data_file1 = "data_1.300E-03.h5"
-data_file2 = "data2_1.300E-03.h5"
-
-data_file1_path = os.path.join(in_path, data_file1)
-data_file2_path = os.path.join(in_path, data_file2)
-
-# info = hdf5read(['../data_', listfile{i}], 'data', 'time_variables')
-# dt = info(1)
 
 # Constants
 dt = 1.15577e-07
