@@ -1,5 +1,5 @@
 import numpy as np
-from . import mygrad
+import mygrad
 
 
 def vec_val(u, v, w, dx):
