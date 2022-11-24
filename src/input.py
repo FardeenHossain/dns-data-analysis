@@ -8,8 +8,8 @@ flame = flames[i]   # Select flame from array
 in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
 
 # Input arguments
-write_reduced_data = 1
-write_plot_data = 1
+write_reduced_data = 0
+write_plot_data = 0
 
 # Data size array
 nx_array = [720, 1440, 2880, 5760]
@@ -18,12 +18,13 @@ nz_array = [256, 256, 512, 1024]
 
 # Chunk size array
 nx_c_array = [20, 20, 20, 20]
-ny_c_array = [100, 100, 300, 600]
-nz_c_array = [255, 255, 511, 1023]
+ny_c_array = [100, 200, 300, 600]
+# nz_c_array = [255, 255, 511, 1023]
+nz_c_array = [1, 1, 1, 1]
 
 # Start point array
 ix_start_array = [200, 400, 800, 1000]
-iy_start_array = [185, 425, 800, 1600]
+iy_start_array = [200, 400, 800, 1600]
 iz_start_array = [0, 0, 0, 0]
 
 # Data size

@@ -5,7 +5,7 @@ def plot_prog_var(c_half):
     """Contour plot of progress variable."""
 
     plt.figure(1)
-    plt.contourf(c_half[:, :, 1], cmap='plasma')
+    plt.contourf(c_half[:, :, 0], cmap='plasma')
     plt.xlabel('Y-Coordinate')
     plt.ylabel('X-Coordinate')
     plt.colorbar(label='Progress Variable, C (-)')
@@ -16,7 +16,7 @@ def plot_disp_speed(s_d):
     """Contour plot of displacement speed."""
 
     plt.figure(2)
-    plt.contourf(s_d[:, :, 1], cmap='Spectral')
+    plt.contourf(s_d[:, :, 0], cmap='Spectral')
     plt.xlabel('Y-Coordinate')
     plt.ylabel('X-Coordinate')
     plt.colorbar(label=r'Displacement Speed, $\rmS_{d}$')
