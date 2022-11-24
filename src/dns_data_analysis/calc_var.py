@@ -1,6 +1,7 @@
 import prog_var
 import disp_speed
 import strain_rate
+import pdf
 
 from input import ix_start, iy_start, iz_start, ix_end, iy_end, iz_end
 
@@ -40,13 +41,12 @@ def calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
     probability density function."""
 
     # Calculate displacement speed PDF
-    [s_d_pdf, s_d_pdf_bin] = strain_rate.calc_disp_speed_pdf(c_half, s_d)
+    [s_d_pdf, s_d_pdf_bin] = pdf.calc_disp_speed_pdf(c_half, s_d)
 
     # Calculate lambda PDF
     [lambda1_pdf, lambda1_pdf_bin, lambda2_pdf, lambda2_pdf_bin, lambda3_pdf,
-     lambda3_pdf_bin] = strain_rate.calc_strain_rate_pdf(c_half, lambda1,
-                                                         lambda2,
-                                                         lambda3)
+     lambda3_pdf_bin] = pdf.calc_strain_rate_pdf(c_half, lambda1, lambda2,
+                                                 lambda3)
 
     return [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
             lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin]
@@ -59,7 +59,7 @@ def calculate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     # Calculate lambda JPDF
     [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
      lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf, lambda3_jpdf_bin_x,
-     lambda3_jpdf_bin_y] = strain_rate.calc_strain_rate_jpdf(
+     lambda3_jpdf_bin_y] = pdf.calc_strain_rate_jpdf(
         c_half, s_d, lambda1, lambda2, lambda3)
 
     return [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,

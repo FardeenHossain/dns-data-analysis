@@ -4,6 +4,7 @@ i = 0               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
 flame = flames[i]   # Select flame from array
 
 in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
+data_path = f"/hpcwork/itv/Antonio/Fardeen/python/data/"
 
 # Input arguments
 write_reduced_data = 1
