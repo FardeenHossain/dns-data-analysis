@@ -1,5 +1,3 @@
-import os
-
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
 
 i = 0               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
@@ -8,8 +6,8 @@ flame = flames[i]   # Select flame from array
 in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
 
 # Input arguments
-write_reduced_data = 0
-write_plot_data = 0
+write_reduced_data = 1
+write_plot_data = 1
 
 # Data size array
 nx_array = [720, 1440, 2880, 5760]
