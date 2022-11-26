@@ -28,7 +28,7 @@ set key right top
 #set key inside right top Left reverse
 #set key at 9.7,.009 Left reverse
 
-set output 'disp_speed_pdf.tex'
+set output 'example.tex'
 
 set lmargin at screen 0.25
 set rmargin at screen 0.93
