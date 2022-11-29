@@ -1,34 +1,9 @@
-set terminal epslatex size 7,4.5 dashed standalone color colortext 20
+set terminal epslatex size 5,3.5 standalone color colortext 10
+set output 'disp_speed_pdf.tex'
 
-load '../palette.gnu'
-load '../defs.gnu'
+file = '../../../data/plots/R3K1_pdf_disp_speed.txt'
 
-f1= '../../data/plots/R3K1_pdf_disp_speed.pdf'
+set xlabel '$Displacement Speed, S_d$'
+set ylabel '$Probability Density Function, PDF$'
 
-set key samplen 1.5
-set autoscale  y
-
-set ytics nomirror
-set ytics
-
-set tics in
-
-set xlabel  '$Displacement Speed, S_d$'
-set ylabel  '$Probability Density Function, PDF$'
-
-set xrange[*:*]
-set yrange[*:*]
-
-set key right top
-
-#set key inside right top Left reverse
-#set key at 9.7,.009 Left reverse
-
-set output 'plot.tex'
-
-set lmargin at screen 0.25
-set rmargin at screen 0.93
-set bmargin at screen 0.18
-set tmargin at screen 0.95
-
-p f1 u 1:2 ev :::0::0 t 'data' w l
+plot file using 1:2 every :::0::0 title 'C = 0.1' with lines
