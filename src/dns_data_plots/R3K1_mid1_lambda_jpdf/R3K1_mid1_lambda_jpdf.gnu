@@ -1,4 +1,4 @@
-set terminal epslatex size 5,3.5 standalone color colortext 10
+set terminal epslatex size 15,3.5 standalone color colortext 10
 set output 'R3K1_mid1_lambda_jpdf.tex'
 
 f1 = '../../../data/plots/R3K1_jpdf_lambda_1.txt'
