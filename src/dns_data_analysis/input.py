@@ -1,9 +1,13 @@
+i = 0   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
+j = 1   # 0 = bot, 1 = mid_low, 2 = mid_high, 3 = top
+
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
+positions = ['bot', 'mid', 'top']
 
-i = 0               # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
-flame = flames[i]   # Select flame from array
+flame = flames[i]
+position = positions[j]
 
-in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
+in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/{position}"
 data_path = f"/hpcwork/itv/Antonio/Fardeen/python/data/"
 
 # Input arguments
@@ -21,9 +25,18 @@ ny_c_array = [75, 150, 300, 600]
 nz_c_array = [255, 255, 511, 1023]
 
 # Start point array
-ix_start_array = [200, 400, 800, 1000]
 iy_start_array = [200, 400, 800, 1600]
 iz_start_array = [0, 0, 0, 0]
+
+# Position start point
+if position == 'bot':
+    ix_start_array = [20, 40, 80, 100]
+if position == 'mid':
+    ix_start_array = [200, 400, 800, 1000]
+if position == 'top':
+    ix_start_array = [450, 900, 1350, 1800]
+else:
+    ix_start_array = [200, 400, 800, 1000]
 
 # Data size
 nx = nx_array[i]
