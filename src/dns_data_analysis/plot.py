@@ -16,7 +16,7 @@ def plot_flame():
 def plot_prog_var(c_half):
     """Contour plot of progress variable."""
 
-    plt.contourf(c_half[:, :, 0], levels=np.linspace(0, 1, 21), cmap='plasma',
+    plt.contourf(c_half[:, :, 0], levels=np.linspace(0, 1, 11), cmap='jet_r',
                  extend='both')
     plt.xlabel('y')
     plt.ylabel('x')
