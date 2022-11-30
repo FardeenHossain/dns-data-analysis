@@ -7,12 +7,14 @@ positions = ['bot', 'mid', 'top']
 flame = flames[i]
 position = positions[j]
 
-in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/{position}"
+in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/{position}/"
 data_path = f"/hpcwork/itv/Antonio/Fardeen/python/data/"
 
 # Input arguments
 write_reduced_data = 1
 write_plot_data = 1
+plot_flame = 1
+full_data_range = 0
 
 # Data size array
 nx_array = [720, 1440, 2880, 5760]
@@ -37,6 +39,15 @@ if position == 'top':
     ix_start_array = [450, 900, 1350, 1800]
 else:
     ix_start_array = [200, 400, 800, 1000]
+
+if full_data_range:
+    ix_start_array = [0, 0, 0, 0]
+    iy_start_array = [0, 0, 0, 0]
+    iz_start_array = [0, 0, 0, 0]
+
+    nx_c_array = [719, 1439, 2879, 5759]
+    ny_c_array = [479, 959, 1921, 3843]
+    nz_c_array = [1, 1, 1, 1]
 
 # Data size
 nx = nx_array[i]
