@@ -1,5 +1,5 @@
 i = 0   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
-j = 1   # 0 = bot, 1 = mid_low, 2 = mid_high, 3 = top
+j = 1   # 0 = bot, 1 = mid, 2 = top
 
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
 positions = ['bot', 'mid', 'top']
