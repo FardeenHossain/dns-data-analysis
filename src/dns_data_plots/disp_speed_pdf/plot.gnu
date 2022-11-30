@@ -9,8 +9,8 @@ set ylabel '$PDF$'
 set xrange[-30:30]
 set yrange[*:*]
 
-plot f1 using 1:2 every :::0::0 title '$C = 0.1$' with lines, \
-     f1 using 1:2 every :::1::1 title '$C = 0.3$' with lines, \
-     f1 using 1:2 every :::2::2 title '$C = 0.5$' with lines, \
-     f1 using 1:2 every :::3::3 title '$C = 0.7$' with lines, \
-     f1 using 1:2 every :::4::4 title '$C = 0.9$' with lines
+plot f1 using 1:2 every :::0::0 title 'C = 0.1' with lines, \
+     f1 using 1:2 every :::1::1 title 'C = 0.3' with lines, \
+     f1 using 1:2 every :::2::2 title 'C = 0.5' with lines, \
+     f1 using 1:2 every :::3::3 title 'C = 0.7' with lines, \
+     f1 using 1:2 every :::4::4 title 'C = 0.9' with lines
