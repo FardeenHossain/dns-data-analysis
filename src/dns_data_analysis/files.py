@@ -113,7 +113,7 @@ def write_disp_speed(data_file, prog_var, disp_speed):
     files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{flame}/{data_file}_disp_speed.hdf5"
+    data_file_path = f"{data_file}_disp_speed.hdf5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file
@@ -128,7 +128,7 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     """Write strain rate tensor eigenvalues into reduced data files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{flame}/{data_file}_lambda.hdf5"
+    data_file_path = f"{data_file}_lambda.hdf5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file
@@ -147,7 +147,7 @@ def read_disp_speed(data_file):
     """Read displacement speed from reduced data files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{flame}/{data_file}_disp_speed.hdf5"
+    data_file_path = f"{data_file}_disp_speed.hdf5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file
@@ -164,7 +164,7 @@ def read_lambda(data_file):
     """Read strain rate tensor eigenvalues from reduced data files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{flame}/{data_file}_lambda.hdf5"
+    data_file_path = f"{data_file}_lambda.hdf5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file

@@ -7,8 +7,8 @@ positions = ['bot', 'mid', 'top']
 flame = flames[i]
 position = positions[j]
 
-in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/{position}/"
-data_path = f"/hpcwork/itv/Antonio/Fardeen/python/data/"
+in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
+data_path = f"/hpcwork/itv/Antonio/Fardeen/python/data/{flame}/{position}/"
 
 # Input arguments
 write_reduced_data = 1
