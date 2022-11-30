@@ -11,6 +11,6 @@ set ylabel '$PDF$'
 set xrange[*:*]
 set yrange[*:*]
 
-plot f1 using 1:2 every :::0::0 title '\alpha' with lines, \
-     f2 using 1:2 every :::0::0 title '\beta' with lines, \
-     f2 using 1:2 every :::0::0 title '\gamma' with lines
+plot f1 using 1:2 every :::0::0 title '$\alpha$' with lines, \
+     f2 using 1:2 every :::0::0 title '$\beta$' with lines, \
+     f2 using 1:2 every :::0::0 title '$\gamma$' with lines
