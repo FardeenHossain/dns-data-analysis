@@ -7,12 +7,16 @@ f3 = '../../../data/plots/R3K1_jpdf_lambda_3.txt'
 
 set multiplot layout 1,3
 
-set xlabel '$\gamma$'
 set ylabel '$S_d$'
 
 set xrange[*:*]
-set yrange[-14.5:14.5]
+set yrange[-15:15]
 
+set xlabel '$\gamma$'
 plot f1 using 1:2:3 every :::3::3 title '$\gamma$' with image
+
+set xlabel '$\beta$'
 plot f2 using 1:2:3 every :::3::3 title '$\beta$' with image
+
+set xlabel '$\alpha$'
 plot f3 using 1:2:3 every :::3::3 title '$\alpha$' with image
