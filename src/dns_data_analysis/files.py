@@ -203,7 +203,7 @@ def write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin):
 def write_lambda_pdf(lambda_pdf, lambda_pdf_bin, subscript):
     """Write probability density function to text file."""
 
-    data_file_path = f"plots/{flame}_pdf_lambda_{subscript}.txt"
+    data_file_path = f"plots/{flame}_pdf_lambda{subscript}.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
@@ -223,7 +223,7 @@ def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
                       subscript):
     """Write joint probability density function to text file."""
 
-    data_file_path = f"plots/{flame}_jpdf_lambda_{subscript}.txt"
+    data_file_path = f"plots/{flame}_jpdf_lambda{subscript}.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
@@ -236,6 +236,25 @@ def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
             for k in range(0, len(lambda_jpdf[i, j, :])):
                 file.write(f"{lambda_jpdf_bin_x[j]} {lambda_jpdf_bin_y[k]} "
                            f"{lambda_jpdf[i, j, k]}\n")
+        file.write("\n")
+
+    file.close()
+
+
+def write_cond_mean(s_d_bin, lambda_cond_mean, subscript):
+    """Write conditional mean to text file."""
+
+    data_file_path = f"plots/{flame}_cond_mean_lambda{subscript}.txt"
+    file_path = os.path.join(data_path, data_file_path)
+    file = open(file_path, "w+")
+
+    # Write headings
+    file.write("s_d_bin lambda_cond_mean\n")
+
+    # Write JPDF
+    for i in range(0, len(lambda_cond_mean[:, 0])):
+        for j in range(0, len(lambda_cond_mean[i, :])):
+            file.write(f"{s_d_bin[j]} {lambda_cond_mean[i, j]}\n")
         file.write("\n")
 
     file.close()
