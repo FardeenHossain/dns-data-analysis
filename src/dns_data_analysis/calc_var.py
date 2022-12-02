@@ -6,7 +6,7 @@ import pdf
 from input import ix_start, iy_start, iz_start, ix_end, iy_end, iz_end
 
 
-def calculate_data(data_file1_path, data_file2_path):
+def calc_data(data_file1_path, data_file2_path):
     """ Calculate displacement speed and strain rate tensor eigenvalues."""
 
     # Calculate U
@@ -36,7 +36,7 @@ def calculate_data(data_file1_path, data_file2_path):
     return [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3]
 
 
-def calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
+def calc_pdf(c_half, s_d, lambda1, lambda2, lambda3):
     """Calculate displacement speed and strain rate tensor eigenvalues
     probability density function."""
 
@@ -52,7 +52,7 @@ def calculate_pdf(c_half, s_d, lambda1, lambda2, lambda3):
             lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin]
 
 
-def calculate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
+def calc_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     """Calculate strain rate tensor eigenvalues joint probability density
      function."""
 

@@ -46,7 +46,7 @@ def write_reduced_data():
 
         # Calculate variables
         [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2,
-         rr3] = calc_var.calculate_data(data_file1_path, data_file2_path)
+         rr3] = calc_var.calc_data(data_file1_path, data_file2_path)
 
         # Save data
         write_disp_speed(data_file, c_half, s_d)
@@ -87,14 +87,14 @@ def write_plot_data():
 
     # Calculate PDF
     [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
-     lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin] = calc_var.calculate_pdf(
+     lambda2_pdf_bin, lambda3_pdf, lambda3_pdf_bin] = calc_var.calc_pdf(
         c_half, s_d, lambda1, lambda2, lambda3)
 
     # Calculate JPDF
     [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
      lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf, lambda3_jpdf_bin_x,
-     lambda3_jpdf_bin_y] = calc_var.calculate_jpdf(c_half, s_d, lambda1,
-                                                   lambda2, lambda3)
+     lambda3_jpdf_bin_y] = calc_var.calc_jpdf(c_half, s_d, lambda1,
+                                              lambda2, lambda3)
 
     # Write to text file
     write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin)
