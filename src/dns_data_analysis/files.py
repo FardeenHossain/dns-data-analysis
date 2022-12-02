@@ -96,6 +96,11 @@ def write_plot_data():
      lambda3_jpdf_bin_y] = calc_var.calc_jpdf(c_half, s_d, lambda1,
                                               lambda2, lambda3)
 
+    # Calculate conditional mean
+    [bin_s_d, lambda1_cond_mean, lambda2_cond_mean,
+     lambda3_cond_mean] = calc_var.calc_cond_mean(c_half, s_d, lambda1,
+                                                  lambda2, lambda3)
+
     # Write to text file
     write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin)
     write_lambda_pdf(lambda1_pdf, lambda1_pdf_bin, 1)
@@ -104,6 +109,9 @@ def write_plot_data():
     write_lambda_jpdf(lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, 1)
     write_lambda_jpdf(lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, 2)
     write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
+    write_cond_mean(bin_s_d, lambda1_cond_mean, 1)
+    write_cond_mean(bin_s_d, lambda2_cond_mean, 2)
+    write_cond_mean(bin_s_d, lambda3_cond_mean, 3)
 
     print("Finished writing plot data!\n")
 

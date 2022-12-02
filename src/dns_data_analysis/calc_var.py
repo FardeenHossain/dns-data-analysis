@@ -65,3 +65,14 @@ def calc_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     return [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
             lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
             lambda3_jpdf_bin_x, lambda3_jpdf_bin_y]
+
+
+def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
+    """Calculate conditional mean."""
+
+    # Calculate conditional mean
+    [bin_s_d, lambda1_cond_mean, lambda2_cond_mean,
+     lambda3_cond_mean] = pdf.calc_cond_mean(c_half, s_d, lambda1, lambda2,
+                                             lambda3)
+
+    return [bin_s_d, lambda1_cond_mean, lambda2_cond_mean, lambda3_cond_mean]
