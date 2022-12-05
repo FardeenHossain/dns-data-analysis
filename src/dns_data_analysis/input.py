@@ -14,7 +14,7 @@ flame = flames[i]
 position = positions[j]
 
 in_path = f"/hpcwork/itv/Antonio/premixed_jet_flames/{flame}/"
-data_path = f"/hpcwork/itv/Antonio/Fardeen/python/data/{flame}/{position}/"
+data_path = f"/hpcwork/itv/Antonio/Fardeen/python/data/"
 
 # Data size array
 nx_array = [720, 1440, 2880, 5760]

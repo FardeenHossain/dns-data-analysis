@@ -3,7 +3,7 @@ import h5py
 import os
 import calc_var
 
-from input import nx_c, ny_c, nz_c, in_path, data_path, flame
+from input import nx_c, ny_c, nz_c, in_path, data_path, flame, position
 
 
 def list_data_files():
@@ -121,7 +121,7 @@ def write_disp_speed(data_file, prog_var, disp_speed):
     files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{data_file}_disp_speed.hdf5"
+    data_file_path = f"{flame}/{position}/{data_file}_disp_speed.h5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file
@@ -136,7 +136,7 @@ def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
     """Write strain rate tensor eigenvalues into reduced data files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{data_file}_lambda.hdf5"
+    data_file_path = f"{flame}/{position}/{data_file}_lambda.h5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file
@@ -155,7 +155,7 @@ def read_disp_speed(data_file):
     """Read displacement speed from reduced data files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{data_file}_disp_speed.hdf5"
+    data_file_path = f"{flame}/{position}/{data_file}_disp_speed.h5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file
@@ -172,7 +172,7 @@ def read_lambda(data_file):
     """Read strain rate tensor eigenvalues from reduced data files."""
 
     data_file = data_file.replace(".h5", "")
-    data_file_path = f"{data_file}_lambda.hdf5"
+    data_file_path = f"{flame}/{position}/{data_file}_lambda.h5"
     file_path = os.path.join(data_path, data_file_path)
 
     # Open file
@@ -192,7 +192,7 @@ def read_lambda(data_file):
 def write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin):
     """Write probability density function to text file."""
 
-    data_file_path = f"plots/{flame}_pdf_disp_speed.txt"
+    data_file_path = f"plots/{flame}_{position}_pdf_disp_speed.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
@@ -211,7 +211,7 @@ def write_disp_speed_pdf(s_d_pdf, s_d_pdf_bin):
 def write_lambda_pdf(lambda_pdf, lambda_pdf_bin, subscript):
     """Write probability density function to text file."""
 
-    data_file_path = f"plots/{flame}_pdf_lambda{subscript}.txt"
+    data_file_path = f"plots/{flame}_{position}_pdf_lambda{subscript}.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
@@ -231,7 +231,7 @@ def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
                       subscript):
     """Write joint probability density function to text file."""
 
-    data_file_path = f"plots/{flame}_jpdf_lambda{subscript}.txt"
+    data_file_path = f"plots/{flame}_{position}_jpdf_lambda{subscript}.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
@@ -252,7 +252,7 @@ def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
 def write_cond_mean(s_d_bin, lambda_cond_mean, subscript):
     """Write conditional mean to text file."""
 
-    data_file_path = f"plots/{flame}_cond_mean_lambda{subscript}.txt"
+    data_file_path = f"plots/{flame}_{position}_cond_mean_lambda{subscript}.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
