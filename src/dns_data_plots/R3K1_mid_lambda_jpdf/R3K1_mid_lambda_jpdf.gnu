@@ -11,17 +11,17 @@ set multiplot layout 1,3
 
 set ylabel '$S_d$'
 
-set xrange[-15e3:15e3]
+set xrange[-1.5e5:1.5e5]
 set yrange[-15:15]
 
 set xlabel '$\gamma$'
-plot f1 using 1:2:3 every :::3::3 with image, \
+plot f1 using 1:2:3 every :::3::3 title '' with image, \
      f2 using 2:1 every :::3::3 title '$mean \gamma$' with lines lc rgb 'white'
 
 set xlabel '$\beta$'
-plot f3 using 1:2:3 every :::3::3 with image, \
+plot f3 using 1:2:3 every :::3::3 title '' with image, \
      f4 using 2:1 every :::3::3 title '$mean \beta$' with lines lc rgb 'white'
 
 set xlabel '$\alpha$'
-plot f5 using 1:2:3 every :::3::3 with image, \
+plot f5 using 1:2:3 every :::3::3 title '' with image, \
      f6 using 2:1 every :::3::3 title '$mean \alpha$' with lines lc rgb 'white'
