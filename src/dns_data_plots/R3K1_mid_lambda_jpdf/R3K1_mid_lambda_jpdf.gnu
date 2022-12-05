@@ -16,12 +16,12 @@ set yrange[-15:15]
 
 set xlabel '$\gamma$'
 plot f1 using 1:2:3 every :::3::3 with image, \
-plot f2 using 1:2 every :::3::3 '$mean \gamma$' with line
+     f2 using 1:2 every :::3::3 '$mean \gamma$' with line
 
 set xlabel '$\beta$'
 plot f3 using 1:2:3 every :::3::3 with image, \
-plot f4 using 1:2 every :::3::3 '$mean \beta$' with line
+     f4 using 1:2 every :::3::3 '$mean \beta$' with line
 
 set xlabel '$\alpha$'
 plot f5 using 1:2:3 every :::3::3 with image, \
-plot f6 using 1:2 every :::3::3 '$mean \alpha$' with line
+     f6 using 1:2 every :::3::3 '$mean \alpha$' with line
