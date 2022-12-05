@@ -1,9 +1,9 @@
 set terminal epslatex size 5,3.5 standalone color colortext 10
 set output 'lambda_pdf.tex'
 
-f1 = '../../../data/plots/R3K1_mid_pdf_lambda_1.txt'
-f2 = '../../../data/plots/R3K1_mid_pdf_lambda_2.txt'
-f3 = '../../../data/plots/R3K1_mid_pdf_lambda_3.txt'
+f1 = '../../../data/plots/R3K1_mid_pdf_lambda1.txt'
+f2 = '../../../data/plots/R3K1_mid_pdf_lambda2.txt'
+f3 = '../../../data/plots/R3K1_mid_pdf_lambda3.txt'
 
 set xlabel '$\gamma, \beta, \alpha$'
 set ylabel '$PDF$'
