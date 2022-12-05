@@ -136,6 +136,6 @@ def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
 
         lambda1_cond_mean[j, :] = lambda1_mean
         lambda2_cond_mean[j, :] = lambda2_mean
-        lambda2_cond_mean[j, :] = lambda3_mean
+        lambda3_cond_mean[j, :] = lambda3_mean
 
     return [bin_s_d, lambda1_cond_mean, lambda2_cond_mean, lambda3_cond_mean]
