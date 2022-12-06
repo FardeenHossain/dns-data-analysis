@@ -11,8 +11,8 @@ set multiplot layout 1,3
 
 set ylabel '$S_d$'
 
-set xrange[-1.5e5:1.5e5]
-set yrange[-15:15]
+set xrange[-1.4e5:1.4e5]
+set yrange[-14:14]
 
 set xlabel '$\gamma$'
 plot f1 using 1:2:3 every :::3::3 title '' with image, \
