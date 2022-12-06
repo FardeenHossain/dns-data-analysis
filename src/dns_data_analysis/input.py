@@ -37,8 +37,6 @@ if position == 'mid':
     ix_start_array = [200, 400, 800, 1000]
 if position == 'top':
     ix_start_array = [450, 900, 1350, 1800]
-else:
-    ix_start_array = [200, 400, 800, 1000]
 
 if full_data_range:
     ix_start_array = [0, 0, 0, 0]
