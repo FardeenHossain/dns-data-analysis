@@ -72,5 +72,4 @@ o2_u = 2.237710e-01  # Unburned
 o2_b = 6.677090e-02  # Burned
 
 # Constants
-dt = 1.15577e-07
 dx = 20e-6

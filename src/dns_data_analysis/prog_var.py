@@ -1,5 +1,6 @@
+import h5py
 import myh5
-from input import nx, ny, nz, o2_u, o2_b, dt
+from input import nx, ny, nz, o2_u, o2_b
 
 
 def calc_u(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
@@ -68,6 +69,10 @@ def calc_prog_var(data_file1, data_file2, ix_start, iy_start, iz_start,
     o2_new = myh5.read_var(data_file2, "/data", "/data/O2",
                            [[ix_start, iy_start, iz_start],
                             [ix_end, iy_end, iz_end]], nx, ny, nz)
+
+    # Read dt
+    f = h5py.File(data_file2, 'r')
+    dt = f['/data'].attrs['time_variables'][0]
 
     # Compute C from O2
     c_new = 1 - ((o2_new - o2_b) / (o2_u - o2_b))
