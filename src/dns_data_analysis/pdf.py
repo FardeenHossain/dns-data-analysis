@@ -7,8 +7,8 @@ def calc_disp_speed_pdf(c_half, s_d):
 
     # Bin spacing
     bin_edges_pdf = np.linspace(-1e2, 1e2, 100)
-    bin_c_cond = np.linspace(0.1, 0.9, 5)
-    d_bin_c_cond = 0.01
+    bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
+    d_bin_c_cond = 0.1
 
     # Calculate displacement speed PDF
     s_d_pdf, s_d_bin_pdf = mystat.cond_pdf(s_d, c_half, bin_edges_pdf,
@@ -25,8 +25,8 @@ def calc_strain_rate_pdf(c_half, lambda1, lambda2, lambda3):
 
     # Bin spacing
     bin_edges_pdf = np.linspace(-1e6, 1e6, 100)
-    bin_c_cond = np.linspace(0.1, 0.9, 5)
-    d_bin_c_cond = 0.01
+    bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
+    d_bin_c_cond = 0.1
 
     # Calculate compressive strain rate tensor PDF
     lambda1_pdf, lambda1_pdf_bin = mystat.cond_pdf(lambda1, c_half,
@@ -59,8 +59,8 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     # Bin spacing
     lambda_bin_edges_pdf = np.linspace(-1.5e5, 1.5e5, 100)
     s_d_bin_edges_pdf = np.linspace(-15, 15, 100)
-    bin_c_cond = np.linspace(0.1, 0.9, 5)
-    d_bin_c_cond = 0.2
+    bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
+    d_bin_c_cond = 0.1
 
     # Calculate compressive strain rate tensor PDF
     [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y] = mystat.cond_pdf2d(
@@ -88,11 +88,11 @@ def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
     """Calculate conditional mean of displacement speed and """
 
     # Bin spacing
-    bin_c_cond = np.linspace(0.1, 0.9, 5)
-    d_bin_c_cond = 0.01
+    bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
+    d_bin_c_cond = 0.1
 
-    bin_s_d = np.linspace(-15, 15, 20)
-    d_bin_s_d = 0.05
+    bin_s_d = np.linspace(-15, 15, 100)
+    d_bin_s_d = 0.1
 
     nc = len(bin_c_cond)
     nb = len(bin_s_d)
