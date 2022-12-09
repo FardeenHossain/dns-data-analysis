@@ -11,7 +11,7 @@ set multiplot layout 1,3
 
 set ylabel '$S_d$'
 
-set xrange[-5e5:5e5]
+set xrange[-2e5:2e5]
 set yrange[-14:14]
 
 set xlabel '$\gamma$'
