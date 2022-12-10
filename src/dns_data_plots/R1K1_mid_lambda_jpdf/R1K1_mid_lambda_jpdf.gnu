@@ -14,6 +14,11 @@ set ylabel '$S_d$'
 set xrange[-4e5:4e5]
 set yrange[-14:14]
 
+set format x '%.1e'
+set xtics(-4e5, -2e5, 0e5, 2e5, 4e5)
+
+set key font 'default, 10' textcolor rgb 'white'
+
 set xlabel '$\gamma$'
 plot f1 using 1:2:3 every :::3::3 title '' with image, \
      f2 using 2:1 every :::3::3 title 'mean $\gamma$' with lines lc rgb 'white'
