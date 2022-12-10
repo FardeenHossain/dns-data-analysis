@@ -1,6 +1,6 @@
 import numpy as np
 import mystat
-
+from input import flame
 
 def calc_disp_speed_pdf(c_half, s_d):
     """Calculate displacement speed probability density function."""
@@ -57,8 +57,17 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     function."""
 
     # Bin spacing
-    lambda_bin_edges_pdf = np.linspace(-1e6, 1e6, 100)
+    if flame == 'R1K1':
+        lambda_bin_edges_pdf = np.linspace(-4e5, 4e5, 100)
+    if flame == 'R2K1':
+        lambda_bin_edges_pdf = np.linspace(-3e5, 3e5, 100)
+    if flame == 'R3K1':
+        lambda_bin_edges_pdf = np.linspace(-2e5, 2e5, 100)
+    if flame == 'R4K1':
+        lambda_bin_edges_pdf = np.linspace(-2e5, 2e5, 100)
+
     s_d_bin_edges_pdf = np.linspace(-15, 15, 100)
+
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
