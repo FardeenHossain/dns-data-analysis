@@ -1,0 +1,16 @@
+gnuplot disp_speed_pdf/disp_speed_pdf.gnu
+gnuplot lambda_pdf/lambda_pdf.gnu
+gnuplot R1K1_mid_lambda_jpdf/R1K1_mid_lambda_jpdf.gnu
+gnuplot R2K1_mid_lambda_jpdf/R2K1_mid_lambda_jpdf.gnu
+gnuplot R3K1_bot_lambda_jpdf/R3K1_bot_lambda_jpdf.gnu
+gnuplot R3K1_mid_lambda_jpdf/R3K1_mid_lambda_jpdf.gnu
+gnuplot R3K1_top_lambda_jpdf/R3K1_top_lambda_jpdf.gnu
+gnuplot R4K1_mid_lambda_jpdf/R4K1_mid_lambda_jpdf.gnu
+pdflatex disp_speed_pdf/disp_speed_pdf.tex
+pdflatex lambda_pdf/lambda_pdf.tex
+pdflatex R1K1_mid_lambda_jpdf/R1K1_mid_lambda_jpdf.tex
+pdflatex R2K1_mid_lambda_jpdf/R2K1_mid_lambda_jpdf.tex
+pdflatex R3K1_bot_lambda_jpdf/R3K1_bot_lambda_jpdf.tex
+pdflatex R3K1_mid_lambda_jpdf/R3K1_mid_lambda_jpdf.tex
+pdflatex R3K1_top_lambda_jpdf/R3K1_top_lambda_jpdf.tex
+pdflatex R4K1_mid_lambda_jpdf/R4K1_mid_lambda_jpdf.tex
