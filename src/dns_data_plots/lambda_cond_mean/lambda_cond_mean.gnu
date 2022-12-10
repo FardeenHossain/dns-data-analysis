@@ -12,6 +12,8 @@ set ylabel '$S_d$'
 set xrange[-3e5:0]
 set yrange[-14:14]
 
+set key top left
+
 set format x '%.1e'
 set xtics(-3e5, -2e5, -1e5, 0)
 
