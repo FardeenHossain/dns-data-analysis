@@ -9,11 +9,11 @@ f4 = '../../../data/plots/R4K1_mid_cond_mean_lambda1.txt'
 set xlabel '$\gamma$'
 set ylabel '$S_d$'
 
-set xrange[-4e5:4e5]
+set xrange[-3e5:0]
 set yrange[-14:14]
 
 set format x '%.1e'
-set xtics(-4e5, -2e5, 0e5, 2e5, 4e5)
+set xtics(-3e5, -2e5, -1e5, 0)
 
 plot f1 using 2:1 every :::3::3 title 'R1K1' with lines, \
      f2 using 2:1 every :::3::3 title 'R2K1' with lines, \

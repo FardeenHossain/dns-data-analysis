@@ -8,6 +8,11 @@ gnuplot lambda_pdf.gnu
 pdflatex lambda_pdf.tex
 cd ..
 
+cd lambda_cond_mean
+gnuplot lambda_cond_mean.gnu
+pdflatex lambda_cond_mean.tex
+cd ..
+
 cd R1K1_mid_lambda_jpdf
 gnuplot R1K1_mid_lambda_jpdf.gnu
 pdflatex R1K1_mid_lambda_jpdf.tex
