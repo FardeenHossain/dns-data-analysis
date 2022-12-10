@@ -29,7 +29,7 @@ pdflatex R3K1_mid_lambda_jpdf.tex
 cd ..
 
 cd R3K1_top_lambda_jpdf
-gnuplot R3K1_top_lambda_jpdf/R3K1_top_lambda_jpdf.gnu
+gnuplot R3K1_top_lambda_jpdf.gnu
 pdflatex R3K1_top_lambda_jpdf.tex
 cd ..
 
