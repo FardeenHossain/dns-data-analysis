@@ -23,20 +23,20 @@ nz_array = [256, 256, 512, 1024]
 
 # Chunk size array
 nx_c_array = [20, 20, 20, 20]
-ny_c_array = [75, 150, 300, 600]
+ny_c_array = [200, 400, 500, 1000]
 nz_c_array = [255, 255, 511, 1023]
 
 # Start point array
-iy_start_array = [200, 400, 800, 1600]
+iy_start_array = [150, 300, 750, 1500]
 iz_start_array = [0, 0, 0, 0]
 
 # Position start point
 if position == 'bot':
-    ix_start_array = [20, 40, 80, 100]
+    ix_start_array = [100, 200, 300, 600]
 if position == 'mid':
-    ix_start_array = [200, 400, 800, 1000]
+    ix_start_array = [300, 600, 900, 1400]
 if position == 'top':
-    ix_start_array = [450, 900, 1350, 1800]
+    ix_start_array = [500, 900, 1400, 2300]
 
 if full_data_range:
     ix_start_array = [0, 0, 0, 0]
