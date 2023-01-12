@@ -5,6 +5,9 @@ import plot
 print("\nDNS Data Analysis")
 print("\r----\n")
 
+print(f"Flame: {input.flame}")
+print(f"Position: {input.position}\n")
+
 if input.write_reduced_data == 1:
     print("Writing reduced data...\n")
     files.write_reduced_data()

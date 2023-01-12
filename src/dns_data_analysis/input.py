@@ -1,5 +1,5 @@
 # Input arguments
-write_reduced_data = 0
+write_reduced_data = 1
 write_plot_data = 1
 plot_flame = 0
 full_data_range = 0
