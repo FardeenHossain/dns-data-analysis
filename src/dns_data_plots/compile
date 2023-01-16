@@ -1,3 +1,8 @@
+cd disp_speed_flames_pdf
+gnuplot disp_speed_flames_pdf.gnu
+pdflatex disp_speed_flames_pdf.tex
+cd ..
+
 cd disp_speed_pdf
 gnuplot disp_speed_pdf.gnu
 pdflatex disp_speed_pdf.tex
@@ -13,14 +18,34 @@ gnuplot lambda_cond_mean.gnu
 pdflatex lambda_cond_mean.tex
 cd ..
 
+cd R1K1_bot_lambda_jpdf
+gnuplot R1K1_bot_lambda_jpdf.gnu
+pdflatex R1K1_bot_lambda_jpdf.tex
+cd ..
+
 cd R1K1_mid_lambda_jpdf
 gnuplot R1K1_mid_lambda_jpdf.gnu
 pdflatex R1K1_mid_lambda_jpdf.tex
 cd ..
 
+cd R1K1_top_lambda_jpdf
+gnuplot R1K1_top_lambda_jpdf.gnu
+pdflatex R1K1_tp[_lambda_jpdf.tex
+cd ..
+
+cd R2K1_bot_lambda_jpdf
+gnuplot R2K1_bot_lambda_jpdf.gnu
+pdflatex R2K1_bot_lambda_jpdf.tex
+cd ..
+
 cd R2K1_mid_lambda_jpdf
 gnuplot R2K1_mid_lambda_jpdf.gnu
 pdflatex R2K1_mid_lambda_jpdf.tex
+cd ..
+
+cd R2K1_top_lambda_jpdf
+gnuplot R2K1_top_lambda_jpdf.gnu
+pdflatex R2K1_top_lambda_jpdf.tex
 cd ..
 
 cd R3K1_bot_lambda_jpdf
@@ -38,7 +63,17 @@ gnuplot R3K1_top_lambda_jpdf.gnu
 pdflatex R3K1_top_lambda_jpdf.tex
 cd ..
 
+cd R4K1_bot_lambda_jpdf
+gnuplot R4K1_bot_lambda_jpdf.gnu
+pdflatex R4K1_bot_lambda_jpdf.tex
+cd ..
+
 cd R4K1_mid_lambda_jpdf
 gnuplot R4K1_mid_lambda_jpdf.gnu
 pdflatex R4K1_mid_lambda_jpdf.tex
+cd ..
+
+cd R4K1_top_lambda_jpdf
+gnuplot R4K1_top_lambda_jpdf.gnu
+pdflatex R4K1_top_lambda_jpdf.tex
 cd ..
