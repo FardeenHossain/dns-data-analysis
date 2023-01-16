@@ -30,7 +30,7 @@ cd ..
 
 cd R1K1_top_lambda_jpdf
 gnuplot R1K1_top_lambda_jpdf.gnu
-pdflatex R1K1_tp[_lambda_jpdf.tex
+pdflatex R1K1_top_lambda_jpdf.tex
 cd ..
 
 cd R2K1_bot_lambda_jpdf

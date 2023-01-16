@@ -1,5 +1,5 @@
 set terminal epslatex size 5,3.5 standalone color colortext 10
-set output 'disp_speed_pdf.tex'
+set output 'disp_speed_flames_pdf.tex'
 
 f1 = '../../../data/plots/R1K1_bot_pdf_disp_speed.txt'
 f2 = '../../../data/plots/R2K1_bot_pdf_disp_speed.txt'
