@@ -10,13 +10,11 @@ simulation.
 - [Numpy](https://numpy.org/) - Support for arrays and matrices
 - [h5py](https://www.h5py.org/) - Interface to HDF5 data format
 - [Gnuplot](http://www.gnuplot.info/) - Graphing utility
-- [LaTeX](https://www.latex-project.org/) - Document preparation system
 
 ## Authors
 
 - Dr Antonio Attili
 - Fardeen Hossain
-- Fergus Clark
 
 ## Acknowledgements
 
