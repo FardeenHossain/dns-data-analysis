@@ -100,12 +100,11 @@ def calc_disp_speed_cond_mean(c_half, s_d):
 
     # Bin spacing
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
-    bin_s_d = np.linspace(-1e2, 1e2, 200)
     d_bin_c_cond = 0.1
 
     # Calculate conditional mean
-    [bin_c_cond, s_d_cond_mean] = mystat.cond_mean(s_d, c_half, bin_s_d,
-                                                   bin_c_cond, d_bin_c_cond)
+    [bin_c_cond, s_d_cond_mean] = mystat.cond_mean(s_d, c_half, bin_c_cond,
+                                                   d_bin_c_cond)
 
     return [bin_c_cond, s_d_cond_mean]
 
@@ -121,6 +120,7 @@ def calc_lambda_c_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
     bin_s_d = np.linspace(-1e2, 1e2, 200)
     d_bin_s_d = 0.1
 
+    # Calculate conditional mean
     [bin_s_d, lambda1_cond_mean] = mystat.cond_mean_c(lambda1, s_d, c_half,
                                                       bin_s_d, bin_c_cond,
                                                       d_bin_s_d, d_bin_c_cond)

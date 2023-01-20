@@ -261,11 +261,9 @@ def write_disp_speed_cond_mean(c_bin, s_d_cond_mean):
     # Write headings
     file.write("c_bin s_d_cond_mean\n")
 
-    # Write JPDF
-    for i in range(0, len(s_d_cond_mean[:, 0])):
-        for j in range(0, len(s_d_cond_mean[i, :])):
-            file.write(f"{c_bin[j]} {s_d_cond_mean[i, j]}\n")
-        file.write("\n")
+    # Write conditional mean
+    for i in range(0, len(s_d_cond_mean[:])):
+        file.write(f"{c_bin[i]} {s_d_cond_mean[i]}\n")
 
     file.close()
 
@@ -280,7 +278,7 @@ def write_lambda_cond_mean(s_d_bin, lambda_cond_mean, subscript):
     # Write headings
     file.write("s_d_bin lambda_cond_mean\n")
 
-    # Write JPDF
+    # Write conditional mean
     for i in range(0, len(lambda_cond_mean[:, 0])):
         for j in range(0, len(lambda_cond_mean[i, :])):
             file.write(f"{s_d_bin[j]} {lambda_cond_mean[i, j]}\n")
