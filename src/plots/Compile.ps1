@@ -1,3 +1,5 @@
+rm figures/*
+
 cd disp_speed_PDF
 gnuplot disp_speed_PDF.gnu
 pdflatex disp_speed_PDF.tex
@@ -26,12 +28,6 @@ cd lambda_R3K1_PDF
 gnuplot lambda_R3K1_PDF.gnu
 pdflatex lambda_R3K1_PDF.tex
 mv lambda_R3K1_PDF.pdf ../figures
-cd ..
-
-cd lambda_tensor_PDF
-gnuplot lambda_tensor_PDF.gnu
-pdflatex lambda_tensor_PDF.tex
-mv lambda_tensor_PDF.pdf ../figures
 cd ..
 
 cd R1K1_lambda_JPDF

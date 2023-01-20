@@ -1,4 +1,4 @@
-set terminal epslatex size 15,3.5 standalone color colortext 10
+set terminal epslatex size 12,3 standalone color colortext 10
 set output 'disp_speed_PDF.tex'
 
 f1 = '../../../data/plots/R1K1_bot_pdf_disp_speed.txt'
@@ -21,7 +21,7 @@ set multiplot layout 1,3
 set xlabel '$S_d$'
 set ylabel '$PDF$'
 
-set xrange[-30:30]
+set xrange[-60:60]
 set yrange[*:*]
 
 set title '(a) Bottom'

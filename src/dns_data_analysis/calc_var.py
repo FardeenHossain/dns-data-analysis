@@ -72,7 +72,8 @@ def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
 
     # Calculate conditional mean
     [bin_s_d, lambda1_cond_mean, lambda2_cond_mean,
-     lambda3_cond_mean] = pdf.calc_cond_mean(c_half, s_d, lambda1, lambda2,
-                                             lambda3)
+     lambda3_cond_mean] = pdf.calc_lambda_c_cond_mean(c_half, s_d, lambda1,
+                                                      lambda2,
+                                                      lambda3)
 
     return [bin_s_d, lambda1_cond_mean, lambda2_cond_mean, lambda3_cond_mean]

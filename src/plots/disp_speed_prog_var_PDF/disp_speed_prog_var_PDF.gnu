@@ -1,4 +1,4 @@
-set terminal epslatex size 5,3.5 standalone color colortext 10
+set terminal epslatex size 4,3 standalone color colortext 10
 set output 'disp_speed_prog_var_PDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_pdf_disp_speed.txt'
@@ -6,7 +6,7 @@ f1 = '../../../data/plots/R3K1_mid_pdf_disp_speed.txt'
 set xlabel '$S_d$'
 set ylabel '$PDF$'
 
-set xrange[-30:30]
+set xrange[-60:60]
 set yrange[*:*]
 
 plot f1 using 1:2 every :::0::0 title 'C = 0.10' with lines, \

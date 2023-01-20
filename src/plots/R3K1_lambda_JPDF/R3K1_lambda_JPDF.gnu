@@ -1,4 +1,4 @@
-set terminal epslatex size 15,10.5 standalone color colortext 10
+set terminal epslatex size 12,9 standalone color colortext 10
 set output 'R3K1_lambda_JPDF.tex'
 
 f1 = '../../../data/plots/R3K1_bot_jpdf_lambda1.txt'
@@ -30,7 +30,7 @@ set xrange[-2e5:2e5]
 set yrange[-14:14]
 
 set format x '%.1e'
-set xtics(-4e5, -2e5, 0e5, 2e5, 4e5)
+set xtics 1e5
 
 set key font 'default, 10' textcolor rgb 'white'
 
@@ -38,53 +38,53 @@ set title ' '
 
 set xlabel '$\gamma$'
 plot f1 using 1:2:3 every :::3::3 title '' with image, \
-     f2 using 2:1 every :::3::3 title 'mean $\gamma$' with lines lc rgb 'white'
+     f2 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
 set title '(a) Bottom'
 
 set xlabel '$\beta$'
 plot f3 using 1:2:3 every :::3::3 title '' with image, \
-     f4 using 2:1 every :::3::3 title 'mean $\beta$' with lines lc rgb 'white'
+     f4 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lc rgb 'white'
 
 set title ' '
 
 set xlabel '$\alpha$'
 plot f5 using 1:2:3 every :::3::3 title '' with image, \
-     f6 using 2:1 every :::3::3 title 'mean $\alpha$' with lines lc rgb 'white'
+     f6 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lc rgb 'white'
 
 
 set title ' '
 
 set xlabel '$\gamma$'
 plot f7 using 1:2:3 every :::3::3 title '' with image, \
-     f8 using 2:1 every :::3::3 title 'mean $\gamma$' with lines lc rgb 'white'
+     f8 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
 set title '(b) Middle'
 
 set xlabel '$\beta$'
 plot f9 using 1:2:3 every :::3::3 title '' with image, \
-     f10 using 2:1 every :::3::3 title 'mean $\beta$' with lines lc rgb 'white'
+     f10 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lc rgb 'white'
 
 set title ' '
 
 set xlabel '$\alpha$'
 plot f11 using 1:2:3 every :::3::3 title '' with image, \
-     f12 using 2:1 every :::3::3 title 'mean $\alpha$' with lines lc rgb 'white'
+     f12 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lc rgb 'white'
 
 set title ' '
 
 set xlabel '$\gamma$'
 plot f13 using 1:2:3 every :::3::3 title '' with image, \
-     f14 using 2:1 every :::3::3 title 'mean $\gamma$' with lines lc rgb 'white'
+     f14 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
 set title '(c) Top'
 
 set xlabel '$\beta$'
 plot f15 using 1:2:3 every :::3::3 title '' with image, \
-     f16 using 2:1 every :::3::3 title 'mean $\beta$' with lines lc rgb 'white'
+     f16 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lc rgb 'white'
 
 set title ' '
 
 set xlabel '$\alpha$'
 plot f17 using 1:2:3 every :::3::3 title '' with image, \
-     f18 using 2:1 every :::3::3 title 'mean $\alpha$' with lines lc rgb 'white'
+     f18 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lc rgb 'white'

@@ -1,4 +1,4 @@
-set terminal epslatex size 15,3.5 standalone color colortext 10
+set terminal epslatex size 12,3 standalone color colortext 10
 set output 'lambda_R3K1_PDF.tex'
 
 f1 = '../../../data/plots/R3K1_bot_pdf_lambda1.txt'
@@ -20,6 +20,9 @@ set ylabel '$PDF$'
 
 set xrange[-5e5:5e5]
 set yrange[*:*]
+
+set xtics 2.5e5
+set format x '%.1e'
 
 set title '(a) Bottom'
 

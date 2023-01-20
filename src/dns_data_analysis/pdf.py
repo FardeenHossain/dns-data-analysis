@@ -2,11 +2,12 @@ import numpy as np
 import mystat
 from input import flame
 
+
 def calc_disp_speed_pdf(c_half, s_d):
     """Calculate displacement speed probability density function."""
 
     # Bin spacing
-    bin_edges_pdf = np.linspace(-1e2, 1e2, 100)
+    bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
@@ -24,7 +25,7 @@ def calc_strain_rate_pdf(c_half, lambda1, lambda2, lambda3):
     function."""
 
     # Bin spacing
-    bin_edges_pdf = np.linspace(-1e6, 1e6, 100)
+    bin_edges_pdf = np.linspace(-1e6, 1e6, 200)
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
@@ -66,7 +67,7 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     if flame == 'R4K1':
         lambda_bin_edges_pdf = np.linspace(-2e5, 2e5, 100)
 
-    s_d_bin_edges_pdf = np.linspace(-15, 15, 100)
+    s_d_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
 
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
@@ -93,58 +94,43 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
             lambda3_jpdf_bin_x, lambda3_jpdf_bin_y]
 
 
-def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
-    """Calculate conditional mean of displacement speed and """
+def calc_disp_speed_cond_mean(c_half, s_d):
+    """Calculate conditional mean of displacement speed on progress
+    variable."""
 
     # Bin spacing
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
+    bin_s_d = np.linspace(-1e2, 1e2, 200)
     d_bin_c_cond = 0.1
 
-    bin_s_d = np.linspace(-15, 15, 100)
+    # Calculate conditional mean
+    [bin_c_cond, s_d_cond_mean] = mystat.cond_mean(s_d, c_half, bin_s_d,
+                                                   bin_c_cond, d_bin_c_cond)
+
+    return [bin_c_cond, s_d_cond_mean]
+
+
+def calc_lambda_c_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
+    """Calculate conditional mean of strain rate tensor eigenvalues on
+     displacement speed on progress variable."""
+
+    # Bin spacing
+    bin_c_cond = [0.73]
+    d_bin_c_cond = 0.1
+
+    bin_s_d = np.linspace(-1e2, 1e2, 200)
     d_bin_s_d = 0.1
 
-    nc = len(bin_c_cond)
-    nb = len(bin_s_d)
+    [bin_s_d, lambda1_cond_mean] = mystat.cond_mean_c(lambda1, s_d, c_half,
+                                                      bin_s_d, bin_c_cond,
+                                                      d_bin_s_d, d_bin_c_cond)
 
-    # Initialise arrays with zeroes
-    lambda1_cond_mean = np.zeros([nc, nb])
-    lambda2_cond_mean = np.zeros([nc, nb])
-    lambda3_cond_mean = np.zeros([nc, nb])
+    [bin_s_d, lambda2_cond_mean] = mystat.cond_mean_c(lambda2, s_d, c_half,
+                                                      bin_s_d, bin_c_cond,
+                                                      d_bin_s_d, d_bin_c_cond)
 
-    for j in range(0, nc):
-        cond = np.absolute(c_half - bin_c_cond[j]) < d_bin_c_cond / 2.0
-
-        # Extract condition
-        s_d_cond = np.extract(cond, s_d)
-        lambda1_cond = np.extract(cond, lambda1)
-        lambda2_cond = np.extract(cond, lambda2)
-        lambda3_cond = np.extract(cond, lambda3)
-
-        # Flatten array
-        s_d_cond_flat = np.ndarray.flatten(s_d_cond)
-        lambda1_flat = np.ndarray.flatten(lambda1_cond)
-        lambda2_flat = np.ndarray.flatten(lambda2_cond)
-        lambda3_flat = np.ndarray.flatten(lambda3_cond)
-
-        # Initialise arrays with zeros
-        lambda1_mean = np.zeros(nb)
-        lambda2_mean = np.zeros(nb)
-        lambda3_mean = np.zeros(nb)
-
-        for i in range(0, nb):
-            cond = np.absolute(s_d_cond_flat - bin_s_d[i]) < d_bin_s_d / 2.0
-
-            lambda1_extract = np.extract(cond, lambda1_flat)
-            lambda1_mean[i] = np.mean(lambda1_extract)
-
-            lambda2_extract = np.extract(cond, lambda2_flat)
-            lambda2_mean[i] = np.mean(lambda2_extract)
-
-            lambda3_extract = np.extract(cond, lambda3_flat)
-            lambda3_mean[i] = np.mean(lambda3_extract)
-
-        lambda1_cond_mean[j, :] = lambda1_mean
-        lambda2_cond_mean[j, :] = lambda2_mean
-        lambda3_cond_mean[j, :] = lambda3_mean
+    [bin_s_d, lambda3_cond_mean] = mystat.cond_mean_c(lambda3, s_d, c_half,
+                                                      bin_s_d, bin_c_cond,
+                                                      d_bin_s_d, d_bin_c_cond)
 
     return [bin_s_d, lambda1_cond_mean, lambda2_cond_mean, lambda3_cond_mean]
