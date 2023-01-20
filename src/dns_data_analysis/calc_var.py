@@ -71,9 +71,12 @@ def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
     """Calculate conditional mean."""
 
     # Calculate conditional mean
+    [bin_c, s_d_cond_mean] = pdf.calc_disp_speed_cond_mean(c_half, s_d)
+
     [bin_s_d, lambda1_cond_mean, lambda2_cond_mean,
      lambda3_cond_mean] = pdf.calc_lambda_c_cond_mean(c_half, s_d, lambda1,
                                                       lambda2,
                                                       lambda3)
 
-    return [bin_s_d, lambda1_cond_mean, lambda2_cond_mean, lambda3_cond_mean]
+    return [bin_c, s_d_cond_mean, bin_s_d, lambda1_cond_mean,
+            lambda2_cond_mean, lambda3_cond_mean]

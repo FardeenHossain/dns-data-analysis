@@ -115,7 +115,7 @@ def calc_lambda_c_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
      displacement speed on progress variable."""
 
     # Bin spacing
-    bin_c_cond = [0.73]
+    bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
     bin_s_d = np.linspace(-1e2, 1e2, 200)
