@@ -110,6 +110,7 @@ def write_plot_data():
     write_lambda_jpdf(lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, 1)
     write_lambda_jpdf(lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, 2)
     write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
+    write_disp_speed_cond_mean(bin_c, s_d_cond_mean)
     write_lambda_cond_mean(bin_s_d, lambda1_cond_mean, 1)
     write_lambda_cond_mean(bin_s_d, lambda2_cond_mean, 2)
     write_lambda_cond_mean(bin_s_d, lambda3_cond_mean, 3)
@@ -253,7 +254,7 @@ def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
 def write_disp_speed_cond_mean(c_bin, s_d_cond_mean):
     """Write conditional mean to text file."""
 
-    data_file_path = f"plots/{flame}_{position}_cond_mean.txt"
+    data_file_path = f"plots/{flame}_{position}_cond_mean_disp_speed.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
