@@ -58,7 +58,7 @@ def cond_mean(q, c, bin_q_cond, bin_c_cond, d_bin_c_cond):
     q1_mean = np.zeros(nb)
     q1_cond_mean = np.zeros([nc, nb])
 
-    for j in range(0, nb):
+    for j in range(0, nc):
         cond = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
 
         q1_extract = np.extract(cond, q)
