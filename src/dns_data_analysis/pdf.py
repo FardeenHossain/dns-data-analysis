@@ -99,7 +99,7 @@ def calc_disp_speed_cond_mean(c_half, s_d):
     variable."""
 
     # Bin spacing
-    bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
+    bin_c_cond = np.linspace(0.1, 0.9, 100)
     d_bin_c_cond = 0.1
 
     # Calculate conditional mean
