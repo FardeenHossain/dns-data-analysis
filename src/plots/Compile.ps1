@@ -1,5 +1,11 @@
 rm figures/*
 
+cd disp_speed_cond_mean
+gnuplot disp_speed_cond_mean.gnu
+pdflatex disp_speed_cond_mean.tex
+mv disp_speed_cond_mean.pdf ../figures
+cd ..
+
 cd disp_speed_PDF
 gnuplot disp_speed_PDF.gnu
 pdflatex disp_speed_PDF.tex

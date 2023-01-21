@@ -27,7 +27,7 @@ set multiplot layout 3,3
 set ylabel '$S_d$'
 
 set xrange[-2e5:2e5]
-set yrange[-14:14]
+set yrange[-60:60]
 
 set format x '%.1e'
 set xtics 1e5
