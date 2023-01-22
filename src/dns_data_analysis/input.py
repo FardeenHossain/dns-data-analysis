@@ -1,8 +1,9 @@
 # Input arguments
-write_reduced_data = 1
-write_plot_data = 1
-plot_flame = 0
-full_data_range = 0
+write_reduced_data = False
+write_plot_data = True
+plot_flame = False
+full_data_range = False
+flames_all = True
 
 i = 3   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
 j = 2   # 0 = bot, 1 = mid, 2 = top
