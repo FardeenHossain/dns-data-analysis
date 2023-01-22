@@ -57,7 +57,7 @@ plot f5 using 1:2:3 every :::3::3 title '' with image, \
 
 
 set title ' '
-set key top left
+set key top right
 set xlabel '$\gamma$'
 
 plot f7 using 1:2:3 every :::3::3 title '' with image, \
