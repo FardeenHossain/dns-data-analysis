@@ -35,56 +35,65 @@ set xtics 1.5e5
 set key font 'default, 10' textcolor rgb 'white'
 
 set title ' '
-
+set key top right
 set xlabel '$\gamma$'
+
 plot f1 using 1:2:3 every :::3::3 title '' with image, \
      f2 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
 set title '(a) Bottom'
-
+set key top left
 set xlabel '$\beta$'
+
 plot f3 using 1:2:3 every :::3::3 title '' with image, \
      f4 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lc rgb 'white'
 
 set title ' '
-
+set key top left
 set xlabel '$\alpha$'
+
 plot f5 using 1:2:3 every :::3::3 title '' with image, \
      f6 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lc rgb 'white'
 
 
 set title ' '
-
+set key top left
 set xlabel '$\gamma$'
+
 plot f7 using 1:2:3 every :::3::3 title '' with image, \
      f8 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
 set title '(b) Middle'
-
+set key top left
 set xlabel '$\beta$'
+
 plot f9 using 1:2:3 every :::3::3 title '' with image, \
      f10 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lc rgb 'white'
 
 set title ' '
-
+set key top left
 set xlabel '$\alpha$'
+
 plot f11 using 1:2:3 every :::3::3 title '' with image, \
      f12 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lc rgb 'white'
 
 set title ' '
-
+set key top right
 set xlabel '$\gamma$'
+
 plot f13 using 1:2:3 every :::3::3 title '' with image, \
      f14 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
 set title '(c) Top'
-
+set key top left
 set xlabel '$\beta$'
+
 plot f15 using 1:2:3 every :::3::3 title '' with image, \
      f16 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lc rgb 'white'
 
 set title ' '
-
+set key top left
 set xlabel '$\alpha$'
+
 plot f17 using 1:2:3 every :::3::3 title '' with image, \
      f18 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lc rgb 'white'

@@ -59,13 +59,13 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
 
     # Bin spacing
     if flame == 'R1K1':
-        lambda_bin_edges_pdf = np.linspace(-4e5, 4e5, 100)
+        lambda_bin_edges_pdf = np.linspace(-4e5, 4e5, 200)
     if flame == 'R2K1':
-        lambda_bin_edges_pdf = np.linspace(-3e5, 3e5, 100)
+        lambda_bin_edges_pdf = np.linspace(-3e5, 3e5, 200)
     if flame == 'R3K1':
-        lambda_bin_edges_pdf = np.linspace(-2e5, 2e5, 100)
+        lambda_bin_edges_pdf = np.linspace(-2e5, 2e5, 200)
     if flame == 'R4K1':
-        lambda_bin_edges_pdf = np.linspace(-2e5, 2e5, 100)
+        lambda_bin_edges_pdf = np.linspace(-2e5, 2e5, 200)
 
     s_d_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
 
@@ -106,6 +106,8 @@ def calc_disp_speed_cond_mean(c_half, s_d):
     [bin_c_cond, s_d_cond_mean] = mystat.cond_mean(s_d, c_half, bin_c_cond,
                                                    d_bin_c_cond)
 
+    print("Finished displacement speed conditional mean!")
+
     return [bin_c_cond, s_d_cond_mean]
 
 
@@ -117,7 +119,7 @@ def calc_lambda_c_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
-    bin_s_d = np.linspace(-1e2, 1e2, 200)
+    bin_s_d = np.linspace(-1e2, 1e2, 100)
     d_bin_s_d = 0.1
 
     # Calculate conditional mean
@@ -132,5 +134,7 @@ def calc_lambda_c_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
     [bin_s_d, lambda3_cond_mean] = mystat.cond_mean_c(lambda3, s_d, c_half,
                                                       bin_s_d, bin_c_cond,
                                                       d_bin_s_d, d_bin_c_cond)
+
+    print("Finished strain rate tensor conditional mean!")
 
     return [bin_s_d, lambda1_cond_mean, lambda2_cond_mean, lambda3_cond_mean]

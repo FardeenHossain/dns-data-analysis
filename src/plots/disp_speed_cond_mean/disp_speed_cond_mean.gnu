@@ -19,7 +19,9 @@ f12 = '../../../data/plots/R4K1_top_cond_mean_disp_speed.txt'
 set multiplot layout 1,3
 
 set xlabel '$C$'
-set ylabel '$\S_d$'
+set ylabel '$S_d$'
+
+set key top left
 
 set title '(a) Bottom'
 
