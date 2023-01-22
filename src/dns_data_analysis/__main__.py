@@ -2,11 +2,11 @@ import input
 import files
 import plot
 
-print("\nDNS Data Analysis")
-print("\r----\n")
-
 
 def main():
+    print("\nDNS Data Analysis")
+    print("\r----\n")
+
     print(f"Flame: {input.flame}")
     print(f"Position: {input.position}\n")
 
@@ -22,15 +22,9 @@ def main():
         print("Plotting flame...\n")
         plot.plot_flame()
 
+    print("\nFinished!")
+    print("\r----\n")
 
-if input.flames_all:
-    for i in range(0, len(input.flames)):
-        for j in range(0, len(input.positions)):
-            input.flame = input.flames[i]
-            input.position = input.positions[j]
-            main()
-else:
+
+if __name__ == "__main__":
     main()
-
-print("\nFinished!")
-print("\r----\n")
