@@ -67,7 +67,9 @@ def write_prod_rate_jpdf(prod_rate_jpdf, prod_rate_jpdf_bin_x,
     for i in range(0, len(prod_rate_jpdf[:, 0, 0])):
         for j in range(0, len(prod_rate_jpdf[i, :, 0])):
             for k in range(0, len(prod_rate_jpdf[i, j, :])):
-                file.write(f"{prod_rate_jpdf_bin_x[j]} {prod_rate_jpdf_bin_y[k]} {prod_rate_jpdf[i, j, k]}\n")
+                file.write("{0} {1} {2}\n".format(prod_rate_jpdf_bin_x[j],
+                                                  prod_rate_jpdf_bin_y[k],
+                                                  prod_rate_jpdf[i, j, k]))
         file.write("\n")
 
     file.close()
