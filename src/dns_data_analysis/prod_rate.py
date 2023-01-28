@@ -26,7 +26,7 @@ def read_prod_rate():
     f1 = h5py.File(prod_rate_file_path, "r")
     f2 = h5py.File(disp_speed_file_path, "r")
 
-    prod_rate = np.array(f1["prate"])
+    prod_rate = np.array(f1["T"])
     s_d = np.array(f2["s_d"])
     c_half = np.array(f2["c_half"])
 
