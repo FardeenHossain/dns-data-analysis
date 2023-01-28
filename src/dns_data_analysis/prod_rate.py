@@ -17,8 +17,8 @@ def main():
 
 
 def read_prod_rate():
-    prod_rate_data_file_path = f"R3K1/mid/data_1.800E-03_prate.h5"
-    disp_speed_data_file_path = f"R3K1/mid/data_1.800E-03_disp_speed.h5"
+    prod_rate_data_file_path = "R3K1/mid/data_1.800E-03_prate.h5"
+    disp_speed_data_file_path = "R3K1/mid/data_1.800E-03_disp_speed.h5"
 
     prod_rate_file_path = os.path.join(data_path, prod_rate_data_file_path)
     disp_speed_file_path = os.path.join(data_path, disp_speed_data_file_path)
@@ -56,7 +56,7 @@ def calc_prod_rate_jpdf(c_half, s_d, prod_rate):
 
 def write_prod_rate_jpdf(prod_rate_jpdf, prod_rate_jpdf_bin_x,
                          prod_rate_jpdf_bin_y):
-    data_file_path = f"plots/R3K1_mid_jpdf_prod_rate.txt"
+    data_file_path = "plots/R3K1_mid_jpdf_prod_rate.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
 
