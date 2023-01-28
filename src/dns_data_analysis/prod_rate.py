@@ -2,6 +2,7 @@ import numpy as np
 import h5py
 import os
 import mystat
+import plot
 from input import data_path
 
 
@@ -28,6 +29,11 @@ def read_prod_rate():
     prod_rate = np.array(f1["prate"])
     s_d = np.array(f2["s_d"])
     c_half = np.array(f2["c_half"])
+
+    print(prod_rate.size)
+    print(s_d.size)
+
+    plot.plot_prog_var(c_half)
 
     return [prod_rate, s_d, c_half]
 
