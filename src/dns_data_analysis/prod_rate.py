@@ -26,14 +26,12 @@ def read_prod_rate():
     f1 = h5py.File(prod_rate_file_path, "r")
     f2 = h5py.File(disp_speed_file_path, "r")
 
-    prod_rate = np.array(f1["T"])
+    prod_rate = np.array(f1["data/T"])
     s_d = np.array(f2["s_d"])
     c_half = np.array(f2["c_half"])
 
-    print(prod_rate.size)
-    print(s_d.size)
-
-    plot.plot_prog_var(c_half)
+    print(prod_rate.shape)
+    print(s_d.shape)
 
     return [prod_rate, s_d, c_half]
 
