@@ -34,7 +34,7 @@ def read_prod_rate():
 
 def calc_prod_rate_jpdf(c_half, s_d, prod_rate):
     s_d_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
-    prod_rate_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
+    prod_rate_bin_edges_pdf = np.linspace(-10, 10, 200)
 
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
