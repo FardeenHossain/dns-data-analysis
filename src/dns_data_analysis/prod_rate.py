@@ -29,9 +29,6 @@ def read_prod_rate():
     s_d = np.array(f2["s_d"])
     c_half = np.array(f2["c_half"])
 
-    print(prod_rate.shape)
-    print(s_d.shape)
-
     return [prod_rate, s_d, c_half]
 
 
