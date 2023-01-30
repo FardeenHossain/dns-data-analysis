@@ -59,3 +59,9 @@ gnuplot R4K1_lambda_JPDF.gnu
 pdflatex R4K1_lambda_JPDF.tex
 mv R4K1_lambda_JPDF.pdf ../figures
 cd ..
+
+cd R3K1_prod_rate_JPDF
+gnuplot R3K1_prod_rate_JPDF.gnu
+pdflatex R3K1_prod_rate_JPDF.tex
+mv R3K1_prod_rate_JPDF.pdf ../figures
+cd ..
