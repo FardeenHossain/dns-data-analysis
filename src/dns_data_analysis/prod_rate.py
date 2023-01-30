@@ -2,11 +2,17 @@ import numpy as np
 import h5py
 import os
 import mystat
+import matplotlib.pyplot as plt
 from input import data_path
 
 
 def main():
     [prod_rate, s_d, c_half] = read_prod_rate()
+
+    plt.contourf(prod_rate[:, :, 0])
+    plt.xlabel('y')
+    plt.ylabel('x')
+    plt.show()
 
     [prod_rate_jpdf, prod_rate_jpdf_bin_x,
      prod_rate_jpdf_bin_y] = calc_prod_rate_jpdf(c_half, s_d, prod_rate)
