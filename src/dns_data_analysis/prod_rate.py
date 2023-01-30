@@ -2,7 +2,6 @@ import numpy as np
 import h5py
 import os
 import mystat
-import matplotlib.pyplot as plt
 from input import data_path
 
 
@@ -23,17 +22,21 @@ def read_prod_rate():
     prod_rate_file_path = os.path.join(data_path, prod_rate_data_file_path)
     disp_speed_file_path = os.path.join(data_path, disp_speed_data_file_path)
 
+    # Open file
     f1 = h5py.File(prod_rate_file_path, "r")
     f2 = h5py.File(disp_speed_file_path, "r")
 
+    # Read variables
     prod_rate_transpose = np.array(f1["data/source_O2"])
     s_d = np.array(f2["s_d"])
     c_half = np.array(f2["c_half"])
-    
+
+    # Initialise arrays with zeroes
     prod_rate = np.zeros([len(prod_rate_transpose[0, 0, :]), 
                           len(prod_rate_transpose[0, :, 0]), 
                           len(prod_rate_transpose[:, 0, 0])])
-    
+
+    # Transpose array
     for i in range(0, len(prod_rate_transpose[:, 0, 0])):
         for j in range(0, len(prod_rate_transpose[i, :, 0])):
             for k in range(0, len(prod_rate_transpose[i, j, :])):
@@ -43,12 +46,14 @@ def read_prod_rate():
 
 
 def calc_prod_rate_jpdf(c_half, s_d, prod_rate):
+    # Bin spacing
     s_d_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
     prod_rate_bin_edges_pdf = np.linspace(-1e4, 0, 200)
 
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
+    # Calculate JPDF
     [prod_rate_jpdf, prod_rate_jpdf_bin_x,
      prod_rate_jpdf_bin_y] = mystat.cond_pdf2d(prod_rate, s_d, c_half,
                                                prod_rate_bin_edges_pdf,

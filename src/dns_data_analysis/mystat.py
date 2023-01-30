@@ -53,7 +53,6 @@ def cond_pdf2d(q1, q2, c, bin_edges_pdf1, bin_edges_pdf2, bin_c_cond,
 def cond_mean(q, c, bin_c_cond, d_bin_c_cond):
     nc = len(bin_c_cond)
 
-    # Initialise arrays with zeros
     q1_cond_mean = np.zeros(nc)
 
     for j in range(0, nc):
@@ -70,21 +69,17 @@ def cond_mean_c(q1, q2, c, bin_q2_cond, bin_c_cond, d_bin_q2_cond,
     nb = len(bin_q2_cond)
     nc = len(bin_c_cond)
 
-    # Initialise arrays with zeroes
     q1_cond_mean = np.zeros([nc, nb])
 
     for j in range(0, nc):
         cond = np.absolute(c - bin_c_cond[j]) < d_bin_c_cond / 2.0
 
-        # Extract condition
         q1_cond = np.extract(cond, q1)
         q2_cond = np.extract(cond, q2)
 
-        # Flatten array
         q1_cond_flat = np.ndarray.flatten(q1_cond)
         q2_cond_flat = np.ndarray.flatten(q2_cond)
 
-        # Initialise arrays with zeros
         q1_mean = np.zeros(nb)
 
         for i in range(0, nb):

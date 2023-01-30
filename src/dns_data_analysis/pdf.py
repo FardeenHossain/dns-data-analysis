@@ -29,7 +29,7 @@ def calc_strain_rate_pdf(c_half, lambda1, lambda2, lambda3):
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
-    # Calculate compressive strain rate tensor PDF
+    # Calculate extensive strain rate tensor PDF
     lambda1_pdf, lambda1_pdf_bin = mystat.cond_pdf(lambda1, c_half,
                                                    bin_edges_pdf,
                                                    bin_c_cond,
@@ -41,7 +41,7 @@ def calc_strain_rate_pdf(c_half, lambda1, lambda2, lambda3):
                                                    bin_c_cond,
                                                    d_bin_c_cond)
 
-    # Calculate extensive strain rate tensor PDF
+    # Calculate compressive strain rate tensor PDF
     lambda3_pdf, lambda3_pdf_bin = mystat.cond_pdf(lambda3, c_half,
                                                    bin_edges_pdf,
                                                    bin_c_cond,
@@ -72,7 +72,7 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
-    # Calculate compressive strain rate tensor PDF
+    # Calculate extensive strain rate tensor PDF
     [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y] = mystat.cond_pdf2d(
         lambda1, s_d, c_half, lambda_bin_edges_pdf, s_d_bin_edges_pdf,
         bin_c_cond, d_bin_c_cond)
@@ -82,7 +82,7 @@ def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
         lambda2, s_d, c_half, lambda_bin_edges_pdf, s_d_bin_edges_pdf,
         bin_c_cond, d_bin_c_cond)
 
-    # Calculate extensive strain rate tensor PDF
+    # Calculate compressive strain rate tensor PDF
     [lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y] = mystat.cond_pdf2d(
         lambda3, s_d, c_half, lambda_bin_edges_pdf, s_d_bin_edges_pdf,
         bin_c_cond, d_bin_c_cond)
