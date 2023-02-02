@@ -55,7 +55,7 @@ def read_prod_rate():
 
 def calc_prod_rate_prog_var_jpdf(c_half, prod_rate):
     # Bin spacing
-    c_half_bin_edges_pdf = np.linspace(0.1, 0.9, 100)
+    c_half_bin_edges_pdf = np.linspace(0.0, 1.0, 100)
     prod_rate_bin_edges_pdf = np.linspace(-1e4, 0, 200)
 
     # Calculate JPDF
