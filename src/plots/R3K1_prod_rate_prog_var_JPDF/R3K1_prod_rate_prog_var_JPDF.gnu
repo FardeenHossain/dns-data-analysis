@@ -7,6 +7,6 @@ set xlabel '$O_2$'
 set ylabel '$C$'
 
 set xrange[-1e4:0]
-set yrange[0:1]
+set yrange[0.1:0.9]
 
 plot f1 using 1:2:3 every :::0::0 title '' with image
