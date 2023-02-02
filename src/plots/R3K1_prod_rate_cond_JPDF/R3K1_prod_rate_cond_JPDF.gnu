@@ -1,7 +1,7 @@
 set terminal epslatex size 4,3 standalone color colortext 10
-set output 'R3K1_prod_rate_JPDF.tex'
+set output 'R3K1_prod_rate_cond_JPDF.tex'
 
-f1 = '../../../data/plots/R3K1_mid_jpdf_prod_rate.txt'
+f1 = '../../../data/plots/R3K1_mid_jpdf_prod_rate_cond.txt'
 
 set ylabel '$S_d$'
 set xlabel '$O_2$'

@@ -66,8 +66,8 @@ pdflatex R3K1_prod_rate_JPDF.tex
 mv R3K1_prod_rate_JPDF.pdf ../figures
 cd ..
 
-cd R3K1_prod_rate_prog_var_JPDF
-gnuplot R3K1_prod_rate_prog_var_JPDF.gnu
-pdflatex R3K1_prod_rate_prog_var_JPDF.tex
-mv R3K1_prod_rate_prog_var_JPDF.pdf ../figures
+cd R3K1_prod_rate_cond_JPDF
+gnuplot R3K1_prod_rate_cond_JPDF.gnu
+pdflatex R3K1_prod_rate_cond_JPDF.tex
+mv R3K1_prod_rate_cond_JPDF.pdf ../figures
 cd ..
