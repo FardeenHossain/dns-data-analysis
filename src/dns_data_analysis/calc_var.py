@@ -62,9 +62,14 @@ def calc_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
      lambda3_jpdf_bin_y] = pdf.calc_strain_rate_jpdf(
         c_half, s_d, lambda1, lambda2, lambda3)
 
+    # Calculate disp speed prog var JPDF
+    [s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
+     s_d_c_half_jpdf_bin_y] = pdf.calc_disp_speed_prog_var_jpdf(c_half, s_d)
+
     return [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
             lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
-            lambda3_jpdf_bin_x, lambda3_jpdf_bin_y]
+            lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, s_d_c_half_jpdf,
+            s_d_c_half_jpdf_bin_x, s_d_c_half_jpdf_bin_y]
 
 
 def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):

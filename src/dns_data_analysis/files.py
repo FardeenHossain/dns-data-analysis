@@ -91,10 +91,12 @@ def write_plot_data():
         c_half, s_d, lambda1, lambda2, lambda3)
 
     # Calculate JPDF
-    [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
-     lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf, lambda3_jpdf_bin_x,
-     lambda3_jpdf_bin_y] = calc_var.calc_jpdf(c_half, s_d, lambda1,
-                                              lambda2, lambda3)
+    [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y,
+     lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y,
+     lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y,
+     s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
+     s_d_c_half_jpdf_bin_y] = calc_var.calc_jpdf(c_half, s_d, lambda1,
+                                                 lambda2, lambda3)
 
     # Calculate conditional mean
     [bin_c, s_d_cond_mean, bin_s_d,
@@ -110,6 +112,8 @@ def write_plot_data():
     write_lambda_jpdf(lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, 1)
     write_lambda_jpdf(lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, 2)
     write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
+    write_disp_speed_prog_var_jpdf(s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
+                                   s_d_c_half_jpdf_bin_y)
     write_disp_speed_cond_mean(bin_c, s_d_cond_mean)
     write_lambda_cond_mean(bin_s_d, lambda1_cond_mean, 1)
     write_lambda_cond_mean(bin_s_d, lambda2_cond_mean, 2)
@@ -283,5 +287,24 @@ def write_lambda_cond_mean(s_d_bin, lambda_cond_mean, subscript):
         for j in range(0, len(lambda_cond_mean[i, :])):
             file.write(f"{s_d_bin[j]} {lambda_cond_mean[i, j]}\n")
         file.write("\n")
+
+    file.close()
+
+
+def write_disp_speed_prog_var_jpdf(s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
+                                   s_d_c_half_jpdf_bin_y):
+    data_file_path = f"plots/{flame}_{position}_jpdf_disp_speed_prog_var.txt"
+    file_path = os.path.join(data_path, data_file_path)
+    file = open(file_path, "w+")
+
+    # Write headings
+    file.write("s_d_c_half_bin_x s_d_c_half_bin_y s_d_c_half_jpdf\n")
+
+    # Write JPDF
+    for i in range(0, len(s_d_c_half_jpdf[:, 0])):
+        for j in range(0, len(s_d_c_half_jpdf[i, :])):
+            file.write(
+                f"{s_d_c_half_jpdf_bin_x[i]} {s_d_c_half_jpdf_bin_y[j]} "
+                f"{s_d_c_half_jpdf[i, j]}\n")
 
     file.close()

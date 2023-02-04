@@ -53,6 +53,18 @@ def calc_strain_rate_pdf(c_half, lambda1, lambda2, lambda3):
             lambda3_pdf, lambda3_pdf_bin]
 
 
+def calc_disp_speed_prog_var_jpdf(c_half, s_d):
+    # Bin spacing
+    bin_c_half = np.linspace(0.0, 1.0, 100)
+    bin_s_d = np.linspace(-1e2, 1e2, 100)
+
+    # Calculate JPDF
+    [s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
+     s_d_c_half_jpdf_bin_y] = mystat.pdf2d(s_d, c_half, bin_s_d, bin_c_half)
+
+    return [s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x, s_d_c_half_jpdf_bin_y]
+
+
 def calc_strain_rate_jpdf(c_half, s_d, lambda1, lambda2, lambda3):
     """Calculate strain rate tensor eigenvalues joint probability density
     function."""
@@ -99,7 +111,7 @@ def calc_disp_speed_cond_mean(c_half, s_d):
     variable."""
 
     # Bin spacing
-    bin_c_cond = np.linspace(0.1, 0.9, 100)
+    bin_c_cond = np.linspace(0.0, 1.0, 100)
     d_bin_c_cond = 0.1
 
     # Calculate conditional mean
