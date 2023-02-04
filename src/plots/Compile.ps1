@@ -12,10 +12,10 @@ pdflatex disp_speed_PDF.tex
 mv disp_speed_PDF.pdf ../figures
 cd ..
 
-cd disp_speed_JPDF
-gnuplot disp_speed_JPDF.gnu
-pdflatex disp_speed_JPDF.tex
-mv disp_speed_JPDF.pdf ../figures
+cd disp_speed_prog_var_JPDF
+gnuplot disp_speed_prog_var_JPDF.gnu
+pdflatex disp_speed_prog_var_JPDF.tex
+mv disp_speed_prog_var_JPDF.pdf ../figures
 cd ..
 
 cd disp_speed_prog_var_PDF

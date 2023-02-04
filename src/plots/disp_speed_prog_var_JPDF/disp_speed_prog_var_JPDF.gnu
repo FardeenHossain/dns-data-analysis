@@ -9,4 +9,6 @@ set ylabel '$S_d$'
 set xrange[0.0:1.0]
 set yrange[-60:60]
 
+set logscale cb
+
 plot f1 using 2:1:3 every :::0::0 title '' with image
