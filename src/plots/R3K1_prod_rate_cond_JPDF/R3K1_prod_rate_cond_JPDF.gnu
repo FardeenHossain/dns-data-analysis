@@ -9,4 +9,6 @@ set xlabel '$O_2 Source$'
 set xrange[-1e4:0]
 set yrange[-60:60]
 
+set format cb '%.1e'
+
 plot f1 using 1:2:3 every :::3::3 title '' with image

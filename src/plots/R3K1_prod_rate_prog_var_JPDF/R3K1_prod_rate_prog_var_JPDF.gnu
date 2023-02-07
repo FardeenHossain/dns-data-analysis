@@ -11,4 +11,6 @@ set yrange[-1e4:0]
 
 set logscale cb
 
+set format cb '%.1e'
+
 plot f1 using 2:1:3 every :::0::0 title '' with image

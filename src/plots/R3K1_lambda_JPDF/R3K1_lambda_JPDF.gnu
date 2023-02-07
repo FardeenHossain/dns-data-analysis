@@ -30,6 +30,8 @@ set xrange[-2e5:2e5]
 set yrange[-60:60]
 
 set format x '%.1e'
+set format cb '%.1e'
+
 set xtics 1e5
 
 set key font 'default, 10' textcolor rgb 'white'
