@@ -1,5 +1,5 @@
 set terminal epslatex size 4,3 standalone color colortext 10
-set output 'prod_rate_disp_speed.tex'
+set output 'prod_rate_disp_speed_JPDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_jpdf_prod_rate_cond.txt'
 
