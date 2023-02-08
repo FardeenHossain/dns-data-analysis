@@ -42,6 +42,12 @@ pdflatex lambda_R3K1_PDF.tex
 mv lambda_R3K1_PDF.pdf ../figures
 cd ..
 
+cd prod_rate_PDF
+gnuplot prod_rate_PDF.gnu
+pdflatex prod_rate_PDF.tex
+mv prod_rate_PDF.pdf ../figures
+cd ..
+
 cd R1K1_lambda_JPDF
 gnuplot R1K1_lambda_JPDF.gnu
 pdflatex R1K1_lambda_JPDF.tex

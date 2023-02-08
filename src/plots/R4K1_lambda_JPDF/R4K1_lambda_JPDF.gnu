@@ -43,7 +43,7 @@ set xlabel '$\gamma$'
 plot f1 using 1:2:3 every :::3::3 title '' with image, \
      f2 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
-set title '(a) Bottom'
+set title '(a) R4K1 Bottom'
 set key top left
 set xlabel '$\beta$'
 
@@ -65,7 +65,7 @@ set xlabel '$\gamma$'
 plot f7 using 1:2:3 every :::3::3 title '' with image, \
      f8 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
-set title '(b) Middle'
+set title '(b) R4K1 Middle'
 set key top left
 set xlabel '$\beta$'
 
@@ -86,7 +86,7 @@ set xlabel '$\gamma$'
 plot f13 using 1:2:3 every :::3::3 title '' with image, \
      f14 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lc rgb 'white'
 
-set title '(c) Top'
+set title '(c) R4K1 Top'
 set key top left
 set xlabel '$\beta$'
 
