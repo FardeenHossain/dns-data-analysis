@@ -6,7 +6,12 @@ from input import data_path
 
 
 def main():
+    print("\nDNS Data Analysis - Production Rate")
+    print("\r----\n")
+
     [prod_rate, s_d, c_half] = read_prod_rate()
+
+    [prod_rate_pdf, prod_rate_bin_pdf] = calc_prod_rate_pdf(c_half, prod_rate)
 
     [prod_rate_cond_jpdf, prod_rate_cond_jpdf_bin_x,
      prod_rate_cond_jpdf_bin_y] = calc_prod_rate_cond_jpdf(c_half, s_d,
@@ -15,12 +20,17 @@ def main():
     [prod_rate_jpdf, prod_rate_jpdf_bin_x,
      prod_rate_jpdf_bin_y] = calc_prod_rate_prog_var_jpdf(c_half, prod_rate)
 
+    write_prod_rate_pdf(prod_rate_pdf, prod_rate_bin_pdf)
+
     write_prod_rate_prog_var_jpdf(prod_rate_jpdf,
-                                       prod_rate_jpdf_bin_x,
-                                       prod_rate_jpdf_bin_y)
+                                  prod_rate_jpdf_bin_x,
+                                  prod_rate_jpdf_bin_y)
 
     write_prod_rate_cond_jpdf(prod_rate_cond_jpdf, prod_rate_cond_jpdf_bin_x,
                               prod_rate_cond_jpdf_bin_y)
+
+    print("\nFinished!")
+    print("\r----\n")
 
 
 def read_prod_rate():
@@ -53,6 +63,23 @@ def read_prod_rate():
     return [prod_rate, s_d, c_half]
 
 
+def calc_prod_rate_pdf(c_half, prod_rate):
+    """Calculate displacement speed probability density function."""
+
+    # Bin spacing
+    bin_edges_pdf = np.linspace(-1e4, 0, 200)
+    bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
+    d_bin_c_cond = 0.1
+
+    # Calculate PDF
+    prod_rate_pdf, prod_rate_bin_pdf = mystat.cond_pdf(prod_rate, c_half,
+                                                       bin_edges_pdf,
+                                                       bin_c_cond,
+                                                       d_bin_c_cond)
+
+    return [prod_rate_pdf, prod_rate_bin_pdf]
+
+
 def calc_prod_rate_prog_var_jpdf(c_half, prod_rate):
     # Bin spacing
     c_half_bin_edges_pdf = np.linspace(0.0, 1.0, 100)
@@ -61,7 +88,7 @@ def calc_prod_rate_prog_var_jpdf(c_half, prod_rate):
     # Calculate JPDF
     [prod_rate_jpdf, prod_rate_jpdf_bin_x,
      prod_rate_jpdf_bin_y] = mystat.pdf2d(prod_rate, c_half,
-                                          prod_rate_bin_edges_pdf, 
+                                          prod_rate_bin_edges_pdf,
                                           c_half_bin_edges_pdf)
 
     return [prod_rate_jpdf, prod_rate_jpdf_bin_x, prod_rate_jpdf_bin_y]
@@ -86,8 +113,27 @@ def calc_prod_rate_cond_jpdf(c_half, s_d, prod_rate):
             prod_rate_cond_jpdf_bin_y]
 
 
+def write_prod_rate_pdf(prod_rate_pdf, prod_rate_pdf_bin):
+    """Write probability density function to text file."""
+
+    data_file_path = f"plots/R3K1_mid_pdf_prod_rate.txt"
+    file_path = os.path.join(data_path, data_file_path)
+    file = open(file_path, "w+")
+
+    # Write headings
+    file.write("prod_rate_bin prod_rate\n")
+
+    # Write PDF
+    for i in range(0, len(prod_rate_pdf[:, 0])):
+        for j in range(0, len(prod_rate_pdf[i, :])):
+            file.write(f"{prod_rate_pdf_bin[j]} {prod_rate_pdf[i, j]}\n")
+        file.write("\n")
+
+    file.close()
+
+
 def write_prod_rate_prog_var_jpdf(prod_rate_jpdf, prod_rate_jpdf_bin_x,
-                                       prod_rate_jpdf_bin_y):
+                                  prod_rate_jpdf_bin_y):
     data_file_path = "plots/R3K1_mid_jpdf_prod_rate_prog_var.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
