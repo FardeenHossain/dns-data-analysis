@@ -2,7 +2,7 @@ import numpy as np
 import h5py
 import os
 import mystat
-from input import data_path
+from input import data_path, o2_b, o2_u
 
 
 def main():
@@ -58,7 +58,8 @@ def read_prod_rate():
     for i in range(0, len(prod_rate_transpose[:, 0, 0])):
         for j in range(0, len(prod_rate_transpose[i, :, 0])):
             for k in range(0, len(prod_rate_transpose[i, j, :])):
-                prod_rate[k, j, i] = prod_rate_transpose[i, j, k]
+                prod_rate[k, j, i] = - (prod_rate_transpose[i, j, k] /
+                                        (o2_u - o2_b))
 
     return [prod_rate, s_d, c_half]
 
@@ -67,7 +68,7 @@ def calc_prod_rate_pdf(c_half, prod_rate):
     """Calculate displacement speed probability density function."""
 
     # Bin spacing
-    bin_edges_pdf = np.linspace(-1e4, 0, 200)
+    bin_edges_pdf = np.linspace(0, 5e4, 200)
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
 
@@ -83,7 +84,7 @@ def calc_prod_rate_pdf(c_half, prod_rate):
 def calc_prod_rate_prog_var_jpdf(c_half, prod_rate):
     # Bin spacing
     c_half_bin_edges_pdf = np.linspace(0.0, 1.0, 100)
-    prod_rate_bin_edges_pdf = np.linspace(-1e4, 0, 200)
+    prod_rate_bin_edges_pdf = np.linspace(0, 5e4, 200)
 
     # Calculate JPDF
     [prod_rate_jpdf, prod_rate_jpdf_bin_x,
@@ -97,7 +98,7 @@ def calc_prod_rate_prog_var_jpdf(c_half, prod_rate):
 def calc_prod_rate_cond_jpdf(c_half, s_d, prod_rate):
     # Bin spacing
     s_d_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
-    prod_rate_bin_edges_pdf = np.linspace(-1e4, 0, 200)
+    prod_rate_bin_edges_pdf = np.linspace(0, 5e4, 200)
 
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1

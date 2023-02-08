@@ -1,13 +1,13 @@
 set terminal epslatex size 4,3 standalone color colortext 10
-set output 'R3K1_prod_rate_prog_var_JPDF.tex'
+set output 'prod_rate_prog_var_JPDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_jpdf_prod_rate_prog_var.txt'
 
 set xlabel '$C$'
-set ylabel '$O_2 Source$'
+set ylabel '$\omega_c$'
 
 set xrange[0.0:1.0]
-set yrange[-1e4:0]
+set yrange[0:5e4]
 
 set logscale cb
 
