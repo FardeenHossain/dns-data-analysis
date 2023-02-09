@@ -11,6 +11,6 @@ set yrange[-60:60]
 
 set format cb '%.1e'
 
-set palette defined ( 0 'white', 1 'blue', 2 'red', 3 'yellow')
+set palette defined ( 0 'white', 1 'blue', 2 'black')
               
 plot f1 using 1:2:3 every :::3::3 title '' with image

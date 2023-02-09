@@ -13,6 +13,6 @@ set logscale cb
 
 set format cb '%.1e'
 
-set palette defined ( 0 'white', 1 'blue', 2 'red', 3 'yellow')
+set palette defined ( 0 'white', 1 'blue', 2 'black')
 
 plot f1 using 2:1:3 every :::0::0 title '' with image

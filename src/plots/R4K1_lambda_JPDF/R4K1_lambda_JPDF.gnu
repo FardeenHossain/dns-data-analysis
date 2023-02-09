@@ -34,28 +34,28 @@ set format cb '%.1e'
 
 set xtics 1e5
 
-set palette defined ( 0 'white', 1 'blue', 2 'red', 3 'yellow')
+set palette defined ( 0 'white', 1 'blue', 2 'black')
                     
 set title ' '
 set key top right
 set xlabel '$\gamma$'
 
 plot f1 using 1:2:3 every :::3::3 title '' with image, \
-     f2 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines linecolor 'black'
+     f2 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines linecolor 'red'
 
-set title '(a) R1K1 Bottom'
+set title '(a) R4K1 Bottom'
 set key top left
 set xlabel '$\beta$'
 
 plot f3 using 1:2:3 every :::3::3 title '' with image, \
-     f4 using 2:1 every :::3::3 title 'Mean $\beta$' with lines linecolor 'black'
+     f4 using 2:1 every :::3::3 title 'Mean $\beta$' with lines linecolor 'red'
 
 set title ' '
 set key top left
 set xlabel '$\alpha$'
 
 plot f5 using 1:2:3 every :::3::3 title '' with image, \
-     f6 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines linecolor 'black'
+     f6 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines linecolor 'red'
 
 
 set title ' '
@@ -63,39 +63,39 @@ set key top right
 set xlabel '$\gamma$'
 
 plot f7 using 1:2:3 every :::3::3 title '' with image, \
-     f8 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines linecolor 'black'
+     f8 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines linecolor 'red'
 
-set title '(b) R1K1 Middle'
+set title '(b) R4K1 Middle'
 set key top left
 set xlabel '$\beta$'
 
 plot f9 using 1:2:3 every :::3::3 title '' with image, \
-     f10 using 2:1 every :::3::3 title 'Mean $\beta$' with lines linecolor 'black'
+     f10 using 2:1 every :::3::3 title 'Mean $\beta$' with lines linecolor 'red'
 
 set title ' '
 set key top left
 set xlabel '$\alpha$'
 
 plot f11 using 1:2:3 every :::3::3 title '' with image, \
-     f12 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines linecolor 'black'
+     f12 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines linecolor 'red'
 
 set title ' '
 set key top right
 set xlabel '$\gamma$'
 
 plot f13 using 1:2:3 every :::3::3 title '' with image, \
-     f14 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines linecolor 'black'
+     f14 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines linecolor 'red'
 
-set title '(c) R1K1 Top'
+set title '(c) R4K1 Top'
 set key top left
 set xlabel '$\beta$'
 
 plot f15 using 1:2:3 every :::3::3 title '' with image, \
-     f16 using 2:1 every :::3::3 title 'Mean $\beta$' with lines linecolor 'black'
+     f16 using 2:1 every :::3::3 title 'Mean $\beta$' with lines linecolor 'red'
 
 set title ' '
 set key top left
 set xlabel '$\alpha$'
 
 plot f17 using 1:2:3 every :::3::3 title '' with image, \
-     f18 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines linecolor 'black'
+     f18 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines linecolor 'red'
