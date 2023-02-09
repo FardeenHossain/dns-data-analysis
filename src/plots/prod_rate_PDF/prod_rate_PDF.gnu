@@ -3,7 +3,7 @@ set output 'prod_rate_PDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_pdf_prod_rate.txt'
 
-set xlabel '$\omega_c$'
+set xlabel '$\dot{\omega_c}$'
 set ylabel '$PDF$'
 
 set xrange[0:5e4]

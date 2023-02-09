@@ -31,6 +31,7 @@ plot f1 using 1:2 every :::0::0 title 'R1K1' with lines, \
      f4 using 1:2 every :::0::0 title 'R4K1' with lines
 
 set title '(b) Middle'
+set key bottom left
 
 plot f5 using 1:2 every :::0::0 title 'R1K1' with lines, \
      f6 using 1:2 every :::0::0 title 'R2K1' with lines, \
@@ -38,7 +39,6 @@ plot f5 using 1:2 every :::0::0 title 'R1K1' with lines, \
      f8 using 1:2 every :::0::0 title 'R4K1' with lines
 
 set title '(c) Top'
-set key bottom left
 
 plot f9 using 1:2 every :::0::0 title 'R1K1' with lines, \
      f10 using 1:2 every :::0::0 title 'R2K1' with lines, \
