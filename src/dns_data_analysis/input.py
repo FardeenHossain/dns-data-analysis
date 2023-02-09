@@ -4,7 +4,7 @@ write_plot_data = True
 plot_flame = False
 full_data_range = False
 
-i = 3   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
+i = 1   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
 j = 2   # 0 = bot, 1 = mid, 2 = top
 
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
