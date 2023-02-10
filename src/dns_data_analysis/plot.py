@@ -50,6 +50,20 @@ def plot_disp_speed(s_d):
     plt.show()
 
 
+def plot_cond_disp_speed(s_d, c_half):
+    for i in range(0, len(c_half[:, 0, 0])):
+        for j in range(0, len(c_half[i, :, 0])):
+            for k in range(0, len(c_half[i, j, :])):
+                if c_half[i, j, k] < 0.72 or c_half[i, j, k] > 0.74:
+                    s_d[i, j, k] = "NaN"
+
+    plt.contourf(s_d[:, :, 0], cmap='jet_r', extend='both')
+    plt.xlabel(r'$y$')
+    plt.ylabel(r'$x$')
+    plt.colorbar(label=r'$S_d$')
+    plt.show()
+
+
 def calc_plot_data():
     [data_file1_list, data_file2_list] = files.list_data_files()
 
@@ -74,7 +88,7 @@ def read_disp_speed():
     c_half = np.array(f1["c_half"])
     s_d = np.array(f1["s_d"])
 
-    return [c_half, s_d]
+    return [s_d, c_half]
 
 
 if __name__ == "__main__":
