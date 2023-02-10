@@ -22,6 +22,7 @@ def main():
         print("Plotting data...")
         plot_prog_var(c_half)
         plot_disp_speed(s_d)
+        plot_cond_disp_speed(s_d, c_half)
     else:
         print("Calculating data...")
         c_half = calc_plot_data()
@@ -43,7 +44,7 @@ def plot_prog_var(c_half):
 
 
 def plot_disp_speed(s_d):
-    plt.contourf(s_d[:, :, 0], cmap='jet_r', extend='both')
+    plt.contourf(s_d[:20, :20, 0], cmap='jet_r', extend='both')
     plt.xlabel(r'$y$')
     plt.ylabel(r'$x$')
     plt.colorbar(label=r'$S_d$')
