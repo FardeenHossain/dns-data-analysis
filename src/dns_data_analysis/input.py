@@ -1,7 +1,6 @@
 # Input arguments
 write_reduced_data = False
 write_plot_data = True
-plot_flame = False
 full_data_range = False
 
 i = 1   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1

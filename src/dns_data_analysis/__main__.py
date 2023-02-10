@@ -1,6 +1,5 @@
 import input
 import files
-import plot
 
 
 def main():
@@ -17,10 +16,6 @@ def main():
     if input.write_plot_data:
         print("Writing plot data...\n")
         files.write_plot_data()
-
-    if input.plot_flame:
-        print("Plotting flame...\n")
-        plot.plot_flame()
 
     print("\nFinished!")
     print("\r----\n")

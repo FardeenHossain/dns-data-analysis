@@ -9,7 +9,11 @@ def main():
     print("\nDNS Data Analysis - Production Rate")
     print("\r----\n")
 
+    print("Reading data...\n")
+
     [prod_rate, s_d, c_half] = read_prod_rate()
+
+    print("Calculating data...\n")
 
     [prod_rate_pdf, prod_rate_bin_pdf] = calc_prod_rate_pdf(c_half, prod_rate)
 
@@ -19,6 +23,8 @@ def main():
 
     [prod_rate_jpdf, prod_rate_jpdf_bin_x,
      prod_rate_jpdf_bin_y] = calc_prod_rate_prog_var_jpdf(c_half, prod_rate)
+
+    print("Writing data...\n")
 
     write_prod_rate_pdf(prod_rate_pdf, prod_rate_bin_pdf)
 
