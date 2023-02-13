@@ -4,6 +4,8 @@ import h5py
 import os
 import files
 import prog_var
+from matplotlib.lines import Line2D
+
 
 from input import in_path, data_path, ix_start, iy_start, iz_start, ix_end, \
     iy_end, iz_end
@@ -35,7 +37,7 @@ def main():
 
 
 def plot_prog_var(c_half):
-    plt.contourf(c_half[:, :, 0], levels=np.linspace(0, 1, 11), cmap='jet_r',
+    plt.contourf(c_half[:,:, 0], levels=np.linspace(0, 0.9, 10), cmap='hot',
                  extend='both')
     plt.xlabel(r'$y$')
     plt.ylabel(r'$x$')
@@ -44,7 +46,7 @@ def plot_prog_var(c_half):
 
 
 def plot_disp_speed(s_d):
-    plt.contourf(s_d[:20, :20, 0], cmap='jet_r', extend='both')
+    plt.contourf(s_d[:,:, 0], cmap='hot', extend='both')
     plt.xlabel(r'$y$')
     plt.ylabel(r'$x$')
     plt.colorbar(label=r'$S_d$')
@@ -55,13 +57,18 @@ def plot_cond_disp_speed(s_d, c_half):
     for i in range(0, len(c_half[:, 0, 0])):
         for j in range(0, len(c_half[i, :, 0])):
             for k in range(0, len(c_half[i, j, :])):
-                if c_half[i, j, k] < 0.72 or c_half[i, j, k] > 0.74:
-                    s_d[i, j, k] = "NaN"
+                if c_half[i, j, k] < 0.60 or c_half[i, j, k] > 0.90:
+                    s_d[i, j, k] = "NaN"                
 
-    plt.contourf(s_d[:, :, 0], cmap='jet_r', extend='both')
+    plt.contour(c_half[:,138:158, 0], levels=[0, 0.73], colors='white')
+    plt.contourf(s_d[:,138:158, 0], levels=100, cmap='hot', extend='both')
     plt.xlabel(r'$y$')
     plt.ylabel(r'$x$')
     plt.colorbar(label=r'$S_d$')
+    
+    line = Line2D([0], [0], label='C = 0.73', color='white')
+    plt.legend(handles=[line], facecolor="gray", loc="upper left")
+    
     plt.show()
 
 
