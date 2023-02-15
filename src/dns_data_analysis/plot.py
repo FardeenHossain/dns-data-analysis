@@ -65,13 +65,14 @@ def plot_cond_disp_speed(s_d, c_half):
     plt.xlabel(r'$y$')
     plt.ylabel(r'$x$')
     plt.colorbar(label=r'$S_d$')
-
     line = Line2D([0], [0], label='C = 0.73', color='white')
     plt.legend(handles=[line], facecolor="gray", loc="upper left")
-
     plt.show()
 
-    fig = go.Figure(data=[go.Surface(z=c_half[:, 138:158, 0])])
+    fig = go.Figure(data=[go.Surface(z=s_d[:, 138:158, 0])])
+    fig.update_layout(title='Displacement Speed', autosize=False,
+                      width=500, height=500,
+                      margin=dict(l=65, r=50, b=65, t=90))
     fig.show()
 
 
