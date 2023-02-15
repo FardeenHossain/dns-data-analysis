@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import plotly.graph_objects as go
 import h5py
 import os
 import files
@@ -69,6 +70,9 @@ def plot_cond_disp_speed(s_d, c_half):
     plt.legend(handles=[line], facecolor="gray", loc="upper left")
 
     plt.show()
+
+    fig = go.Figure(data=[go.Surface(z=c_half[:, 138:158, 0])])
+    fig.show()
 
 
 def calc_plot_data():
