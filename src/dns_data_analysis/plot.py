@@ -81,7 +81,7 @@ def plot_cond_disp_speed(s_d, c_half):
     plt.show()
 
     fig = go.Figure(data=go.Isosurface(x=x, y=y, z=z, value=value))
-    fig.show()
+    fig.write_html("fig.html")
 
 
 def calc_plot_data():
