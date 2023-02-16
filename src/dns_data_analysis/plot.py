@@ -54,11 +54,22 @@ def plot_disp_speed(s_d):
 
 
 def plot_cond_disp_speed(s_d, c_half):
+    x = []
+    y = []
+    z = []
+    value = []
+
     for i in range(0, len(c_half[:, 0, 0])):
         for j in range(0, len(c_half[i, :, 0])):
             for k in range(0, len(c_half[i, j, :])):
                 if c_half[i, j, k] < 0.60 or c_half[i, j, k] > 0.90:
                     s_d[i, j, k] = "NaN"
+                else:
+                    x.append(i)
+                    y.append(j)
+                    z.append(k)
+                    value.append(s_d[i, j, k])
+
 
     plt.contour(c_half[:, 138:158, 0], levels=[0, 0.73], colors='white')
     plt.contourf(s_d[:, 138:158, 0], levels=100, cmap='hot', extend='both')
@@ -69,10 +80,7 @@ def plot_cond_disp_speed(s_d, c_half):
     plt.legend(handles=[line], facecolor="gray", loc="upper left")
     plt.show()
 
-    fig = go.Figure(data=[go.Surface(z=s_d[:, 138:158, 0])])
-    fig.update_layout(title='Displacement Speed', autosize=False,
-                      width=500, height=500,
-                      margin=dict(l=65, r=50, b=65, t=90))
+    fig = go.Figure(data=go.Isosurface(x=x, y=y, z=z, value=value))
     fig.show()
 
 
