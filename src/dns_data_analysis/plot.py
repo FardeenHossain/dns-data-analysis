@@ -5,6 +5,7 @@ import h5py
 import os
 import files
 import prog_var
+from evtk.hl import gridToVTK
 
 from input import in_path, data_path, ix_start, iy_start, iz_start, ix_end, \
     iy_end, iz_end
@@ -24,6 +25,7 @@ def main():
         plot_prog_var(c_half)
         plot_disp_speed(s_d)
         plot_cond_disp_speed(s_d, c_half)
+        export_vtk(c_half, s_d)
     else:
         print("Calculating data...")
         c_half = calc_plot_data()
@@ -97,6 +99,16 @@ def read_disp_speed():
     s_d = np.array(f1["s_d"])
 
     return [s_d, c_half]
+
+
+def export_vtk(c_half, s_d):
+    nx, ny, nz = 20, 20, 20
+
+    x = np.zeros((nx + 1, ny + 1, nz + 1))
+    y = np.zeros((nx + 1, ny + 1, nz + 1))
+    z = np.zeros((nx + 1, ny + 1, nz + 1))
+
+    gridToVTK("./output", x, y, z, cellData = {"c_half" : c_half[0:19, 138:157, 0:19], "s_d" : s_d[0:20, 138:157, 0:19]})
 
 
 if __name__ == "__main__":
