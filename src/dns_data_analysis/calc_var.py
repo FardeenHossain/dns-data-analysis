@@ -22,8 +22,8 @@ def calc_data(data_file1_path, data_file2_path):
                              iy_start, iz_start, ix_end, iy_end, iz_end)
 
     # Calculate density
-    rho_half = prog_var.calc_w(data_file1_path, data_file2_path, ix_start,
-                               iy_start, iz_start, ix_end, iy_end, iz_end)
+    rho_half = prog_var.calc_rho(data_file1_path, data_file2_path, ix_start,
+                                 iy_start, iz_start, ix_end, iy_end, iz_end)
 
     # Calculate progress variable
     [c_half, dc] = prog_var.calc_prog_var(data_file1_path, data_file2_path,
