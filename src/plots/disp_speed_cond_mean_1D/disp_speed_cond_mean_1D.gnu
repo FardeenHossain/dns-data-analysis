@@ -18,4 +18,4 @@ plot f1 using 1:2 every :::0::0 title 'R1K1' with lines, \
      f2 using 1:2 every :::0::0 title 'R2K1' with lines, \
      f3 using 1:2 every :::0::0 title 'R3K1' with lines, \
      f4 using 1:2 every :::0::0 title 'R4K1' with lines, \
-     f5 using (-($9-2.237710e-01)/(2.237710e-01-6.677090e-02)):(1/($3*1.704496e+00)) title '1D Flamelet' with lines
+     f5 using (-($9-2.237710e-01)/(2.237710e-01-6.677090e-02)):(1.704496e+00/$3) title '1D Flamelet' with lines
