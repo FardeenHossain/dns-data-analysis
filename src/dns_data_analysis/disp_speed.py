@@ -36,4 +36,4 @@ def calc_disp_speed(u_half, v_half, w_half, c_half, dc):
 
     print("Finished displacement speed!")
 
-    return s_d
+    return [s_d, mag_g_c]

@@ -21,19 +21,25 @@ def calc_data(data_file1_path, data_file2_path):
     w_half = prog_var.calc_w(data_file1_path, data_file2_path, ix_start,
                              iy_start, iz_start, ix_end, iy_end, iz_end)
 
+    # Calculate density
+    rho_half = prog_var.calc_w(data_file1_path, data_file2_path, ix_start,
+                               iy_start, iz_start, ix_end, iy_end, iz_end)
+
     # Calculate progress variable
     [c_half, dc] = prog_var.calc_prog_var(data_file1_path, data_file2_path,
                                           ix_start, iy_start, iz_start, ix_end,
                                           iy_end, iz_end)
 
     # Calculate displacement speed
-    s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
+    [s_d, mag_g_c] = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half,
+                                                dc)
 
     # Calculate strain rate tensor eigenvalues
     [lambda1, lambda2, lambda3, rr1, rr2,
      rr3] = strain_rate.calc_strain_rate_eig(u_half, v_half, w_half)
 
-    return [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3]
+    return [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3, mag_g_c,
+            rho_half]
 
 
 def calc_pdf(c_half, s_d, lambda1, lambda2, lambda3):

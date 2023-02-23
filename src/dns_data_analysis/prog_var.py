@@ -57,6 +57,24 @@ def calc_w(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
     return w_half
 
 
+def calc_rho(data_file1, data_file2, ix_start, iy_start, iz_start, ix_end,
+             iy_end, iz_end):
+    """Calculate density."""
+
+    # Read W
+    rho_old = myh5.read_var(data_file1, "/data", "/data/RHO",
+                            [[ix_start, iy_start, iz_start],
+                             [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
+
+    rho_new = myh5.read_var(data_file2, "/data", "/data/RHO",
+                            [[ix_start, iy_start, iz_start],
+                             [ix_end + 1, iy_end + 1, iz_end + 1]], nx, ny, nz)
+
+    rho_half = (rho_old + rho_new) / 2
+
+    return rho_half
+
+
 def calc_prog_var(data_file1, data_file2, ix_start, iy_start, iz_start,
                   ix_end, iy_end, iz_end):
     """Calculate progress variable."""

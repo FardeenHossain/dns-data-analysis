@@ -45,11 +45,11 @@ def write_reduced_data():
         data_file2_path = os.path.join(in_path, data_files2[i])
 
         # Calculate variables
-        [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2,
-         rr3] = calc_var.calc_data(data_file1_path, data_file2_path)
+        [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3, mag_g_c,
+         rho_half] = calc_var.calc_data(data_file1_path, data_file2_path)
 
         # Save data
-        write_disp_speed(data_file, c_half, s_d)
+        write_disp_speed(data_file, c_half, s_d, mag_g_c, rho_half)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
         print("Finished writing reduced data!\n")
@@ -63,12 +63,12 @@ def read_reduced_data():
     [data_files, data_files2] = list_data_files()
 
     # Initialise arrays
-    [c_half_full, s_d_full] = read_disp_speed(data_files[0])
+    [c_half_full, s_d_full, mag_g_c_full] = read_disp_speed(data_files[0])
     [lambda1_full, lambda2_full, lambda3_full, rr1_full, rr2_full,
      rr3_full] = read_lambda(data_files[0])
 
     for i in range(1, len(data_files)):
-        [c_half, s_d] = read_disp_speed(data_files[i])
+        [c_half, s_d, mag_g_c] = read_disp_speed(data_files[i])
         [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_files[i])
 
         # Append to array
@@ -122,7 +122,7 @@ def write_plot_data():
     print("Finished writing plot data!\n")
 
 
-def write_disp_speed(data_file, prog_var, disp_speed):
+def write_disp_speed(data_file, c_half, s_d, mag_g_c, rho_half):
     """Write progress variable and displacement speed into reduced data
     files."""
 
@@ -134,8 +134,10 @@ def write_disp_speed(data_file, prog_var, disp_speed):
     f1 = h5py.File(file_path, "w")
 
     # Save dataset
-    f1.create_dataset("c_half", (nx_c, ny_c, nz_c), data=prog_var)
-    f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=disp_speed)
+    f1.create_dataset("c_half", (nx_c, ny_c, nz_c), data=c_half)
+    f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=s_d)
+    f1.create_dataset("mag_g_c", (nx_c, ny_c, nz_c), data=mag_g_c)
+    f1.create_dataset("rho_half", (nx_c, ny_c, nz_c), data=rho_half)
 
 
 def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
@@ -170,8 +172,9 @@ def read_disp_speed(data_file):
     # Read variables
     c_half = np.array(f1["c_half"])
     s_d = np.array(f1["s_d"])
+    mag_g_c = np.array(f1["mag_g_c"])
 
-    return [c_half, s_d]
+    return [c_half, s_d, mag_g_c]
 
 
 def read_lambda(data_file):
