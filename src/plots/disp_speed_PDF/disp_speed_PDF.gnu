@@ -21,7 +21,7 @@ f14 = '../../../data/plots/R2K1_top_pdf_disp_speed.txt'
 f15 = '../../../data/plots/R3K1_top_pdf_disp_speed.txt'
 f16 = '../../../data/plots/R4K1_top_pdf_disp_speed.txt'
 
-set multiplot layout 4,3
+set multiplot layout 3,4
 
 set xlabel '$S_d$'
 set ylabel '$PDF$'
