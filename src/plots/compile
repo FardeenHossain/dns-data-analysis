@@ -30,6 +30,12 @@ pdflatex disp_speed_prog_var_PDF.tex
 mv disp_speed_prog_var_PDF.pdf ../figures
 cd ..
 
+cd disp_speed_reactive_JPDF
+gnuplot disp_speed_reactive_JPDF.gnu
+pdflatex disp_speed_reactive_JPDF.tex
+mv disp_speed_reactive_JPDF.pdf ../figures
+cd ..
+
 cd lambda_cond_mean
 gnuplot lambda_cond_mean.gnu
 pdflatex lambda_cond_mean.tex

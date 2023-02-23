@@ -6,8 +6,8 @@ f1 = '../../../data/plots/R3K1_mid_jpdf_disp_speed_reactive.txt'
 set ylabel '$S_d$'
 set xlabel '$S_d^R$'
 
-set xrange[-60:60]
-set yrange[-60:60]
+set xrange[-30:30]
+set yrange[-30:30]
 
 set format cb '%.1e'
 

@@ -34,6 +34,9 @@ def main():
 
     write_prod_rate_cond_jpdf(prod_rate_cond_jpdf, prod_rate_cond_jpdf_bin_x,
                               prod_rate_cond_jpdf_bin_y)
+                              
+    write_disp_speed_cond_jpdf(s_d_cond_jpdf, s_d_cond_jpdf_bin_x,
+     s_d_cond_jpdf_bin_y)
 
     print("\nFinished!")
     print("\r----\n")
@@ -73,9 +76,9 @@ def read_prod_rate():
                 prod_rate[k, j, i] = - (source_o2[i, j, k] / (o2_u - o2_b))
 
     # Calculate reactive displacement speed
-    for i in prod_rate[:, 0, 0]:
-        for j in prod_rate[i, :, 0]:
-            for k in prod_rate[i, j, :]:
+    for i in range(0, len(prod_rate[:, 0, 0])):
+        for j in range(0, len(prod_rate[i, :, 0])):
+            for k in range(0, len(prod_rate[i, j, :])):
                 s_d_r[i, j, k] = (prod_rate[i, j, k] /
                                   rho_half[i, j, k]) / mag_g_c[i, j, k]
 
@@ -134,8 +137,8 @@ def calc_prod_rate_cond_jpdf(c_half, s_d, prod_rate):
 
 def calc_disp_speed_cond_jpdf(c_half, s_d, s_d_r):
     # Bin spacing
-    s_d_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
-    s_d_r_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
+    s_d_bin_edges_pdf = np.linspace(-0.5e2, 0.5e2, 200)
+    s_d_r_bin_edges_pdf = np.linspace(-0.5e2, 0.5e2, 200)
 
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
