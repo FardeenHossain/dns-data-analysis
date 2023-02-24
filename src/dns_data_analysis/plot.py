@@ -73,7 +73,6 @@ def plot_cond_disp_speed(s_d, c_half):
     plt.show()
 
 
-
 def calc_plot_data():
     [data_file1_list, data_file2_list] = files.list_data_files()
 
@@ -102,13 +101,18 @@ def read_disp_speed():
 
 
 def export_vtk(c_half, s_d):
-    nx, ny, nz = 20, 20, 20
+    nx = 20
+    ny = 500
+    nz = 20
 
-    x = np.zeros((nx + 1, ny + 1, nz + 1))
-    y = np.zeros((nx + 1, ny + 1, nz + 1))
-    z = np.zeros((nx + 1, ny + 1, nz + 1))
+    x1 = np.linspace(0, 1, num=nx + 1)
+    y1 = np.linspace(0, 1, num=ny + 1)
+    z1 = np.linspace(0, 1, num=nz + 1)
 
-    gridToVTK("./output", x, y, z, cellData = {"c_half" : c_half[0:19, 138:157, 0:19], "s_d" : s_d[0:20, 138:157, 0:19]})
+    x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
+
+    gridToVTK("./output", x, y, z,
+              cellData={"c": c_half[:, :, :20], "s_d": s_d[:, :, :20]})
 
 
 if __name__ == "__main__":
