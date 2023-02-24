@@ -104,40 +104,40 @@ def read_disp_speed():
 
 
 def export_vtk(c_half, s_d):
-    # nx = 20
-    # ny = 500
-    # nz = 20
-    #
-    # x1 = np.linspace(0, 1, num=nx + 1)
-    # y1 = np.linspace(0, 1, num=ny + 1)
-    # z1 = np.linspace(0, 1, num=nz + 1)
-    #
-    # x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
-    #
-    # gridToVTK("./structured", x, y, z,
-    #           cellData={"c": c_half[:, :, :20], "s_d": s_d[:, :, :20]})
-
-    nx = 20
-    ny = 50
-    nz = 60
+    nx = len(c_half[:, 0, 0])
+    ny = len(c_half[0, :, 0])
+    nz = len(c_half[0, 0, :])
 
     x1 = np.linspace(0, 1, num=nx + 1)
     y1 = np.linspace(0, 1, num=ny + 1)
     z1 = np.linspace(0, 1, num=nz + 1)
+
     x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
 
-    c = np.zeros((nx, ny, nz))
-    q = np.zeros((nx, ny, nz))
-    xm = 0.5 * (x1[0:-1] + x1[1:])
-    ym = 0.5 * (y1[0:-1] + y1[1:])
-    zm = 0.5 * (z1[0:-1] + z1[1:])
-    for k in range(nz):
-        for j in range(ny):
-            for i in range(nx):
-                c[i, j, k] = xm[i] * ym[j]
-                q[i, j, k] = xm[i]
+    gridToVTK("./output", x, y, z,
+              cellData={"c": c_half[:, :, :], "s_d": s_d[:, :, :]})
 
-    gridToVTK("./structured", x, y, z, cellData={"c": c, "q": q})
+    # nx = 20
+    # ny = 50
+    # nz = 60
+    #
+    # x1 = np.linspace(0, 1, num=nx + 1)
+    # y1 = np.linspace(0, 1, num=ny + 1)
+    # z1 = np.linspace(0, 1, num=nz + 1)
+    # x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
+    #
+    # c = np.zeros((nx, ny, nz))
+    # q = np.zeros((nx, ny, nz))
+    # xm = 0.5 * (x1[0:-1] + x1[1:])
+    # ym = 0.5 * (y1[0:-1] + y1[1:])
+    # zm = 0.5 * (z1[0:-1] + z1[1:])
+    # for k in range(nz):
+    #     for j in range(ny):
+    #         for i in range(nx):
+    #             c[i, j, k] = xm[i] * ym[j]
+    #             q[i, j, k] = xm[i]
+    #
+    # gridToVTK("./structured", x, y, z, cellData={"c": c, "q": q})
 
 
 if __name__ == "__main__":
