@@ -5,12 +5,13 @@ import h5py
 import os
 import files
 import prog_var
-from evtk.hl import gridToVTK
+from pyevtk.hl import gridToVTK
 
 from input import in_path, data_path, ix_start, iy_start, iz_start, ix_end, \
     iy_end, iz_end
 
-read_data = True
+read_data = False
+export_vtk = True
 
 
 def main():
@@ -25,6 +26,8 @@ def main():
         plot_prog_var(c_half)
         plot_disp_speed(s_d)
         plot_cond_disp_speed(s_d, c_half)
+    elif export_vtk:
+        [s_d, c_half] = read_disp_speed()
         export_vtk(c_half, s_d)
     else:
         print("Calculating data...")
@@ -101,18 +104,40 @@ def read_disp_speed():
 
 
 def export_vtk(c_half, s_d):
+    # nx = 20
+    # ny = 500
+    # nz = 20
+    #
+    # x1 = np.linspace(0, 1, num=nx + 1)
+    # y1 = np.linspace(0, 1, num=ny + 1)
+    # z1 = np.linspace(0, 1, num=nz + 1)
+    #
+    # x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
+    #
+    # gridToVTK("./structured", x, y, z,
+    #           cellData={"c": c_half[:, :, :20], "s_d": s_d[:, :, :20]})
+
     nx = 20
-    ny = 500
-    nz = 20
+    ny = 50
+    nz = 60
 
     x1 = np.linspace(0, 1, num=nx + 1)
     y1 = np.linspace(0, 1, num=ny + 1)
     z1 = np.linspace(0, 1, num=nz + 1)
-
     x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
 
-    gridToVTK("./output", x, y, z,
-              cellData={"c": c_half[:, :, :20], "s_d": s_d[:, :, :20]})
+    c = np.zeros((nx, ny, nz))
+    q = np.zeros((nx, ny, nz))
+    xm = 0.5 * (x1[0:-1] + x1[1:])
+    ym = 0.5 * (y1[0:-1] + y1[1:])
+    zm = 0.5 * (z1[0:-1] + z1[1:])
+    for k in range(nz):
+        for j in range(ny):
+            for i in range(nx):
+                c[i, j, k] = xm[i] * ym[j]
+                q[i, j, k] = xm[i]
+
+    gridToVTK("./structured", x, y, z, cellData={"c": c, "q": q})
 
 
 if __name__ == "__main__":
