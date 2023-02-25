@@ -57,6 +57,9 @@ nz = nz_array[i]
 nx_c = nx_c_array[i]
 ny_c = ny_c_array[i]
 nz_c = nz_c_array[i]
+# nx_c = 100 
+# ny_c = 100
+# nz_c = 100
 
 # Start point
 ix_start = ix_start_array[i]
