@@ -5,6 +5,7 @@ import h5py
 import os
 import files
 import prog_var
+import disp_speed
 from pyevtk.hl import gridToVTK
 
 from input import in_path, data_path, ix_start, iy_start, iz_start, ix_end, \
@@ -27,11 +28,12 @@ def main():
         plot_disp_speed(s_d)
         plot_cond_disp_speed(s_d, c_half)
     elif export_vtk:
-        [s_d, c_half] = read_disp_speed()
+        print("Exporting VTK...")
+        [s_d, c_half] = calc_plot_data()
         export_vtk(c_half, s_d)
     else:
         print("Calculating data...")
-        c_half = calc_plot_data()
+        [c_half, s_d] = calc_plot_data()
 
         print("Plotting data...")
         plot_prog_var(c_half)
@@ -81,12 +83,23 @@ def calc_plot_data():
 
     data_file1_path = os.path.join(in_path, data_file1_list[0])
     data_file2_path = os.path.join(in_path, data_file2_list[0])
+    
+    u_half = prog_var.calc_u(data_file1_path, data_file2_path, ix_start,
+                             iy_start, iz_start, ix_end, iy_end, iz_end)
 
-    c_half = prog_var.calc_prog_var(data_file1_path, data_file2_path,
-                                    ix_start, iy_start, iz_start, ix_end,
-                                    iy_end, iz_end)
+    v_half = prog_var.calc_v(data_file1_path, data_file2_path, ix_start,
+                             iy_start, iz_start, ix_end, iy_end, iz_end)
 
-    return c_half[0]
+    w_half = prog_var.calc_w(data_file1_path, data_file2_path, ix_start,
+                             iy_start, iz_start, ix_end, iy_end, iz_end)
+
+    [c_half, dc] = prog_var.calc_prog_var(data_file1_path, data_file2_path,
+                                          ix_start, iy_start, iz_start, ix_end,
+                                          iy_end, iz_end)
+
+    s_d = disp_speed.calc_disp_speed(u_half, v_half, w_half, c_half, dc)
+
+    return [c_half, s_d]
 
 
 def read_disp_speed():
