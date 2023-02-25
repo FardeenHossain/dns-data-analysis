@@ -12,7 +12,7 @@ from input import in_path, data_path, ix_start, iy_start, iz_start, ix_end, \
     iy_end, iz_end
 
 read_data = False
-export_vtk = True
+export_vtk = False
 
 
 def main():
@@ -83,6 +83,15 @@ def calc_plot_data():
 
     data_file1_path = os.path.join(in_path, data_file1_list[0])
     data_file2_path = os.path.join(in_path, data_file2_list[0])
+
+    ix_start = 900
+    ix_end = 1000
+
+    iy_start = 800
+    iy_end = 900
+
+    iz_start = 0
+    iz_end = 100
     
     u_half = prog_var.calc_u(data_file1_path, data_file2_path, ix_start,
                              iy_start, iz_start, ix_end, iy_end, iz_end)
