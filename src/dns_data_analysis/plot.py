@@ -11,36 +11,32 @@ from pyevtk.hl import gridToVTK
 from input import in_path, data_path, ix_start, iy_start, iz_start, ix_end, \
     iy_end, iz_end
 
-read_data = False
-calc_data = False
-export_vtk = True
 
-
+read = False
+calculate = False
+export = True
+    
 def main():
     print("\nDNS Data Analysis - Plot Flame")
     print("\r----\n")
+    
 
-    if read_data:
+
+    if read:
         print("Reading data...")
         [s_d, c_half] = read_disp_speed()
-
-        print("Plotting data...")
         plot_prog_var(c_half)
         plot_disp_speed(s_d)
         plot_cond_disp_speed(s_d, c_half)
         
-    if export_vtk:
-        print("Calculating data...")    
+    if export:
+        print("Exporting data...")    
         [c_half, s_d] = calc_plot_data()
-        
-        print("Exporting VTK...")
         export_vtk(c_half, s_d)
         
-    if calc_data:
+    if calculate:
         print("Calculating data...")
         [c_half, s_d] = calc_plot_data()
-
-        print("Plotting data...")
         plot_prog_var(c_half)
 
     print("\nFinished!")
@@ -89,14 +85,14 @@ def calc_plot_data():
     data_file1_path = os.path.join(in_path, data_file1_list[0])
     data_file2_path = os.path.join(in_path, data_file2_list[0])
 
-    # ix_start = 950
-    # ix_end = 1050
+    ix_start = 1460
+    ix_end = 1560
 
-    # iy_start = 850
-    # iy_end = 950
+    iy_start = 1800
+    iy_end = 1900
 
-    # iz_start = 0
-    # iz_end = 100
+    iz_start = 0
+    iz_end = 100
     
     u_half = prog_var.calc_u(data_file1_path, data_file2_path, ix_start,
                              iy_start, iz_start, ix_end, iy_end, iz_end)
