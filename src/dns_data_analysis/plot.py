@@ -11,7 +11,6 @@ from pyevtk.hl import gridToVTK
 from input import in_path, data_path, ix_start, iy_start, iz_start, ix_end, \
     iy_end, iz_end
 
-
 read = False
 calculate = False
 export = True
@@ -19,8 +18,6 @@ export = True
 def main():
     print("\nDNS Data Analysis - Plot Flame")
     print("\r----\n")
-    
-
 
     if read:
         print("Reading data...")
@@ -85,11 +82,11 @@ def calc_plot_data():
     data_file1_path = os.path.join(in_path, data_file1_list[0])
     data_file2_path = os.path.join(in_path, data_file2_list[0])
 
-    ix_start = 1460
-    ix_end = 1560
+    ix_start = 2075
+    ix_end = 2175
 
-    iy_start = 1800
-    iy_end = 1900
+    iy_start = 1750
+    iy_end = 1850
 
     iz_start = 0
     iz_end = 100
