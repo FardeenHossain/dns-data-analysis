@@ -46,10 +46,10 @@ def write_reduced_data():
 
         # Calculate variables
         [c_half, s_d, lambda1, lambda2, lambda3, rr1, rr2, rr3, mag_g_c,
-         rho_half] = calc_var.calc_data(data_file1_path, data_file2_path)
+         rho_half, k] = calc_var.calc_data(data_file1_path, data_file2_path)
 
         # Save data
-        write_disp_speed(data_file, c_half, s_d, mag_g_c, rho_half)
+        write_disp_speed(data_file, c_half, s_d, mag_g_c, rho_half, k)
         write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3)
 
         print("Finished writing reduced data!\n")
@@ -63,27 +63,30 @@ def read_reduced_data():
     [data_files, data_files2] = list_data_files()
 
     # Initialise arrays
-    [c_half_full, s_d_full, mag_g_c_full] = read_disp_speed(data_files[0])
+    [c_half_full, s_d_full, mag_g_c_full, k_full] = read_disp_speed(
+        data_files[0])
     [lambda1_full, lambda2_full, lambda3_full, rr1_full, rr2_full,
      rr3_full] = read_lambda(data_files[0])
 
     for i in range(1, len(data_files)):
-        [c_half, s_d, mag_g_c] = read_disp_speed(data_files[i])
+        [c_half, s_d, mag_g_c, k] = read_disp_speed(data_files[i])
         [lambda1, lambda2, lambda3, rr1, rr2, rr3] = read_lambda(data_files[i])
 
         # Append to array
         c_half_full = np.concatenate((c_half_full, c_half))
         s_d_full = np.concatenate((s_d_full, s_d))
+        k_full = np.concatenate((k_full, k))
         lambda1_full = np.concatenate((lambda1_full, lambda1))
         lambda2_full = np.concatenate((lambda2_full, lambda2))
         lambda3_full = np.concatenate((lambda3_full, lambda3))
 
-    return [c_half_full, s_d_full, lambda1_full, lambda2_full, lambda3_full]
+    return [c_half_full, s_d_full, lambda1_full, lambda2_full, lambda3_full,
+            k_full]
 
 
 def write_plot_data():
     # Read reduced data
-    [c_half, s_d, lambda1, lambda2, lambda3] = read_reduced_data()
+    [c_half, s_d, lambda1, lambda2, lambda3, k] = read_reduced_data()
 
     # Calculate PDF
     [s_d_pdf, s_d_pdf_bin, lambda1_pdf, lambda1_pdf_bin, lambda2_pdf,
@@ -91,12 +94,14 @@ def write_plot_data():
         c_half, s_d, lambda1, lambda2, lambda3)
 
     # Calculate JPDF
-    [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y,
-     lambda2_jpdf, lambda2_jpdf_bin_x, lambda2_jpdf_bin_y,
-     lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y,
-     s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
-     s_d_c_half_jpdf_bin_y] = calc_var.calc_jpdf(c_half, s_d, lambda1,
-                                                 lambda2, lambda3)
+    [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
+     lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf,
+     lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, s_d_c_half_jpdf,
+     s_d_c_half_jpdf_bin_x, s_d_c_half_jpdf_bin_y, s_d_k_jpdf,
+     s_d_k_jpdf_bin_x, s_d_k_jpdf_bin_y] = calc_var.calc_jpdf(c_half, s_d,
+                                                              lambda1,
+                                                              lambda2, lambda3,
+                                                              k)
 
     # Calculate conditional mean
     [bin_c, s_d_cond_mean, bin_s_d,
@@ -114,6 +119,8 @@ def write_plot_data():
     write_lambda_jpdf(lambda3_jpdf, lambda3_jpdf_bin_x, lambda3_jpdf_bin_y, 3)
     write_disp_speed_prog_var_jpdf(s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
                                    s_d_c_half_jpdf_bin_y)
+    write_disp_speed_curvature_jpdf(s_d_k_jpdf, s_d_k_jpdf_bin_x,
+                                    s_d_k_jpdf_bin_y)
     write_disp_speed_cond_mean(bin_c, s_d_cond_mean)
     write_lambda_cond_mean(bin_s_d, lambda1_cond_mean, 1)
     write_lambda_cond_mean(bin_s_d, lambda2_cond_mean, 2)
@@ -122,7 +129,7 @@ def write_plot_data():
     print("Finished writing plot data!\n")
 
 
-def write_disp_speed(data_file, c_half, s_d, mag_g_c, rho_half):
+def write_disp_speed(data_file, c_half, s_d, mag_g_c, rho_half, k_m):
     """Write progress variable and displacement speed into reduced data
     files."""
 
@@ -138,6 +145,7 @@ def write_disp_speed(data_file, c_half, s_d, mag_g_c, rho_half):
     f1.create_dataset("s_d", (nx_c, ny_c, nz_c), data=s_d)
     f1.create_dataset("mag_g_c", (nx_c, ny_c, nz_c), data=mag_g_c)
     f1.create_dataset("rho_half", (nx_c, ny_c, nz_c), data=rho_half)
+    f1.create_dataset("k_m", (nx_c, ny_c, nz_c), data=k_m)
 
 
 def write_lambda(data_file, lambda1, lambda2, lambda3, rr1, rr2, rr3):
@@ -173,8 +181,9 @@ def read_disp_speed(data_file):
     c_half = np.array(f1["c_half"])
     s_d = np.array(f1["s_d"])
     mag_g_c = np.array(f1["mag_g_c"])
+    km = np.array(f1["k_m"])
 
-    return [c_half, s_d, mag_g_c]
+    return [c_half, s_d, mag_g_c, k_m]
 
 
 def read_lambda(data_file):
@@ -253,6 +262,29 @@ def write_lambda_jpdf(lambda_jpdf, lambda_jpdf_bin_x, lambda_jpdf_bin_y,
             for k in range(0, len(lambda_jpdf[i, j, :])):
                 file.write(f"{lambda_jpdf_bin_x[j]} {lambda_jpdf_bin_y[k]} "
                            f"{lambda_jpdf[i, j, k]}\n")
+        file.write("\n")
+
+    file.close()
+
+
+def write_disp_speed_curvature_jpdf(s_d_k_jpdf, s_d_k_jpdf_bin_x,
+                                    s_d_k_jpdf_bin_y):
+    """Write joint probability density function to text file."""
+
+    data_file_path = f"plots/{flame}_{position}_jpdf_disp_speed_curvature.txt"
+    file_path = os.path.join(data_path, data_file_path)
+    file = open(file_path, "w+")
+
+    # Write headings
+    file.write("s_d_k_bin_x s_d_k_bin_y s_d_k_jpdf\n")
+
+    # Write JPDF
+    for i in range(0, len(s_d_k_jpdf[:, 0, 0])):
+        for j in range(0, len(s_d_k_jpdf[i, :, 0])):
+            for k in range(0, len(s_d_k_jpdf[i, j, :])):
+                file.write(
+                    f"{s_d_k_jpdf_bin_x[j]} {s_d_k_jpdf_bin_y[k]} "
+                    f"{s_d_k_jpdf[i, j, k]}\n")
         file.write("\n")
 
     file.close()
