@@ -38,7 +38,7 @@ def mean_curv(F, dx):
         F, dx)
 
     # Gradient modulus
-    mod_DF = (DF_x ^ 2 + DF_y ^ 2 + DF_z ^ 2) ^ 0.5
+    mod_DF = (DF_x ** 2 + DF_y ** 2 + DF_z ** 2) ** 0.5
 
     int1 = H11 * DF_x + H12 * DF_y + H13 * DF_z
     int2 = H21 * DF_x + H22 * DF_y + H23 * DF_z
@@ -47,7 +47,7 @@ def mean_curv(F, dx):
     T1 = int1 * DF_x + int2 * DF_y + int3 * DF_z
 
     # NB il meno va messo a causa della scelta del meno nelle normali
-    KM = -(T1 - (mod_DF ^ 2) * (H11 + H22 + H33)) / (2 * (mod_DF ^ 3))
+    KM = -(T1 - (mod_DF ** 2) * (H11 + H22 + H33)) / (2 * (mod_DF ** 3))
 
     print('Mean curvature computed')
 
@@ -65,7 +65,7 @@ def gauss_curv(F, dx):
                                                         H33)
 
     # Gradient modulus
-    mod_DF = (DF_x ^ 2 + DF_y ^ 2 + DF_z ^ 2) ^ 0.5
+    mod_DF = (DF_x ** 2 + DF_y ** 2 + DF_z ** 2) ** 0.5
 
     int1 = A11 * DF_x + A12 * DF_y + A13 * DF_z
     int2 = A21 * DF_x + A22 * DF_y + A23 * DF_z
@@ -73,7 +73,7 @@ def gauss_curv(F, dx):
 
     T1 = int1 * DF_x + int2 * DF_y + int3 * DF_z
 
-    KG = T1 / (mod_DF ^ 4)
+    KG = T1 / (mod_DF ** 4)
 
     print('Gaussian curvature computed')
 
