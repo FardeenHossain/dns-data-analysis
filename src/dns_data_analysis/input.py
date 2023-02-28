@@ -1,9 +1,9 @@
 # Input arguments
-write_reduced_data = True
+write_reduced_data = False
 write_plot_data = True
 full_data_range = False
 
-i = 3   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
+i = 2   # 0 = R1K1, 1 = R2K1, 2 = R3K1, 3 = R4K1
 j = 1   # 0 = bot, 1 = mid, 2 = top, 3 = mid-top
 
 flames = ["R1K1", "R2K1", "R3K1", "R4K1"]
@@ -54,12 +54,12 @@ ny = ny_array[i]
 nz = nz_array[i]
 
 # Chunk size
-#nx_c = nx_c_array[i]
-#ny_c = ny_c_array[i]
-#nz_c = nz_c_array[i]
-nx_c = 200 
-ny_c = 200
-nz_c = 200
+nx_c = nx_c_array[i]
+ny_c = ny_c_array[i]
+nz_c = nz_c_array[i]
+#nx_c = 200 
+#ny_c = 200
+#nz_c = 200
 
 # Start point
 ix_start = ix_start_array[i]

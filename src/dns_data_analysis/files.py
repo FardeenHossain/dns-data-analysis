@@ -181,7 +181,7 @@ def read_disp_speed(data_file):
     c_half = np.array(f1["c_half"])
     s_d = np.array(f1["s_d"])
     mag_g_c = np.array(f1["mag_g_c"])
-    km = np.array(f1["k_m"])
+    k_m = np.array(f1["k_m"])
 
     return [c_half, s_d, mag_g_c, k_m]
 

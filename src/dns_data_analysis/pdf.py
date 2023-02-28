@@ -69,12 +69,12 @@ def calc_disp_speed_curvature_jpdf(c_half, s_d, k):
     """Calculate displacement speed curvature joint probability density
     function."""
 
-    k_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
+    k_bin_edges_pdf = np.linspace(-5e4, 5e4, 200)
     s_d_bin_edges_pdf = np.linspace(-1e2, 1e2, 200)
 
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
     d_bin_c_cond = 0.1
-
+    
     # Calculate compressive strain rate tensor JPDF
     [s_d_k_jpdf, s_d_k_jpdf_bin_x, s_d_k_jpdf_bin_y] = mystat.cond_pdf2d(
         k, s_d, c_half, k_bin_edges_pdf, s_d_bin_edges_pdf,
