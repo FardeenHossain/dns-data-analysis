@@ -84,14 +84,14 @@ def calc_plot_data():
     data_file1_path = os.path.join(in_path, data_file1_list[0])
     data_file2_path = os.path.join(in_path, data_file2_list[0])
 
-    ix_start = 2000
-    ix_end = 2200
+    ix_start = 500
+    ix_end = 2500
 
-    iy_start = 1700
-    iy_end = 1900
+    iy_start = 1600
+    iy_end = 2200
 
     iz_start = 0
-    iz_end = 200
+    iz_end = 8
 
     u_half = prog_var.calc_u(data_file1_path, data_file2_path, ix_start,
                              iy_start, iz_start, ix_end, iy_end, iz_end)
@@ -133,9 +133,9 @@ def export_vtk(c_half, s_d, k):
     ny = len(c_half[0, :, 0])
     nz = len(c_half[0, 0, :])
 
-    x1 = np.linspace(0, 1, num=nx + 1)
-    y1 = np.linspace(0, 1, num=ny + 1)
-    z1 = np.linspace(0, 1, num=nz + 1)
+    x1 = np.linspace(0, nx*dx, num=nx + 1)
+    y1 = np.linspace(0, ny*dx, num=ny + 1)
+    z1 = np.linspace(0, nz*dx, num=nz + 1)
 
     x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
 
