@@ -9,12 +9,13 @@ import disp_speed
 import curvature
 from pyevtk.hl import gridToVTK
 
-from input import in_path, data_path, dx, ix_start, iy_start, iz_start, \
-    ix_end, iy_end, iz_end
+from input import in_path, data_path, dx, o2_u, o2_b, ix_start, iy_start, \
+    iz_start, ix_end, iy_end, iz_end
 
 read = False
 calculate = False
 export = True
+reaction = True
 
 
 def main():
@@ -128,20 +129,50 @@ def read_disp_speed():
     return [s_d, c_half]
 
 
+def read_prod_rate():
+    prod_rate_data_file_path = "R4K1/top/data_1.600E-03_prate.h5"
+    prod_rate_file_path = os.path.join(data_path, prod_rate_data_file_path)
+
+    # Open file
+    f1 = h5py.File(prod_rate_file_path, "r")
+
+    # Read variables
+    source_o2 = np.array(f1["data/source_O2"])
+
+    # Initialise arrays with zeroes
+    prod_rate = np.zeros([len(source_o2[0, 0, :]),
+                          len(source_o2[0, :, 0]),
+                          len(source_o2[:, 0, 0])])
+
+    # Transpose array and calculate omega
+    for i in range(0, len(source_o2[:, 0, 0])):
+        for j in range(0, len(source_o2[i, :, 0])):
+            for k in range(0, len(source_o2[i, j, :])):
+                prod_rate[k, j, i] = - (source_o2[i, j, k] / (o2_u - o2_b))
+
+    return prod_rate
+
+
 def export_vtk(c_half, s_d, k):
     nx = len(c_half[:, 0, 0])
     ny = len(c_half[0, :, 0])
     nz = len(c_half[0, 0, :])
 
-    x1 = np.linspace(0, nx*dx, num=nx + 1)
-    y1 = np.linspace(0, ny*dx, num=ny + 1)
-    z1 = np.linspace(0, nz*dx, num=nz + 1)
+    x1 = np.linspace(0, nx * dx, num=nx + 1)
+    y1 = np.linspace(0, ny * dx, num=ny + 1)
+    z1 = np.linspace(0, nz * dx, num=nz + 1)
 
     x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
 
-    gridToVTK("./output", x, y, z,
-              cellData={"c": c_half[:, :, :], "s_d": s_d[:, :, :],
-                        "k": k[:, :, :]})
+    if reaction:
+        omega_c = read_prod_rate()
+        gridToVTK("./output", x, y, z,
+                  cellData={"c": c_half[:, :, :], "s_d": s_d[:, :, :],
+                            "k": k[:, :, :], "omega_c": omega_c[:, :, :]})
+    else:
+        gridToVTK("./output", x, y, z,
+                  cellData={"c": c_half[:, :, :], "s_d": s_d[:, :, :],
+                            "k": k[:, :, :]})
 
 
 if __name__ == "__main__":
