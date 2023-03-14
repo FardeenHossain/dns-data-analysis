@@ -34,9 +34,9 @@ def main():
 
     write_prod_rate_cond_jpdf(prod_rate_cond_jpdf, prod_rate_cond_jpdf_bin_x,
                               prod_rate_cond_jpdf_bin_y)
-                              
+
     write_disp_speed_cond_jpdf(s_d_cond_jpdf, s_d_cond_jpdf_bin_x,
-     s_d_cond_jpdf_bin_y)
+                               s_d_cond_jpdf_bin_y)
 
     print("\nFinished!")
     print("\r----\n")
@@ -86,8 +86,6 @@ def read_prod_rate():
 
 
 def calc_prod_rate_pdf(c_half, prod_rate):
-    """Calculate displacement speed probability density function."""
-
     # Bin spacing
     bin_edges_pdf = np.linspace(0, 5e4, 200)
     bin_c_cond = [0.1, 0.3, 0.5, 0.73, 0.9]
@@ -154,8 +152,6 @@ def calc_disp_speed_cond_jpdf(c_half, s_d, s_d_r):
 
 
 def write_prod_rate_pdf(prod_rate_pdf, prod_rate_pdf_bin):
-    """Write probability density function to text file."""
-
     data_file_path = f"plots/R3K1_mid_pdf_prod_rate.txt"
     file_path = os.path.join(data_path, data_file_path)
     file = open(file_path, "w+")
