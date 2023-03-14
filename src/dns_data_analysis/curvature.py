@@ -1,80 +1,79 @@
 import numpy as np
 
 
-def hessian(F, dx):
-    [DF_x, DF_y, DF_z] = np.gradient(F, dx)
+def hessian(f, dx):
+    [df_x, df_y, df_z] = np.gradient(f, dx)
 
     # First row
-    [H11, H12, H13] = np.gradient(DF_x, dx)
+    [h11, h12, h13] = np.gradient(df_x, dx)
 
     # Second row
-    [H21, H22, H23] = np.gradient(DF_y, dx)
+    [h21, h22, h23] = np.gradient(df_y, dx)
 
     # Third row
-    [H31, H32, H33] = np.gradient(DF_z, dx)
+    [h31, h32, h33] = np.gradient(df_z, dx)
 
-    print('Hessian computed')
+    print('Hessian computed!')
 
-    return [DF_x, DF_y, DF_z, H11, H12, H13, H21, H22, H23, H31, H32, H33]
-
-
-def adj(H11, H12, H13, H21, H22, H23, H31, H32, H33):
-    A11 = H22 * H33 - H23 * H32
-    A12 = H23 * H31 - H21 * H33
-    A13 = H21 * H32 - H22 * H31
-    A21 = H13 * H32 - H12 * H33
-    A22 = H11 * H33 - H13 * H31
-    A23 = H12 * H31 - H22 * H32
-    A31 = H12 * H23 - H13 * H22
-    A32 = H21 * H13 - H11 * H23
-    A33 = H11 * H22 - H12 * H21
-
-    return [A11, A12, A13, A21, A22, A23, A31, A32, A33]
+    return [df_x, df_y, df_z, h11, h12, h13, h21, h22, h23, h31, h32, h33]
 
 
-def mean_curv(F, dx):
+def adj(h11, h12, h13, h21, h22, h23, h31, h32, h33):
+    a11 = h22 * h33 - h23 * h32
+    a12 = h23 * h31 - h21 * h33
+    a13 = h21 * h32 - h22 * h31
+    a21 = h13 * h32 - h12 * h33
+    a22 = h11 * h33 - h13 * h31
+    a23 = h12 * h31 - h22 * h32
+    a31 = h12 * h23 - h13 * h22
+    a32 = h21 * h13 - h11 * h23
+    a33 = h11 * h22 - h12 * h21
+
+    return [a11, a12, a13, a21, a22, a23, a31, a32, a33]
+
+
+def mean_curv(f, dx):
     # Gradient and hessian components
-    [DF_x, DF_y, DF_z, H11, H12, H13, H21, H22, H23, H31, H32, H33] = hessian(
-        F, dx)
+    [df_x, df_y, df_z, h11, h12, h13, h21, h22, h23, h31, h32, h33] = hessian(
+        f, dx)
 
     # Gradient modulus
-    mod_DF = (DF_x ** 2 + DF_y ** 2 + DF_z ** 2) ** 0.5
+    mod_df = (df_x ** 2 + df_y ** 2 + df_z ** 2) ** 0.5
 
-    int1 = H11 * DF_x + H12 * DF_y + H13 * DF_z
-    int2 = H21 * DF_x + H22 * DF_y + H23 * DF_z
-    int3 = H31 * DF_x + H32 * DF_y + H33 * DF_z
+    int1 = h11 * df_x + h12 * df_y + h13 * df_z
+    int2 = h21 * df_x + h22 * df_y + h23 * df_z
+    int3 = h31 * df_x + h32 * df_y + h33 * df_z
 
-    T1 = int1 * DF_x + int2 * DF_y + int3 * DF_z
+    t1 = int1 * df_x + int2 * df_y + int3 * df_z
 
-    # NB il meno va messo a causa della scelta del meno nelle normali
-    KM = -(T1 - (mod_DF ** 2) * (H11 + H22 + H33)) / (2 * (mod_DF ** 3))
+    k_m = -(t1 - (mod_df ** 2) * (h11 + h22 + h33)) / (2 * (mod_df ** 3))
 
     print('Mean curvature computed')
 
-    return KM
+    return k_m
 
 
-def gauss_curv(F, dx):
+def gauss_curv(f, dx):
     # Gradient and hessian matrix
-    [DF_x, DF_y, DF_z, H11, H12, H13, H21, H22, H23, H31, H32, H33] = hessian(
-        F, dx)
+    [df_x, df_y, df_z, h11, h12, h13, h21, h22, h23, h31, h32, h33] = hessian(
+        f, dx)
 
     # Adjoint matrix
-    [A11, A12, A13, A21, A22, A23, A31, A32, A33] = adj(H11, H12, H13, H21,
-                                                        H22, H23, H31, H32,
-                                                        H33)
+    [a11, a12, a13, a21, a22, a23, a31, a32, a33] = adj(h11, h12, h13, h21,
+                                                        h22, h23, h31, h32,
+                                                        h33)
 
     # Gradient modulus
-    mod_DF = (DF_x ** 2 + DF_y ** 2 + DF_z ** 2) ** 0.5
+    mod_df = (df_x ** 2 + df_y ** 2 + df_z ** 2) ** 0.5
 
-    int1 = A11 * DF_x + A12 * DF_y + A13 * DF_z
-    int2 = A21 * DF_x + A22 * DF_y + A23 * DF_z
-    int3 = A31 * DF_x + A32 * DF_y + A33 * DF_z
+    int1 = a11 * df_x + a12 * df_y + a13 * df_z
+    int2 = a21 * df_x + a22 * df_y + a23 * df_z
+    int3 = a31 * df_x + a32 * df_y + a33 * df_z
 
-    T1 = int1 * DF_x + int2 * DF_y + int3 * DF_z
+    t1 = int1 * df_x + int2 * df_y + int3 * df_z
 
-    KG = T1 / (mod_DF ** 4)
+    k_g = t1 / (mod_df ** 4)
 
     print('Gaussian curvature computed')
 
-    return KG
+    return k_g
