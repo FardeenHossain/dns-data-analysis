@@ -12,6 +12,12 @@ pdflatex disp_speed_cond_mean_1D.tex
 mv disp_speed_cond_mean_1D.pdf ../figures
 cd ..
 
+cd disp_speed_curvature_JPDF
+gnuplot disp_speed_curvature_JPDF.gnu
+pdflatex disp_speed_curvature_JPDF.tex
+mv disp_speed_curvature_JPDF.pdf ../figures
+cd ..
+
 cd disp_speed_PDF
 gnuplot disp_speed_PDF.gnu
 pdflatex disp_speed_PDF.tex
@@ -28,12 +34,6 @@ cd disp_speed_prog_var_PDF
 gnuplot disp_speed_prog_var_PDF.gnu
 pdflatex disp_speed_prog_var_PDF.tex
 mv disp_speed_prog_var_PDF.pdf ../figures
-cd ..
-
-cd disp_speed_curvature_JPDF
-gnuplot disp_speed_curvature_JPDF.gnu
-pdflatex disp_speed_curvature_JPDF.tex
-mv disp_speed_curvature_JPDF.pdf ../figures
 cd ..
 
 cd disp_speed_reactive_JPDF
@@ -60,16 +60,16 @@ pdflatex lambda_R3K1_PDF.tex
 mv lambda_R3K1_PDF.pdf ../figures
 cd ..
 
-cd prod_rate_PDF
-gnuplot prod_rate_PDF.gnu
-pdflatex prod_rate_PDF.tex
-mv prod_rate_PDF.pdf ../figures
-cd ..
-
 cd prod_rate_disp_speed_JPDF
 gnuplot prod_rate_disp_speed_JPDF.gnu
 pdflatex prod_rate_disp_speed_JPDF.tex
 mv prod_rate_disp_speed_JPDF.pdf ../figures
+cd ..
+
+cd prod_rate_PDF
+gnuplot prod_rate_PDF.gnu
+pdflatex prod_rate_PDF.tex
+mv prod_rate_PDF.pdf ../figures
 cd ..
 
 cd prod_rate_prog_var_JPDF
