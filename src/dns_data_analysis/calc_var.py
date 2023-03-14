@@ -46,13 +46,10 @@ def calc_data(data_file1_path, data_file2_path):
 
 
 def calc_pdf(c_half, s_d, lambda1, lambda2, lambda3):
-    """Calculate displacement speed and strain rate tensor eigenvalues
-    probability density function."""
+    """Calculate probability density functions."""
 
-    # Calculate displacement speed PDF
     [s_d_pdf, s_d_pdf_bin] = pdf.calc_disp_speed_pdf(c_half, s_d)
 
-    # Calculate lambda PDF
     [lambda1_pdf, lambda1_pdf_bin, lambda2_pdf, lambda2_pdf_bin, lambda3_pdf,
      lambda3_pdf_bin] = pdf.calc_strain_rate_pdf(c_half, lambda1, lambda2,
                                                  lambda3)
@@ -62,16 +59,13 @@ def calc_pdf(c_half, s_d, lambda1, lambda2, lambda3):
 
 
 def calc_jpdf(c_half, s_d, lambda1, lambda2, lambda3, k):
-    """Calculate strain rate tensor eigenvalues joint probability density
-     function."""
+    """Calculate joint probability density functions."""
 
-    # Calculate lambda JPDF
     [lambda1_jpdf, lambda1_jpdf_bin_x, lambda1_jpdf_bin_y, lambda2_jpdf,
      lambda2_jpdf_bin_x, lambda2_jpdf_bin_y, lambda3_jpdf, lambda3_jpdf_bin_x,
      lambda3_jpdf_bin_y] = pdf.calc_strain_rate_jpdf(
         c_half, s_d, lambda1, lambda2, lambda3)
 
-    # Calculate disp speed prog var JPDF
     [s_d_c_half_jpdf, s_d_c_half_jpdf_bin_x,
      s_d_c_half_jpdf_bin_y] = pdf.calc_disp_speed_prog_var_jpdf(c_half, s_d)
 
@@ -86,9 +80,8 @@ def calc_jpdf(c_half, s_d, lambda1, lambda2, lambda3, k):
 
 
 def calc_cond_mean(c_half, s_d, lambda1, lambda2, lambda3):
-    """Calculate conditional mean."""
+    """Calculate conditional means."""
 
-    # Calculate conditional mean
     [bin_c, s_d_cond_mean] = pdf.calc_disp_speed_cond_mean(c_half, s_d)
 
     [bin_s_d, lambda1_cond_mean, lambda2_cond_mean,
