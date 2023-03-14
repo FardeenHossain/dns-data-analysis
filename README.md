@@ -7,12 +7,12 @@ MEng (Hons) Mechanical Engineering.
 ## Built With
 
 - Python - Programming language
-- Numpy - Support for large, multi-dimensional arrays and matrices
+- NumPy - Support for arrays and matrices
 - Matplotlib - Plotting library
-- H5py - Interface to the HDF5 bindary data format
+- h5py - Interface to the HDF5 bindary data format
 - PyEVTK - Exporting data to binary VTK files
-- Gnuplot - Graphing utility
-- LaTeX - Document preparation
+- gnuplot - Graphing utility
+- LaTeX - Typesetting system
 
 ## Authors
 
