@@ -14,9 +14,9 @@ def pdf2d(q1, q2, bin_edges_pdf1, bin_edges_pdf2):
     q2_flat = np.ndarray.flatten(q2)
 
     pdf, x_edges, y_edges = np.histogram2d(q1_flat, q2_flat,
-                                            bins=(bin_edges_pdf1,
-                                                    bin_edges_pdf2),
-                                            density=True)
+                                           bins=(bin_edges_pdf1,
+                                                 bin_edges_pdf2),
+                                           density=True)
 
     pdf2d_cond[:, :] = pdf
 
