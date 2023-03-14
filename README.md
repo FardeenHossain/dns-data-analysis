@@ -7,17 +7,17 @@ MEng (Hons) Mechanical Engineering.
 ## Built With
 
 - Python - Programming language
-- Numpy - Support for arrays and matrices
+- Numpy - Support for large, multi-dimensional arrays and matrices
 - Matplotlib - Plotting library
-- h5py - Interface to HDF5 data format
+- H5py - Interface to the HDF5 bindary data format
 - PyEVTK - Exporting data to binary VTK files
 - Gnuplot - Graphing utility
 - LaTeX - Document preparation
 
 ## Authors
 
-- Dr Antonio Attili - The University of Edinburgh
 - Fardeen Hossain - The University of Edinburgh
+- Dr Antonio Attili - The University of Edinburgh
 
 ## Acknowledgements
 
