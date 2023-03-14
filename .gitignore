@@ -167,3 +167,7 @@ cython_debug/
 *.tex
 *.aux
 *.eps
+*inc-eps-converted-to*
+
+# VTK
+*.vts
