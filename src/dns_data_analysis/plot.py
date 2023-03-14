@@ -1,14 +1,12 @@
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 import numpy as np
 import h5py
 import os
-import files
 import curvature
 import disp_speed
+import files
 import prog_var
 from pyevtk.hl import gridToVTK
-
 from input import in_path, data_path, dx, o2_u, o2_b, ix_start, iy_start, \
     iz_start, ix_end, iy_end, iz_end
 
