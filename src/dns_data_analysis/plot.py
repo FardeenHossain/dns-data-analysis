@@ -12,10 +12,11 @@ from pyevtk.hl import gridToVTK
 from input import in_path, data_path, dx, o2_u, o2_b, ix_start, iy_start, \
     iz_start, ix_end, iy_end, iz_end
 
+# Input arguments
 read = False
 calculate = False
 export = True
-reaction = True
+reaction = False
 
 
 def main():
@@ -23,19 +24,19 @@ def main():
     print("\r----\n")
 
     if read:
-        print("Reading data...")
+        print("Reading data...\n")
         [s_d, c_half] = read_disp_speed()
         plot_prog_var(c_half)
         plot_disp_speed(s_d)
         plot_cond_disp_speed(s_d, c_half)
 
     if export:
-        print("Exporting data...")
+        print("Exporting data...\n")
         [c_half, s_d, k] = calc_plot_data()
         export_vtk(c_half, s_d, k)
 
     if calculate:
-        print("Calculating data...")
+        print("Calculating data...\n")
         [c_half, s_d, k] = calc_plot_data()
         plot_prog_var(c_half)
 
