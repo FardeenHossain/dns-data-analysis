@@ -53,33 +53,6 @@ def plot_prog_var(c_half):
     plt.show()
 
 
-def plot_disp_speed(s_d):
-    plt.contourf(s_d[:, :, 0], cmap='hot', extend='both')
-    plt.xlabel(r'$y$')
-    plt.ylabel(r'$x$')
-    plt.colorbar(label=r'$S_d$')
-    plt.show()
-
-
-def plot_cond_disp_speed(s_d, c_half):
-    for i in range(0, len(c_half[:, 0, 0])):
-        for j in range(0, len(c_half[i, :, 0])):
-            for k in range(0, len(c_half[i, j, :])):
-                if c_half[i, j, k] < 0.60 or c_half[i, j, k] > 0.90:
-                    s_d[i, j, k] = "NaN"
-
-    plt.contour(c_half[:, 138:158, 0], levels=[0, 0.73], colors='white')
-    plt.contourf(s_d[:, 138:158, 0], levels=100, cmap='hot', extend='both')
-    plt.xlabel(r'$y$')
-    plt.ylabel(r'$x$')
-    plt.colorbar(label=r'$S_d$')
-
-    line = Line2D([0], [0], label='C = 0.73', color='white')
-    plt.legend(handles=[line], facecolor="gray", loc="upper left")
-
-    plt.show()
-
-
 def calc_plot_data():
     [data_file1_list, data_file2_list] = files.list_data_files()
 
