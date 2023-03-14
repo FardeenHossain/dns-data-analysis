@@ -9,7 +9,7 @@ MEng (Hons) Mechanical Engineering.
 - Python - Programming language
 - NumPy - Support for arrays and matrices
 - Matplotlib - Plotting library
-- h5py - Interface to the HDF5 bindary data format
+- h5py - Interface to the HDF5 binary data format
 - PyEVTK - Exporting data to binary VTK files
 - gnuplot - Graphing utility
 - LaTeX - Typesetting system
