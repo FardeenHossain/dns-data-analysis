@@ -1,15 +1,16 @@
 # DNS Data Analysis
 
-Analysis of large-scale direct numerical simulation data of turbulent
-hydrogen and methane flames to guide model development for large eddy
-simulation. Submitted in fulfilment of the requirements for the degree of
+Analysis of direct numerical simulation data of displacement speed in turbulent
+premixed flames. Submitted in fulfilment of the requirements for the degree of
 MEng (Hons) Mechanical Engineering.
 
 ## Built With
 
 - Python - Programming language
 - Numpy - Support for arrays and matrices
+- Matplotlib - Plotting library
 - h5py - Interface to HDF5 data format
+- PyEVTK - Exporting data to binary VTK files
 - Gnuplot - Graphing utility
 - LaTeX - Document preparation
 
