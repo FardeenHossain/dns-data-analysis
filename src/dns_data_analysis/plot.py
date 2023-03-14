@@ -4,9 +4,9 @@ import numpy as np
 import h5py
 import os
 import files
-import prog_var
-import disp_speed
 import curvature
+import disp_speed
+import prog_var
 from pyevtk.hl import gridToVTK
 
 from input import in_path, data_path, dx, o2_u, o2_b, ix_start, iy_start, \

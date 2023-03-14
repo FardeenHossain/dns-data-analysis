@@ -1,5 +1,5 @@
-import input
 import files
+import input
 
 
 def main():

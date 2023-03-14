@@ -2,7 +2,6 @@ import numpy as np
 import h5py
 import os
 import calc_var
-
 from input import nx_c, ny_c, nz_c, in_path, data_path, flame, position
 
 

@@ -1,9 +1,8 @@
-import prog_var
-import disp_speed
-import strain_rate
-import pdf
 import curvature
-
+import disp_speed
+import pdf
+import prog_var
+import strain_rate
 from input import ix_start, iy_start, iz_start, ix_end, iy_end, iz_end, dx
 
 
