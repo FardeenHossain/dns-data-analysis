@@ -1,9 +1,9 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import os
 import curvature
 import files
 import pdf
-from pyevtk.hl import gridToVTK
 from input import flame, position, data_path
 
 
@@ -70,16 +70,16 @@ def curvature_test():
     # Calculate curvature
     k_m = curvature.mean_curv([x_c, y_c, z_c], 1)
 
-    # Export VTK
-    nx = len(x_c)
-    ny = len(y_c)
-    nz = len(z_c)
-    x1 = np.linspace(0, nx, num=nx + 1)
-    y1 = np.linspace(0, ny, num=ny + 1)
-    z1 = np.linspace(0, nz, num=nz + 1)
-    x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
-    gridToVTK("./output", x, y, z,
-              cellData={"k_m": k_m[:, :, :]})
+    # Plot
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(x_c, y_c, z_c, alpha=0.2, rstride=20, cstride=10)
+    ax.plot_surface(x_c, -y_c, z_c, alpha=0.2, rstride=20, cstride=10)
+
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_zlabel("Z")
+    plt.show()
 
 
 if __name__ == "__main__":
