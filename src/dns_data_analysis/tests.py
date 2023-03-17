@@ -1,9 +1,9 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import os
 import curvature
 import files
 import pdf
+from pyevtk.hl import gridToVTK
 from input import flame, position, data_path
 
 
@@ -63,23 +63,32 @@ def cond_mean_test():
 def curvature_test():
     # Cylinder
     x = np.linspace(-1, 1, 100)
-    z = np.linspace(-2, 2, 100)
-    x_c, z_c = np.meshgrid(x, z)
-    y_c = np.sqrt(1 - x_c ** 2)
+    y = np.linspace(-1, 1, 100)
+    z = np.linspace(0, 2, 100)
+
+    c_half = np.zeros([len(x), len(y), len(z)])
+
+    for i in range(0, len(x)):
+        for j in range(0, len(y)):
+            for k in range(0, len(z)):
+                c_half[i, j, k] = np.sqrt(x[i] ** 2 + y[j] ** 2)
 
     # Calculate curvature
-    k_m = curvature.mean_curv([x_c, y_c, z_c], 1)
+    k_m = curvature.mean_curv(c_half, 1)
 
-    # Plot
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-    ax.plot_surface(x_c, y_c, z_c, alpha=0.2, rstride=20, cstride=10)
-    ax.plot_surface(x_c, -y_c, z_c, alpha=0.2, rstride=20, cstride=10)
+    # Export VTK
+    nx = len(x)
+    ny = len(y)
+    nz = len(z)
 
-    ax.set_xlabel("X")
-    ax.set_ylabel("Y")
-    ax.set_zlabel("Z")
-    plt.show()
+    x1 = np.linspace(0, nx, num=nx + 1)
+    y1 = np.linspace(0, ny, num=ny + 1)
+    z1 = np.linspace(0, nz, num=nz + 1)
+
+    x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
+
+    gridToVTK("./output", x, y, z,
+              cellData={"c": c_half[:, :, :], "k_m": k_m[:, :, :]})
 
 
 if __name__ == "__main__":
