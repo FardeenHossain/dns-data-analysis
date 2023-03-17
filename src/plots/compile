@@ -6,6 +6,12 @@ pdflatex disp_speed_cond_mean.tex
 mv disp_speed_cond_mean.pdf ../figures
 cd ..
 
+cd disp_speed_cond_mean_test
+gnuplot disp_speed_cond_mean_test.gnu
+pdflatex disp_speed_cond_mean_test.tex
+mv disp_speed_cond_mean_test.pdf ../figures
+cd ..
+
 cd disp_speed_cond_mean_1D
 gnuplot disp_speed_cond_mean_1D.gnu
 pdflatex disp_speed_cond_mean_1D.tex
