@@ -74,11 +74,11 @@ def curvature_test():
                 c_half[i, j, k] = np.sqrt(x[i] ** 2 + y[j] ** 2)
 
     # Calculate curvature
-    k_m = curvature.mean_curv(c_half, 1)
+    k_m = curvature.mean_curv(c_half, 0.01)
 
     r = x[50:]
     k_calc = k_m[50:, 50, 50]
-    k_analytical = 0.01 / x[50:]
+    k_analytical = 1 / x[50:]
 
     # Write file
     data_file_path = f"plots/{flame}_{position}_curvature_test.txt"
