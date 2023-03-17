@@ -1,5 +1,11 @@
 rm figures/*
 
+cd curvature_test
+gnuplot curvature_test.gnu
+pdflatex curvature_test.tex
+mv curvature_test.pdf ../figures
+cd ..
+
 cd disp_speed_cond_mean
 gnuplot disp_speed_cond_mean.gnu
 pdflatex disp_speed_cond_mean.tex
