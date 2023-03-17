@@ -8,5 +8,5 @@ set ylabel '$K_m$'
 
 set key top right
 
-plot f1 using 1:2 every :::0::0 title '$K_m$' with lines, \
-     f1 using 1:3 every :::0::0 title '$1/R$' with lines
+plot f1 using 1:2 every :::0::0 title 'Computed' with lines, \
+     f1 using 1:3 every :::0::0 title 'Analytical' with lines
