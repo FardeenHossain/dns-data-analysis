@@ -76,6 +76,19 @@ def curvature_test():
     # Calculate curvature
     k_m = curvature.mean_curv(c_half, 1)
 
+    r = x[50:]
+    k_calc = k_m[50:, 50, 50]
+    k_analytical = 0.01 / x[50:]
+
+    # Write file
+    data_file_path = f"plots/{flame}_{position}_curvature_test.txt"
+    file_path = os.path.join(data_path, data_file_path)
+    file = open(file_path, "w+")
+    file.write("r k\n")
+    for i in range(0, len(r)):
+        file.write(f"{r[i]} {k_calc[i]} {k_analytical[i]}\n")
+    file.close()
+
     # Export VTK
     nx = len(x)
     ny = len(y)
