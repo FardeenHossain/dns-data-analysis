@@ -62,28 +62,21 @@ def cond_mean_test():
 
 def curvature_test():
     # Cylinder
-    center_x = 0.2
-    center_y = 0.2
-    radius = 0.05
-    height_z = 0.1
-    z = np.linspace(0, height_z, 50)
-    theta = np.linspace(0, 2 * np.pi, 50)
-    theta_grid, z_grid = np.meshgrid(theta, z)
-    x_grid = radius * np.cos(theta_grid) + center_x
-    y_grid = radius * np.sin(theta_grid) + center_y
+    x = np.linspace(-1, 1, 100)
+    z = np.linspace(-2, 2, 100)
+    x_c, z_c = np.meshgrid(x, z)
+    y_c = np.sqrt(1 - x_c ** 2)
 
     # Calculate curvature
-    dx = 1
-    c_half = [x_grid, y_grid, z_grid]
-    k_m = curvature.mean_curv(c_half, dx)
+    k_m = curvature.mean_curv([x_c, y_c, z_c], 1)
 
     # Export VTK
-    nx = len(c_half[:, 0, 0])
-    ny = len(c_half[0, :, 0])
-    nz = len(c_half[0, 0, :])
-    x1 = np.linspace(0, nx * dx, num=nx + 1)
-    y1 = np.linspace(0, ny * dx, num=ny + 1)
-    z1 = np.linspace(0, nz * dx, num=nz + 1)
+    nx = len(x_c)
+    ny = len(y_c)
+    nz = len(z_c)
+    x1 = np.linspace(0, nx, num=nx + 1)
+    y1 = np.linspace(0, ny, num=ny + 1)
+    z1 = np.linspace(0, nz, num=nz + 1)
     x, y, z = np.meshgrid(x1, y1, z1, indexing='ij')
     gridToVTK("./output", x, y, z,
               cellData={"k_m": k_m[:, :, :]})
