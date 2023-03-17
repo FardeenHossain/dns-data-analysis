@@ -9,6 +9,9 @@ def main():
     print("\nDNS Data Analysis - Validation")
     print("\r----\n")
 
+    print("Conditional mean test...\n")
+    cond_mean()
+
     print("\nFinished!")
     print("\r----\n")
 
