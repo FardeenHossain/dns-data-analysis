@@ -24,7 +24,7 @@ f18 = '../../../data/plots/R3K1_top_cond_mean_lambda3.txt'
 
 set multiplot layout 3,3
 
-set ylabel '$S_d$'
+set ylabel '$S_d [m/s]$'
 
 set xrange[-2e5:2e5]
 set yrange[-60:60]
@@ -38,21 +38,21 @@ set palette defined ( 0 'white', 1 'blue', 2 'black')
                     
 set title ' '
 set key top right
-set xlabel '$\gamma$'
+set xlabel '$\gamma [1/s]$'
 
 plot f1 using 1:2:3 every :::3::3 title '' with image, \
      f2 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lw 5 linecolor rgb 'red'
 
 set title '(a) R3K1 Bottom'
 set key top left
-set xlabel '$\beta$'
+set xlabel '$\beta [1/s]$'
 
 plot f3 using 1:2:3 every :::3::3 title '' with image, \
      f4 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lw 5 linecolor rgb 'red'
 
 set title ' '
 set key top left
-set xlabel '$\alpha$'
+set xlabel '$\alpha [1/s]$'
 
 plot f5 using 1:2:3 every :::3::3 title '' with image, \
      f6 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lw 5 linecolor rgb 'red'
@@ -60,42 +60,42 @@ plot f5 using 1:2:3 every :::3::3 title '' with image, \
 
 set title ' '
 set key top right
-set xlabel '$\gamma$'
+set xlabel '$\gamma [1/s]$'
 
 plot f7 using 1:2:3 every :::3::3 title '' with image, \
      f8 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lw 5 linecolor rgb 'red'
 
 set title '(b) R3K1 Middle'
 set key top left
-set xlabel '$\beta$'
+set xlabel '$\beta [1/s]$'
 
 plot f9 using 1:2:3 every :::3::3 title '' with image, \
      f10 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lw 5 linecolor rgb 'red'
 
 set title ' '
 set key top left
-set xlabel '$\alpha$'
+set xlabel '$\alpha [1/s]$'
 
 plot f11 using 1:2:3 every :::3::3 title '' with image, \
      f12 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lw 5 linecolor rgb 'red'
 
 set title ' '
 set key top right
-set xlabel '$\gamma$'
+set xlabel '$\gamma [1/s]$'
 
 plot f13 using 1:2:3 every :::3::3 title '' with image, \
      f14 using 2:1 every :::3::3 title 'Mean $\gamma$' with lines lw 5 linecolor rgb 'red'
 
 set title '(c) R3K1 Top'
 set key top left
-set xlabel '$\beta$'
+set xlabel '$\beta [1/s]$'
 
 plot f15 using 1:2:3 every :::3::3 title '' with image, \
      f16 using 2:1 every :::3::3 title 'Mean $\beta$' with lines lw 5 linecolor rgb 'red'
 
 set title ' '
 set key top left
-set xlabel '$\alpha$'
+set xlabel '$\alpha [1/s]$'
 
 plot f17 using 1:2:3 every :::3::3 title '' with image, \
      f18 using 2:1 every :::3::3 title 'Mean $\alpha$' with lines lw 5 linecolor rgb 'red'

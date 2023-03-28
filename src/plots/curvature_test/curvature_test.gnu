@@ -3,8 +3,8 @@ set output 'curvature_test.tex'
 
 f1 = '../../../data/plots/R3K1_mid_curvature_test.txt'
 
-set xlabel '$r$'
-set ylabel '$K$'
+set xlabel '$r [m]$'
+set ylabel '$K [1/m]$'
 
 set key top right
 

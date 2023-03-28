@@ -3,8 +3,8 @@ set output 'disp_speed_reactive_JPDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_jpdf_disp_speed_reactive.txt'
 
-set ylabel '$S_d$'
-set xlabel '$S_d^R$'
+set ylabel '$S_d [m/s]$'
+set xlabel '$S_d^R [m/s]$'
 
 set xrange[-30:30]
 set yrange[-30:30]

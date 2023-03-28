@@ -3,8 +3,8 @@ set output 'disp_speed_curvature_JPDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_jpdf_disp_speed_curvature.txt'
 
-set ylabel '$S_d$'
-set xlabel '$k_M$'
+set ylabel '$S_d [m/s]$'
+set xlabel '$k_M [1/m]$'
 
 set xrange[-2e4:2e4]
 set yrange[-30:30]

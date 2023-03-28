@@ -15,7 +15,7 @@ f9 = '../../../data/plots/R3K1_top_pdf_lambda3.txt'
 
 set multiplot layout 1,3
 
-set xlabel '$\gamma, \beta, \alpha$'
+set xlabel '$\gamma, \beta, \alpha [1/s]$'
 set ylabel '$PDF$'
 
 set xrange[-5e5:5e5]

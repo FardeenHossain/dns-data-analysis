@@ -18,8 +18,8 @@ f12 = '../../../data/plots/R4K1_top_cond_mean_lambda1.txt'
 
 set multiplot layout 1,3
 
-set xlabel '$S_d$'
-set ylabel '$\gamma$'
+set xlabel '$S_d [m/s]$'
+set ylabel '$\gamma [1/s]$'
 
 set xrange[-15:15]
 set yrange[-4e5:0]

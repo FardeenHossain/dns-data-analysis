@@ -6,7 +6,7 @@ f2 = '../../../data/plots/R3K1_mid_cond_mean_disp_speed_10.txt'
 f3 = '../../../data/plots/R3K1_mid_cond_mean_disp_speed.txt'
 
 set xlabel '$C$'
-set ylabel '$S_d$'
+set ylabel '$S_d [m/s]$'
 
 set key top left
 

@@ -5,7 +5,7 @@ f1 = '../../../data/plots/R3K1_mid_jpdf_prod_rate_prog_var.txt'
 f2 = '/hpcwork/itv/Antonio/premixed_jet_flames/1D/flame-massfractions-rates.dat'
 
 set xlabel '$C$'
-set ylabel '$\dot{\omega_c}$'
+set ylabel '$\dot{\omega_c} [kg/m^3s]$'
 
 set xrange[0.0:1.0]
 set yrange[0:5e4]

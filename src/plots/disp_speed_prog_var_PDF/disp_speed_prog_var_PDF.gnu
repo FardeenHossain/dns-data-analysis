@@ -3,7 +3,7 @@ set output 'disp_speed_prog_var_PDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_pdf_disp_speed.txt'
 
-set xlabel '$S_d$'
+set xlabel '$S_d [m/s]$'
 set ylabel '$PDF$'
 
 set xrange[-60:60]

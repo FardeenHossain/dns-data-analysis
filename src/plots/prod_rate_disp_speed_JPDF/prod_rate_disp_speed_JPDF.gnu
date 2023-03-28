@@ -3,8 +3,8 @@ set output 'prod_rate_disp_speed_JPDF.tex'
 
 f1 = '../../../data/plots/R3K1_mid_jpdf_prod_rate_cond.txt'
 
-set ylabel '$S_d$'
-set xlabel '$\dot{\omega_c}$'
+set ylabel '$S_d [m/s]$'
+set xlabel '$\dot{\omega_c} [kg/m^3s]$'
 
 set xrange[0:5e4]
 set yrange[-60:60]

@@ -23,7 +23,7 @@ f16 = '../../../data/plots/R4K1_top_pdf_disp_speed.txt'
 
 set multiplot layout 3,4
 
-set xlabel '$S_d$'
+set xlabel '$S_d [m/s]$'
 set ylabel '$PDF$'
 
 set xrange[-60:60]
