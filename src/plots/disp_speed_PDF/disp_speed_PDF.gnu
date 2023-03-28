@@ -1,4 +1,4 @@
-set terminal epslatex size 16,9 standalone color colortext 10
+set terminal epslatex size 16,9 standalone color colortext 12
 set output 'disp_speed_PDF.tex'
 
 f1 = '../../../data/plots/R1K1_bot_pdf_disp_speed.txt'
