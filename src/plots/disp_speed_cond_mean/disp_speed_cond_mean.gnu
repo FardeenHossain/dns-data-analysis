@@ -25,22 +25,22 @@ set key top left
 
 set title '(a) Bottom'
 
-plot f1 using 1:2 every :::0::0 title 'R1K1' with lines, \
-     f2 using 1:2 every :::0::0 title 'R2K1' with lines, \
-     f3 using 1:2 every :::0::0 title 'R3K1' with lines, \
-     f4 using 1:2 every :::0::0 title 'R4K1' with lines
+plot f1 using 1:2 every :::0::0 title 'R1K1' with lines lw 3, \
+     f2 using 1:2 every :::0::0 title 'R2K1' with lines lw 3, \
+     f3 using 1:2 every :::0::0 title 'R3K1' with lines lw 3, \
+     f4 using 1:2 every :::0::0 title 'R4K1' with lines lw 3
 
 set title '(b) Middle'
 set key bottom left
 
-plot f5 using 1:2 every :::0::0 title 'R1K1' with lines, \
-     f6 using 1:2 every :::0::0 title 'R2K1' with lines, \
-     f7 using 1:2 every :::0::0 title 'R3K1' with lines, \
-     f8 using 1:2 every :::0::0 title 'R4K1' with lines
+plot f5 using 1:2 every :::0::0 title 'R1K1' with lines lw 3, \
+     f6 using 1:2 every :::0::0 title 'R2K1' with lines lw 3, \
+     f7 using 1:2 every :::0::0 title 'R3K1' with lines lw 3, \
+     f8 using 1:2 every :::0::0 title 'R4K1' with lines lw 3
 
 set title '(c) Top'
 
-plot f9 using 1:2 every :::0::0 title 'R1K1' with lines, \
-     f10 using 1:2 every :::0::0 title 'R2K1' with lines, \
-     f11 using 1:2 every :::0::0 title 'R3K1' with lines, \
-     f12 using 1:2 every :::0::0 title 'R4K1' with lines
+plot f9 using 1:2 every :::0::0 title 'R1K1' with lines lw 3, \
+     f10 using 1:2 every :::0::0 title 'R2K1' with lines lw 3, \
+     f11 using 1:2 every :::0::0 title 'R3K1' with lines lw 3, \
+     f12 using 1:2 every :::0::0 title 'R4K1' with lines lw 3

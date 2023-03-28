@@ -8,5 +8,5 @@ set ylabel '$K$'
 
 set key top right
 
-plot f1 using 1:2 every :::0::0 title '$K_m$' with lines, \
-     f1 using 1:3 every :::0::0 title '$1/r$' with lines
+plot f1 using 1:2 every :::0::0 title '$K_m$' with lines  lw 3, \
+     f1 using 1:3 every :::0::0 title '$1/r$' with lines  lw 3

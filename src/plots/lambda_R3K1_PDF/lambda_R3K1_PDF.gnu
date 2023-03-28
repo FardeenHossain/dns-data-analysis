@@ -26,18 +26,18 @@ set format x '%.1e'
 
 set title '(a) Bottom'
 
-plot f1 using 1:2 every :::3::3 title '$\gamma$' with lines, \
-     f2 using 1:2 every :::3::3 title '$\beta$' with lines, \
-     f3 using 1:2 every :::3::3 title '$\alpha$' with lines
+plot f1 using 1:2 every :::3::3 title '$\gamma$' with lines lw 3, \
+     f2 using 1:2 every :::3::3 title '$\beta$' with lines lw 3, \
+     f3 using 1:2 every :::3::3 title '$\alpha$' with lines lw 3
 
 set title '(b) Middle'
 
-plot f4 using 1:2 every :::3::3 title '$\gamma$' with lines, \
-     f5 using 1:2 every :::3::3 title '$\beta$' with lines, \
-     f6 using 1:2 every :::3::3 title '$\alpha$' with lines
+plot f4 using 1:2 every :::3::3 title '$\gamma$' with lines lw 3, \
+     f5 using 1:2 every :::3::3 title '$\beta$' with lines lw 3, \
+     f6 using 1:2 every :::3::3 title '$\alpha$' with lines lw 3
 
 set title '(c) Top'
 
-plot f7 using 1:2 every :::3::3 title '$\gamma$' with lines, \
-     f8 using 1:2 every :::3::3 title '$\beta$' with lines, \
-     f9 using 1:2 every :::3::3 title '$\alpha$' with lines
+plot f7 using 1:2 every :::3::3 title '$\gamma$' with lines lw 3, \
+     f8 using 1:2 every :::3::3 title '$\beta$' with lines lw 3, \
+     f9 using 1:2 every :::3::3 title '$\alpha$' with lines lw 3

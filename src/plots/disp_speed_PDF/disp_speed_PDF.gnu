@@ -31,84 +31,84 @@ set yrange[*:*]
 
 set title '(a) C=0.50 Bottom'
 
-plot f1 using 1:2 every :::2::2 title 'R1K1' with lines, \
-     f2 using 1:2 every :::2::2 title 'R2K1' with lines, \
-     f3 using 1:2 every :::2::2 title 'R3K1' with lines, \
-     f4 using 1:2 every :::2::2 title 'R4K1' with lines
+plot f1 using 1:2 every :::2::2 title 'R1K1' with lines lw 3, \
+     f2 using 1:2 every :::2::2 title 'R2K1' with lines lw 3, \
+     f3 using 1:2 every :::2::2 title 'R3K1' with lines lw 3, \
+     f4 using 1:2 every :::2::2 title 'R4K1' with lines lw 3
 
 set title '(b) C=0.50 Middle'
 
-plot f5 using 1:2 every :::2::2 title 'R1K1' with lines, \
-     f6 using 1:2 every :::2::2 title 'R2K1' with lines, \
-     f7 using 1:2 every :::2::2 title 'R3K1' with lines, \
-     f8 using 1:2 every :::2::2 title 'R4K1' with lines
+plot f5 using 1:2 every :::2::2 title 'R1K1' with lines lw 3, \
+     f6 using 1:2 every :::2::2 title 'R2K1' with lines lw 3, \
+     f7 using 1:2 every :::2::2 title 'R3K1' with lines lw 3, \
+     f8 using 1:2 every :::2::2 title 'R4K1' with lines lw 3
 
 set title '(c) C=0.50 Middle-Top'
 
-plot f9 using 1:2 every :::2::2 title 'R1K1' with lines, \
-     f10 using 1:2 every :::2::2 title 'R2K1' with lines, \
-     f11 using 1:2 every :::2::2 title 'R3K1' with lines, \
-     f12 using 1:2 every :::2::2 title 'R4K1' with lines
+plot f9 using 1:2 every :::2::2 title 'R1K1' with lines lw 3, \
+     f10 using 1:2 every :::2::2 title 'R2K1' with lines lw 3, \
+     f11 using 1:2 every :::2::2 title 'R3K1' with lines lw 3, \
+     f12 using 1:2 every :::2::2 title 'R4K1' with lines lw 3
 
 set title '(d) C=0.50 Top'
 
-plot f13 using 1:2 every :::2::2 title 'R1K1' with lines, \
-     f14 using 1:2 every :::2::2 title 'R2K1' with lines, \
-     f15 using 1:2 every :::2::2 title 'R3K1' with lines, \
-     f16 using 1:2 every :::2::2 title 'R4K1' with lines
+plot f13 using 1:2 every :::2::2 title 'R1K1' with lines lw 3, \
+     f14 using 1:2 every :::2::2 title 'R2K1' with lines lw 3, \
+     f15 using 1:2 every :::2::2 title 'R3K1' with lines lw 3, \
+     f16 using 1:2 every :::2::2 title 'R4K1' with lines lw 3
 
 set title '(e) C=0.73 Bottom'
 
-plot f1 using 1:2 every :::3::3 title 'R1K1' with lines, \
-     f2 using 1:2 every :::3::3 title 'R2K1' with lines, \
-     f3 using 1:2 every :::3::3 title 'R3K1' with lines, \
-     f4 using 1:2 every :::3::3 title 'R4K1' with lines
+plot f1 using 1:2 every :::3::3 title 'R1K1' with lines lw 3, \
+     f2 using 1:2 every :::3::3 title 'R2K1' with lines lw 3, \
+     f3 using 1:2 every :::3::3 title 'R3K1' with lines lw 3, \
+     f4 using 1:2 every :::3::3 title 'R4K1' with lines lw 3
 
 set title '(f) C=0.73 Middle'
 
-plot f5 using 1:2 every :::3::3 title 'R1K1' with lines, \
-     f6 using 1:2 every :::3::3 title 'R2K1' with lines, \
-     f7 using 1:2 every :::3::3 title 'R3K1' with lines, \
-     f8 using 1:2 every :::3::3 title 'R4K1' with lines
+plot f5 using 1:2 every :::3::3 title 'R1K1' with lines lw 3, \
+     f6 using 1:2 every :::3::3 title 'R2K1' with lines lw 3, \
+     f7 using 1:2 every :::3::3 title 'R3K1' with lines lw 3, \
+     f8 using 1:2 every :::3::3 title 'R4K1' with lines lw 3
 
 set title '(g) C=0.73 Middle-Top'
 
-plot f9 using 1:2 every :::3::3 title 'R1K1' with lines, \
-     f10 using 1:2 every :::3::3 title 'R2K1' with lines, \
-     f11 using 1:2 every :::3::3 title 'R3K1' with lines, \
-     f12 using 1:2 every :::3::3 title 'R4K1' with lines
+plot f9 using 1:2 every :::3::3 title 'R1K1' with lines lw 3, \
+     f10 using 1:2 every :::3::3 title 'R2K1' with lines lw 3, \
+     f11 using 1:2 every :::3::3 title 'R3K1' with lines lw 3, \
+     f12 using 1:2 every :::3::3 title 'R4K1' with lines lw 3
 
 set title '(h) C=0.73 Top'
 
-plot f13 using 1:2 every :::3::3 title 'R1K1' with lines, \
-     f14 using 1:2 every :::3::3 title 'R2K1' with lines, \
-     f15 using 1:2 every :::3::3 title 'R3K1' with lines, \
-     f16 using 1:2 every :::3::3 title 'R4K1' with lines
+plot f13 using 1:2 every :::3::3 title 'R1K1' with lines lw 3, \
+     f14 using 1:2 every :::3::3 title 'R2K1' with lines lw 3, \
+     f15 using 1:2 every :::3::3 title 'R3K1' with lines lw 3, \
+     f16 using 1:2 every :::3::3 title 'R4K1' with lines lw 3
 
 set title '(i) C=0.90 Bottom'
 
-plot f1 using 1:2 every :::4::4 title 'R1K1' with lines, \
-     f2 using 1:2 every :::4::4 title 'R2K1' with lines, \
-     f3 using 1:2 every :::4::4 title 'R3K1' with lines, \
-     f4 using 1:2 every :::4::4 title 'R4K1' with lines
+plot f1 using 1:2 every :::4::4 title 'R1K1' with lines lw 3, \
+     f2 using 1:2 every :::4::4 title 'R2K1' with lines lw 3, \
+     f3 using 1:2 every :::4::4 title 'R3K1' with lines lw 3, \
+     f4 using 1:2 every :::4::4 title 'R4K1' with lines lw 3
 
 set title '(j) C=0.90 Middle'
 
-plot f5 using 1:2 every :::4::4 title 'R1K1' with lines, \
-     f6 using 1:2 every :::4::4 title 'R2K1' with lines, \
-     f7 using 1:2 every :::4::4 title 'R3K1' with lines, \
-     f8 using 1:2 every :::4::4 title 'R4K1' with lines
+plot f5 using 1:2 every :::4::4 title 'R1K1' with lines lw 3, \
+     f6 using 1:2 every :::4::4 title 'R2K1' with lines lw 3, \
+     f7 using 1:2 every :::4::4 title 'R3K1' with lines lw 3, \
+     f8 using 1:2 every :::4::4 title 'R4K1' with lines lw 3
 
 set title '(k) C=0.90 Middle-Top'
 
-plot f9 using 1:2 every :::4::4 title 'R1K1' with lines, \
-     f10 using 1:2 every :::4::4 title 'R2K1' with lines, \
-     f11 using 1:2 every :::4::4 title 'R3K1' with lines, \
-     f12 using 1:2 every :::4::4 title 'R4K1' with lines
+plot f9 using 1:2 every :::4::4 title 'R1K1' with lines lw 3, \
+     f10 using 1:2 every :::4::4 title 'R2K1' with lines lw 3, \
+     f11 using 1:2 every :::4::4 title 'R3K1' with lines lw 3, \
+     f12 using 1:2 every :::4::4 title 'R4K1' with lines lw 3
 
 set title '(d) C=0.90 Top'
 
-plot f13 using 1:2 every :::4::4 title 'R1K1' with lines, \
-     f14 using 1:2 every :::4::4 title 'R2K1' with lines, \
-     f15 using 1:2 every :::4::4 title 'R3K1' with lines, \
-     f16 using 1:2 every :::4::4 title 'R4K1' with lines
+plot f13 using 1:2 every :::4::4 title 'R1K1' with lines lw 3, \
+     f14 using 1:2 every :::4::4 title 'R2K1' with lines lw 3, \
+     f15 using 1:2 every :::4::4 title 'R3K1' with lines lw 3, \
+     f16 using 1:2 every :::4::4 title 'R4K1' with lines lw 3
