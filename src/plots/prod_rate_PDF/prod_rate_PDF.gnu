@@ -9,4 +9,4 @@ set ylabel '$PDF$'
 set xrange[0:5e4]
 set yrange[*:*]
 
-plot f1 using 1:2 every :::3::3 title '' with lines lw 3
+plot f1 using 1:2 every :::3::3 title '' with lines lw 5

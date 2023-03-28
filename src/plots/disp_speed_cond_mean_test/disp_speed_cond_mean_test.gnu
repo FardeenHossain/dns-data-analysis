@@ -10,7 +10,7 @@ set ylabel '$S_d$'
 
 set key top left
 
-plot f1 using 1:2 every :::0::0 title '1 data file' with lines lw 3, \
-     f2 using 1:2 every :::0::0 title '10 data files' with lines lw 3, \
-     f3 using 1:2 every :::0::0 title '17 data files' with lines lw 3
+plot f1 using 1:2 every :::0::0 title '1 data file' with lines lw 5, \
+     f2 using 1:2 every :::0::0 title '10 data files' with lines lw 5, \
+     f3 using 1:2 every :::0::0 title '17 data files' with lines lw 5
 
