@@ -1,5 +1,5 @@
 set terminal epslatex size 8,6 standalone color colortext 10
-set output 'disp_speed_curvature_Jflames_JPDF.tex'
+set output 'disp_speed_curvature_flames_JPDF.tex'
 
 f1 = '../../../data/plots/R1K1_mid_jpdf_disp_speed_curvature.txt'
 f2 = '../../../data/plots/R2K1_mid_jpdf_disp_speed_curvature.txt'
