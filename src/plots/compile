@@ -30,6 +30,12 @@ pdflatex disp_speed_curvature_JPDF.tex
 mv disp_speed_curvature_JPDF.pdf ../figures
 cd ..
 
+cd disp_speed_curvature_flames_JPDF
+gnuplot disp_speed_curvature_flames_JPDF.gnu
+pdflatex disp_speed_curvature_flames_JPDF.tex
+mv disp_speed_curvature_flames_JPDF.pdf ../figures
+cd ..
+
 cd disp_speed_PDF
 gnuplot disp_speed_PDF.gnu
 pdflatex disp_speed_PDF.tex
