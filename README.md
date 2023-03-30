@@ -23,6 +23,10 @@ MEng (Hons) Mechanical Engineering. Built with Python and Gnuplot.
 - Fardeen Hossain - The University of Edinburgh
 - Dr Antonio Attili - The University of Edinburgh
 
+## License
+
+This project is licensed under the GPL-3.0 License - see the LICENSE.md file for details
+
 ## Acknowledgements
 
 - The University of Edinburgh, Edinburgh, United Kingdom
